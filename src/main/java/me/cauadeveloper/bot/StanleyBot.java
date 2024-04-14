@@ -12,7 +12,7 @@ import java.util.EnumSet;
 public class StanleyBot {
 
     public static void main(String[] args) throws Exception{
-        JDA jda = JDABuilder.createDefault("MTIyNjY1MzQyMzE4MTYzMTY0OQ.GRTVLS.s848HRg8AwKCVxBa11CvNBy428cbnAlUbpZ_HA",
+        JDA jda = JDABuilder.createDefault("",
         EnumSet.allOf(GatewayIntent.class)).build();
         jda.addEventListener(new ping());
         jda.addEventListener(new goodNight());
