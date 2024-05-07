@@ -22,10 +22,16 @@ public class Help extends ListenerAdapter {
 
             embed.setTitle("Help");
             embed.setDescription("O StanleyBot é seu auxiliar na preparação do seu café.\n\n" +
-                    "Os comandos que nós temos são os seguintes:\n\n 1 - !createRole\n 2 - !goodNight\n 3 - !ping\n");
-            embed.addField("Novo cargo", "O comando **!createRole** é usando quando você precisa criar um novo cargo" +
-                    " no seu servidor. \n\nformato: **<!createRole> <nome do cargo>**" +
-                    "\n\n Os outros comandos são inutei ou vão ser reformulados, por isso não adicionei aqui.", false);
+                    "Os comandos que nós temos são os seguintes:\n\n 1 - !createRoleEmpty\n 2 - !createRoleDefault\n 3 - !createCopyRole\n");
+            embed.addField("Cargo Vazio", "O comando **!createRoleEmpty** é usando quando você precisa criar um novo cargo" +
+                    " no seu servidor, mas sem nenhuma permissão, para que você configure de acordo com a sua necessidade. \n\nformato: **<!createRoleEmpty> <nome do cargo>**"
+                    , false);
+            embed.addField("Cargo Padrão", "O comando **!createRoleDefault** é usando quando você precisa criar um novo cargo" +
+                    " no seu servidor com as mesmas permissões do cargo everyone para agilizar a configuração das permissões. \n\nformato: **<!createRoleDefault> <nome do cargo>**"
+                    , false);
+            embed.addField("Copia de cargo", " O comando **!createRoleDefault** é usando quando você precisa criar um novo cargo" +
+                    " , mas quer copiar as permissões de outro cargo para ter como base. \n\nformato: **<!createRoleDefault> <nome do novo cargo> <nome do cargo que deseja copiar>**" +
+                    " \n\n Os outros comandos são inutei ou vão ser reformulados, por isso não adicionei aqui.", false);
             channel.sendMessageEmbeds(embed.build()).queue();
         }
 
