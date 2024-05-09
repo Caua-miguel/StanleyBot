@@ -8,20 +8,22 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 public class ping extends ListenerAdapter {
 
     @Override
-    public void onMessageReceived(MessageReceivedEvent event){
-
+    public void onMessageReceived(MessageReceivedEvent event) {
         if(event.getAuthor().isBot()) return;
 
         Message message = event.getMessage();
         String content = message.getContentRaw();
+        MessageChannel channel = event.getChannel();
+        long BotPing =  event.getJDA().getGatewayPing();
 
-        if(content.equals("!ping")){
+        if(content.equalsIgnoreCase("!Ping")) {
 
-            MessageChannel channel = event.getChannel();
-            channel.sendMessage("Pong!").queue();
-
+            channel.sendMessage(BotPing + " ms").queue();
         }
-
     }
-
 }
+
+
+
+
+
