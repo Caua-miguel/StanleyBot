@@ -5,6 +5,7 @@ import me.cauadeveloper.commands.roles.ListOfRoles;
 import me.cauadeveloper.commands.roles.createCopyRole;
 import me.cauadeveloper.commands.roles.createRoleDefault;
 import me.cauadeveloper.commands.roles.createRoleEmpty;
+import me.cauadeveloper.database.CRUD;
 import me.cauadeveloper.database.Config;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -16,9 +17,7 @@ import java.util.Map;
 
 public class StanleyBot {
 
-    public static Map<Long, Character> prefixMap = new HashMap<>();
-    public static Map<Long, Long> joinChannelMap = new HashMap<>();
-    public static Map<Long, Long> leaveChannelMap = new HashMap<>();
+    public static Map<String, Character> prefixMap = new HashMap<>();
 
     public static void main(String[] args) throws Exception{
 
@@ -28,15 +27,17 @@ public class StanleyBot {
                 EnumSet.allOf(GatewayIntent.class)).build();
 
         jda.addEventListener(new ping());
-        jda.addEventListener(new goodNight());
         jda.addEventListener(new createRoleEmpty(), new createRoleDefault(), new createCopyRole());
         jda.addEventListener(new ListOfRoles());
+        jda.addEventListener(new Prefix());
         jda.addEventListener(new Help());
 
         for (Guild guild : jda.awaitReady().getGuilds()) {
-            prefixMap.put(guild.getIdLong(), '!');
-            joinChannelMap.put(guild.getIdLong(), null);
-            leaveChannelMap.put(guild.getIdLong(), null);
+            CRUD.insert(guild.getId(), '!');
+        }
+
+        for (Guild guild : jda.awaitReady().getGuilds()) {
+            CRUD.select(guild.getId());
         }
 
     }

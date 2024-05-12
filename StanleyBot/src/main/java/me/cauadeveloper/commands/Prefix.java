@@ -6,25 +6,19 @@ import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
-public class ping extends ListenerAdapter {
+public class Prefix extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        if(event.getAuthor().isBot()) return;
 
         Message message = event.getMessage();
         String content = message.getContentRaw();
         MessageChannel channel = event.getChannel();
-        long BotPing =  event.getJDA().getGatewayPing();
 
-        if(content.equalsIgnoreCase(StanleyBot.prefixMap.get(event.getGuild().getId()) + "Ping")) {
+        if(content.equalsIgnoreCase(StanleyBot.prefixMap.get(event.getGuild().getId()) + "prefix")){
 
-            channel.sendMessage(BotPing + " ms").queue();
+            channel.sendMessage("O prefixo para este servidor é: " + StanleyBot.prefixMap.get(event.getGuild().getId())).queue();
+
         }
     }
 }
-
-
-
-
-
