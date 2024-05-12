@@ -1,5 +1,6 @@
 package me.cauadeveloper.commands;
 
+import me.cauadeveloper.bot.StanleyBot;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -16,7 +17,7 @@ public class ping extends ListenerAdapter {
         MessageChannel channel = event.getChannel();
         long BotPing =  event.getJDA().getGatewayPing();
 
-        if(content.equalsIgnoreCase("!Ping")) {
+        if(content.equalsIgnoreCase(StanleyBot.prefixMap.get(event.getGuild().getIdLong()) + "Ping")) {
 
             channel.sendMessage(BotPing + " ms").queue();
         }
