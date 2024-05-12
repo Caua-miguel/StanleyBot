@@ -2,6 +2,7 @@ package me.cauadeveloper.database;
 
 import me.cauadeveloper.bot.StanleyBot;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,9 +14,9 @@ public class CRUD {
         String sql = """
                     select * from tb_guild where guild_id = %s
                     """.formatted(guildId);
-        Statement stmt = ConnectionFactory.getConn().createStatement();
+        PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql);
 
-        ResultSet resultSet = stmt.executeQuery(sql);
+        ResultSet resultSet = stmt.executeQuery();
 
         while(resultSet.next()){
             StanleyBot.prefixMap.put(guildId, resultSet.getString("prefix").charAt(0));
@@ -31,8 +32,8 @@ public class CRUD {
         String sql = """
                       insert or ignore into tb_guild values (null, '%s', '%s')
                       """.formatted(guildId, prefix);
-        Statement stmt = ConnectionFactory.getConn().createStatement();
-        stmt.execute(sql);
+        PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql);
+        stmt.execute();
         stmt.close();
         ConnectionFactory.getConn().close();
     }
@@ -46,8 +47,8 @@ public class CRUD {
                         guild_id text not null unique,
                         prefix text not null
                     )""";
-        Statement stmt = ConnectionFactory.getConn().createStatement();
-        stmt.execute(sql);
+        PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql);
+        stmt.execute();
         stmt.close();
         ConnectionFactory.getConn().close();
     }
