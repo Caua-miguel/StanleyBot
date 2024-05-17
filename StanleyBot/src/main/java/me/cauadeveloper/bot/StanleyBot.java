@@ -5,8 +5,8 @@ import me.cauadeveloper.commands.roles.ListOfRoles;
 import me.cauadeveloper.commands.roles.createCopyRole;
 import me.cauadeveloper.commands.roles.createRoleDefault;
 import me.cauadeveloper.commands.roles.createRoleEmpty;
-import me.cauadeveloper.database.CRUD;
-import me.cauadeveloper.database.Config;
+import me.cauadeveloper.database.tables.Table_Funcionarios_Omega;
+import me.cauadeveloper.database.dataconfig.Config;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Guild;
@@ -33,12 +33,15 @@ public class StanleyBot {
         jda.addEventListener(new Help());
 
         for (Guild guild : jda.awaitReady().getGuilds()) {
-            CRUD.insert(guild.getId(), '!');
+            Table_Funcionarios_Omega.insert(1, "Ana Clara");
+            Table_Funcionarios_Omega.insert(2, "Paula Fernanda");
+            Table_Funcionarios_Omega.insert(3, "Carlos Miguel");
+            Table_Funcionarios_Omega.insert(4, "Ana Mendes");
+            Table_Funcionarios_Omega.insert(5, "Ana Carla");
         }
 
-        for (Guild guild : jda.awaitReady().getGuilds()) {
-            CRUD.select(guild.getId());
-        }
+
+
 
     }
 }

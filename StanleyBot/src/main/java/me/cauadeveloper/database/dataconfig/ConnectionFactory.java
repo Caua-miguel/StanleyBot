@@ -1,4 +1,4 @@
-package me.cauadeveloper.database;
+package me.cauadeveloper.database.dataconfig;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ public class ConnectionFactory {
 
     public static Connection getConn() throws SQLException {
 
-        String url = "jdbc:sqlite:C:\\Users\\caua\\Documents\\Dev\\BackEnd\\BotDiscord\\StanleyBotLocal\\SQLite\\devbot.db";
+        String url = "jdbc:sqlite:C:\\Users\\caua\\Documents\\Dev\\BackEnd\\BotDiscord\\CoffeBot\\StanleyBot\\src\\main\\java\\me\\cauadeveloper\\database\\devbot.db";
 
         try {
             return DriverManager.getConnection(url);
