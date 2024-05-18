@@ -5,11 +5,10 @@ import me.cauadeveloper.commands.roles.ListOfRoles;
 import me.cauadeveloper.commands.roles.createCopyRole;
 import me.cauadeveloper.commands.roles.createRoleDefault;
 import me.cauadeveloper.commands.roles.createRoleEmpty;
-import me.cauadeveloper.database.tables.Table_Funcionarios_Omega;
+import me.cauadeveloper.database.tables.*;
 import me.cauadeveloper.database.dataconfig.Config;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -32,15 +31,35 @@ public class StanleyBot {
         jda.addEventListener(new Prefix());
         jda.addEventListener(new Help());
 
-        for (Guild guild : jda.awaitReady().getGuilds()) {
-            Table_Funcionarios_Omega.insert(1, "Ana Clara");
-            Table_Funcionarios_Omega.insert(2, "Paula Fernanda");
-            Table_Funcionarios_Omega.insert(3, "Carlos Miguel");
-            Table_Funcionarios_Omega.insert(4, "Ana Mendes");
-            Table_Funcionarios_Omega.insert(5, "Ana Carla");
+        for (int i = 1; i < 4; i++ ) {
+            Table_Funcionarios_Omega.insert(i, "Ana Clara", "contabilidade blabla", "financeiro", true);
+            Table_Funcionarios_Omega.insert(i, "Paula Fernanda", "refaturação blabla", "programador", true);
+            Table_Funcionarios_Omega.insert(i, "Carlos Miguel", "gerencia", "chefe fodase", true);
         }
 
+        for (int i = 1; i < 4; i++ ) {
+            Table_Funcionario_Grupo.insert(i, i, i, true);
+            Table_Funcionario_Grupo.insert(i, i, i, true);
+            Table_Funcionario_Grupo.insert(i, i, i, true);
+        }
 
+        for (int i = 1; i < 4; i++ ) {
+            Table_Time.insert(i, "teste", true);
+            Table_Time.insert(2, "Reposicao132", true);
+            Table_Time.insert(3, "CoaLegal123", true);
+        }
+
+        for (int i = 1; i < 4; i++ ) {
+            Table_Tarefa.insert(1, "Reposicao");
+            Table_Tarefa.insert(2, "Esquentar agua");
+            Table_Tarefa.insert(3, "Coar o cafe");
+        }
+
+        for (int i = 1; i < 4; i++ ) {
+            Table_Time_Tarefa.insert(i, i, i, true);
+            Table_Time_Tarefa.insert(i, i, i, true);
+            Table_Time_Tarefa.insert(i, i, i, true);
+        }
 
 
     }
