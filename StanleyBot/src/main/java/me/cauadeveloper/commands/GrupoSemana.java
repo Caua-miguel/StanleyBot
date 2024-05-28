@@ -1,6 +1,7 @@
 package me.cauadeveloper.commands;
 
 import me.cauadeveloper.bot.StanleyBot;
+import me.cauadeveloper.database.dataconfig.DataSemaphore;
 import me.cauadeveloper.database.tables.Table_Time;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
@@ -22,11 +23,10 @@ public class GrupoSemana extends ListenerAdapter {
         if(content.equalsIgnoreCase("!GPSemana")) {
 
             try {
-
-                String nomeGrupo = Table_Time.selectID(1);
+                Table_Time.update();
+                String nomeGrupo = Table_Time.selectID();
                 channel.sendMessage("Seu grupo da semana é: " + nomeGrupo).queue();
-                //Ta com problema na hora de updatar a tabela, mas o nome do grupo ta saindo certo.
-                Table_Time.update(false, 1);
+                channel.sendMessage("update com sucesso").queue();
 
 
             } catch (SQLException e) {
