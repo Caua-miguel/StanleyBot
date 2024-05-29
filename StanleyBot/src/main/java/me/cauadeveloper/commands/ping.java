@@ -17,7 +17,7 @@ public class ping extends ListenerAdapter {
         MessageChannel channel = event.getChannel();
         long BotPing =  event.getJDA().getGatewayPing();
 
-        if(content.equalsIgnoreCase(StanleyBot.prefixMap.get(event.getGuild().getId()) + "Ping")) {
+        if(content.equalsIgnoreCase(  "!Ping")) {
 
             channel.sendMessage(BotPing + " ms").queue();
         }

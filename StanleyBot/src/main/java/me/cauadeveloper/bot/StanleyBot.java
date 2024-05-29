@@ -16,6 +16,7 @@ import java.util.Map;
 
 public class StanleyBot {
 
+    // Ta com problema no prefixMap
     public static Map<String, Character> prefixMap = new HashMap<>();
 
     public static void main(String[] args) throws Exception{
@@ -30,6 +31,7 @@ public class StanleyBot {
         jda.addEventListener(new ListOfRoles());
         jda.addEventListener(new Prefix());
         jda.addEventListener(new Help());
+        jda.addEventListener(new GrupoSemana());
 
         for (int i = 1; i < 4; i++ ) {
             Table_Funcionarios_Omega.insert(i, "Ana Clara", "contabilidade blabla", "financeiro", true);
