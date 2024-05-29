@@ -15,31 +15,49 @@ public class Table_Time {
 
        // int maxLines = 3;
 
+
+
         String sql = """
                       select nome_time from Time where TimeID = ?
                       """;
-        PreparedStatement stmt = Objects.requireNonNull(ConnectionFactory.getConn()).prepareStatement(sql);
 
-//        currentID++;
-//
-//        if (currentID > maxLines){
-//            currentID = 1;
-//        }
+       try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
 
-        stmt.setInt(1, currentID);
 
-        ResultSet resultSet = stmt.executeQuery();
+        //        currentID++;
+        //
+        //        if (currentID > maxLines){
+        //            currentID = 1;
+        //        }
 
-        while (resultSet.next()){
-            return resultSet.getString("nome_time");
-        }
-        resultSet.close();
-        stmt.close();
-        ConnectionFactory.getConn().close();
-        return null;
+                   stmt.setInt(1, currentID);
+
+                   ResultSet resultSet = stmt.executeQuery();
+
+                   while (resultSet.next()){
+                       return resultSet.getString("nome_time");
+                   }
+
+
+
+                   resultSet.close();
+                   stmt.close();
+                   ConnectionFactory.getConn().close();
+                   return null;
+
+       }catch (SQLException e) {
+           e.printStackTrace();
+           throw e;
+       }
+
+
+
+
     }
 
+
     public static void update() throws SQLException{
+
 
         int maxLines = 3;
 
@@ -52,12 +70,25 @@ public class Table_Time {
         String sql = """
                       update Time set statusTime = ? where TimeID = ?
                       """;
-        PreparedStatement stmt = Objects.requireNonNull(ConnectionFactory.getConn()).prepareStatement(sql);
-        stmt.setString(1, "true");
-        stmt.setInt(2, currentID);
-        stmt.execute();
-        stmt.close();
-        ConnectionFactory.getConn().close();
+
+        try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
+
+            stmt.setString(1, "true");
+            stmt.setInt(2, currentID);
+            stmt.execute();
+
+
+
+            stmt.close();
+            ConnectionFactory.getConn().close();
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+
+
+
     }
 
 
