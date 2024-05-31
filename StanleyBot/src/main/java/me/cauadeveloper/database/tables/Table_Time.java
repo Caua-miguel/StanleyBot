@@ -9,13 +9,10 @@ import java.sql.SQLException;
 
 public class Table_Time {
 
-    private static int currentID = 0;
+    public static int currentID = 0;
+    public static int maxLines = 3;
 
     public static String selectID() throws SQLException{
-
-       // int maxLines = 3;
-
-
 
         String sql = """
                       select nome_time from Time where TimeID = ?
@@ -23,12 +20,6 @@ public class Table_Time {
 
        try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
 
-
-        //        currentID++;
-        //
-        //        if (currentID > maxLines){
-        //            currentID = 1;
-        //        }
 
                    stmt.setInt(1, currentID);
 
@@ -39,27 +30,17 @@ public class Table_Time {
                    }
 
 
-
-                   resultSet.close();
-                   stmt.close();
-                   ConnectionFactory.getConn().close();
-                   return null;
-
        }catch (SQLException e) {
            e.printStackTrace();
-           throw e;
+
        }
 
-
-
+        return null;
 
     }
 
 
     public static void update() throws SQLException{
-
-
-        int maxLines = 3;
 
         currentID++;
 
@@ -67,27 +48,28 @@ public class Table_Time {
             currentID = 1;
         }
 
-        String sql = """
-                      update Time set statusTime = ? where TimeID = ?
-                      """;
+            try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement("update Time set statusTime = ? where TimeID = ?")){
 
-        try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
+                stmt.setString(1, "false");
+                stmt.setInt(2, currentID);
+                stmt.execute();
 
-            stmt.setString(1, "true");
-            stmt.setInt(2, currentID);
-            stmt.execute();
+            }catch (SQLException e) {
+                e.printStackTrace();
+            }
 
 
+    }
 
-            stmt.close();
-            ConnectionFactory.getConn().close();
+    public static void updateAll() throws SQLException{
 
-        }catch (SQLException e) {
+
+        try (PreparedStatement updateStmt = ConnectionFactory.getConn().prepareStatement("update Time set statusTime = ?")){
+            updateStmt.setString(1, "true");
+            updateStmt.execute();
+        }catch (SQLException e){
             e.printStackTrace();
-            throw e;
         }
-
-
 
     }
 

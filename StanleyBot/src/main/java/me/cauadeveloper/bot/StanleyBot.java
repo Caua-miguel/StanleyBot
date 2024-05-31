@@ -31,6 +31,7 @@ public class StanleyBot {
         jda.addEventListener(new ListOfRoles());
         jda.addEventListener(new Prefix());
         jda.addEventListener(new Help());
+        jda.addEventListener(new EscolherGrupoSemana());
         jda.addEventListener(new GrupoSemana());
 
         for (int i = 1; i < 4; i++ ) {
