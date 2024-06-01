@@ -33,6 +33,7 @@ public class StanleyBot {
         jda.addEventListener(new Help());
         jda.addEventListener(new EscolherGrupoSemana());
         jda.addEventListener(new GrupoSemana());
+        jda.addEventListener(new ReportarFaltaRecurso());
 
         for (int i = 1; i < 4; i++ ) {
             Table_Funcionarios_Omega.insert(i, "Ana Clara", "contabilidade blabla", "financeiro", true);
