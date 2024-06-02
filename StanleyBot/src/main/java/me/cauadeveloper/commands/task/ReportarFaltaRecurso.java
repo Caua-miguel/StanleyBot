@@ -1,4 +1,4 @@
-package me.cauadeveloper.commands;
+package me.cauadeveloper.commands.task;
 
 import me.cauadeveloper.database.tables.Table_Time;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
