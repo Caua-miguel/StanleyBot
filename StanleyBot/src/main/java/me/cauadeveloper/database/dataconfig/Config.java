@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class Config {
 
-    public static File databaseFile = new File("C:\\Users\\caua\\Documents\\Dev\\BackEnd\\BotDiscord\\CoffeBot\\StanleyBot\\src\\main\\java\\me\\cauadeveloper\\database\\devbot.db");
+    public static File databaseFile = new File("C:\\Users\\caua\\Documents\\Dev\\BackEnd\\BotDiscord\\CoffeBot\\StanleyBot\\src\\main\\java\\me\\cauadeveloper\\database\\data\\devbot.db");
 
     public static void createFilesAndTable() throws IOException, SQLException {
 

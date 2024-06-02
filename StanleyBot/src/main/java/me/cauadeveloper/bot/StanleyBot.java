@@ -1,10 +1,15 @@
 package me.cauadeveloper.bot;
 
-import me.cauadeveloper.commands.*;
+import me.cauadeveloper.commands.general.Help;
+import me.cauadeveloper.commands.general.Prefix;
+import me.cauadeveloper.commands.general.ping;
+import me.cauadeveloper.commands.group.EscolherGrupoSemana;
+import me.cauadeveloper.commands.group.GrupoSemana;
 import me.cauadeveloper.commands.roles.ListOfRoles;
 import me.cauadeveloper.commands.roles.createCopyRole;
 import me.cauadeveloper.commands.roles.createRoleDefault;
 import me.cauadeveloper.commands.roles.createRoleEmpty;
+import me.cauadeveloper.commands.task.ReportarFaltaRecurso;
 import me.cauadeveloper.database.tables.*;
 import me.cauadeveloper.database.dataconfig.Config;
 import net.dv8tion.jda.api.JDA;

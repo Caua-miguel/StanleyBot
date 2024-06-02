@@ -1,6 +1,5 @@
-package me.cauadeveloper.commands;
+package me.cauadeveloper.commands.general;
 
-import me.cauadeveloper.bot.StanleyBot;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
