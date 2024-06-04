@@ -47,15 +47,15 @@ public class StanleyBot {
         }
 
         for (int i = 1; i < 4; i++ ) {
-            Table_Funcionario_Grupo.insert(i, i, i, true);
-            Table_Funcionario_Grupo.insert(i, i, i, true);
-            Table_Funcionario_Grupo.insert(i, i, i, true);
+            Table_Funcionario_Grupo.insert(i, true);
+            Table_Funcionario_Grupo.insert(i, true);
+            Table_Funcionario_Grupo.insert(i, true);
         }
 
         for (int i = 1; i < 4; i++ ) {
             Table_Time.insert(i, "teste", true);
-            Table_Time.insert(2, "Reposicao132", true);
-            Table_Time.insert(3, "CoaLegal123", true);
+            Table_Time.insert(i, "Reposicao132", true);
+            Table_Time.insert(i, "CoaLegal123", true);
         }
 
         for (int i = 1; i < 4; i++ ) {

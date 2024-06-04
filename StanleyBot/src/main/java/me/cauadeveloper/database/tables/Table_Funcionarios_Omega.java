@@ -10,12 +10,22 @@ public class Table_Funcionarios_Omega {
     public static void insert(int funcionarioID, String nome_funcionario, String funcao, String cargo,boolean status_func) throws SQLException{
 
         String sql = """
-                      insert or ignore into funcionarios_omega values ('%s', '%s', '%s', '%s', '%s')
-                      """.formatted(funcionarioID, nome_funcionario, funcao, cargo, status_func);
-        PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql);
-        stmt.execute();
-        stmt.close();
-        ConnectionFactory.getConn().close();
+                      insert or ignore into funcionarios_omega values (?, ?, ?, ?, ?)
+                      """;
+
+        try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql);){
+
+            stmt.setInt(1, funcionarioID);
+            stmt.setString(2, nome_funcionario);
+            stmt.setString(3, funcao);
+            stmt.setString(4, cargo);
+            stmt.setString(5, String.valueOf(status_func));
+
+            stmt.execute();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
     }
 
     public static void createTableFuncionarios() throws SQLException {

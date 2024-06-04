@@ -77,12 +77,22 @@ public class Table_Time {
     public static void insert(int timeID, String nome_time, boolean statusTime) throws SQLException {
 
         String sql = """
-                      insert or ignore into Time values ('%s', '%s', '%s')
-                      """.formatted(timeID, nome_time, statusTime);
-        PreparedStatement stmt = Objects.requireNonNull(ConnectionFactory.getConn()).prepareStatement(sql);
-        stmt.execute();
-        stmt.close();
-        ConnectionFactory.getConn().close();
+                      insert or ignore into Time values (?, ?, ?)
+                      """;
+        try (PreparedStatement stmt = Objects.requireNonNull(ConnectionFactory.getConn()).prepareStatement(sql)){
+
+
+            stmt.setInt(1, timeID);
+            stmt.setString(2, nome_time);
+            stmt.setString(3, String.valueOf(statusTime));
+
+            stmt.execute();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
     }
 
     public static void createTableTime() throws SQLException {
