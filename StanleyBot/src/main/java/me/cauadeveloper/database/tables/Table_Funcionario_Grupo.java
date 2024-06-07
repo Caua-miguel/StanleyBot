@@ -10,23 +10,18 @@ public class Table_Funcionario_Grupo {
     public static void insert(int funcionarioGrupoID, boolean status) throws SQLException {
 
 
-        // Insert errado
+        // O ROW está criando um index de acordo com a coluna funcionarioID
         String sql = """
-                  INSERT OR IGNORE INTO funcionarios_grupo (funcionarioGrupoID, funcionarioID, TimeID, status)
-                  SELECT ?, funcionarios_omega.funcionarioID, Time.TimeID, ? FROM funcionarios_omega
-                  JOIN Time ON funcionarios_omega.funcionarioID = Time.TimeID
+                INSERT OR REPLACE INTO funcionarios_grupo (funcionarioGrupoID, funcionarioID, TimeID, status)
+                              SELECT ROW_NUMBER() OVER (ORDER BY funcionarios_omega.funcionarioID) AS indx, funcionarios_omega.funcionarioID, Time.TimeID, ? FROM funcionarios_omega
+                              JOIN Time ON funcionarios_omega.funcionarioID = Time.TimeID
                   """;
 
         try (PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)) {
 
-            ResultSet resultSet = stmt.executeQuery();
-
-            while (resultSet.next()){
-
-            }
-
-            stmt.setInt(1, funcionarioGrupoID);
-            stmt.setString(2, String.valueOf(status));
+//            stmt.setInt(1, funcionarioGrupoID);
+            stmt.setString(1, String.valueOf(status));
+            stmt.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
