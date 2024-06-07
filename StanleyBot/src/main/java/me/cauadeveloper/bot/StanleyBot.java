@@ -40,22 +40,22 @@ public class StanleyBot {
         jda.addEventListener(new GrupoSemana());
         jda.addEventListener(new ReportarFaltaRecurso());
 
-        for (int i = 1; i < 4; i++ ) {
+        for (int i = 5; i < 8; i++ ) {
             Table_Funcionarios_Omega.insert(i, "Ana Clara", "contabilidade blabla", "financeiro", true);
             Table_Funcionarios_Omega.insert(i, "Paula Fernanda", "refaturação blabla", "programador", true);
             Table_Funcionarios_Omega.insert(i, "Carlos Miguel", "gerencia", "chefe fodase", true);
         }
 
-        for (int i = 1; i < 4; i++ ) {
-            Table_Funcionario_Grupo.insert(i, i, i, true);
-            Table_Funcionario_Grupo.insert(i, i, i, true);
-            Table_Funcionario_Grupo.insert(i, i, i, true);
+        for (int i = 5; i < 8; i++ ) {
+            Table_Funcionario_Grupo.insert(i, true);
+            Table_Funcionario_Grupo.insert(i, true);
+            Table_Funcionario_Grupo.insert(i, true);
         }
 
-        for (int i = 1; i < 4; i++ ) {
+        for (int i = 5; i < 8; i++ ) {
             Table_Time.insert(i, "teste", true);
-            Table_Time.insert(2, "Reposicao132", true);
-            Table_Time.insert(3, "CoaLegal123", true);
+            Table_Time.insert(i, "Reposicao132", true);
+            Table_Time.insert(i, "CoaLegal123", true);
         }
 
         for (int i = 1; i < 4; i++ ) {

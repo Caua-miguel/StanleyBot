@@ -17,7 +17,7 @@ public class ReportarFaltaRecurso extends ListenerAdapter {
         if(command[0].equalsIgnoreCase("!ReportarFalta")) {
 
             if (command.length < 2) {
-                event.getChannel().sendMessage("Por favor, forneça o nome do item.").queue();
+                channel.sendMessage("Por favor, forneça o nome do item.").queue();
             } else {
                 try {
 
