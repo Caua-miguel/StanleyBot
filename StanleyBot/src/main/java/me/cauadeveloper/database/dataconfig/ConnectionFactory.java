@@ -8,7 +8,7 @@ public class ConnectionFactory {
 
     public static Connection getConn() throws SQLException {
 
-        String url = "jdbc:sqlite:C:\\Users\\caua\\Documents\\Dev\\BackEnd\\BotDiscord\\CoffeBot\\StanleyBot\\src\\main\\java\\me\\cauadeveloper\\database\\data\\devbot.db";
+        String url = "jdbc:sqlite:/home/caua/Documentos/Dev/Backend/CoffeBot/StanleyBot/StanleyBot/src/main/java/me/cauadeveloper/database/data/devbot";
 
         try {
             return DriverManager.getConnection(url);
