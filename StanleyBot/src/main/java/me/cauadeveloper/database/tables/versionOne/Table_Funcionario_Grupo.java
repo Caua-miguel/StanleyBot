@@ -1,8 +1,7 @@
-package me.cauadeveloper.database.tables;
+package me.cauadeveloper.database.tables.versionOne;
 
 import me.cauadeveloper.database.dataconfig.ConnectionFactory;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Table_Funcionario_Grupo {

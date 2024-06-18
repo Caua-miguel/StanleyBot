@@ -1,6 +1,9 @@
 package me.cauadeveloper.database.dataconfig;
 
-import me.cauadeveloper.database.tables.*;
+import me.cauadeveloper.database.tables.refact.table_funcionario;
+import me.cauadeveloper.database.tables.refact.table_tarefa;
+import me.cauadeveloper.database.tables.refact.table_time;
+import me.cauadeveloper.database.tables.versionOne.*;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -16,12 +19,9 @@ public class Config {
         if(Files.notExists(databaseFile.toPath())){
 
             Files.createFile(databaseFile.toPath());
-            Table_Funcionarios_Omega.createTableFuncionarios();
-            Table_Funcionario_Grupo.createTableFuncionariosGrupo();
-            Table_Time.createTableTime();
-            Table_Tarefa.createTableTarefa();
-            Table_Time_Tarefa.createTableTimeTarefa();
-
+            table_funcionario.create_table();
+            table_time.create_table();
+            table_tarefa.create_table();
         }
 
     }

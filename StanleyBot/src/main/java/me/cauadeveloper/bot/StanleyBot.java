@@ -10,8 +10,8 @@ import me.cauadeveloper.commands.roles.createCopyRole;
 import me.cauadeveloper.commands.roles.createRoleDefault;
 import me.cauadeveloper.commands.roles.createRoleEmpty;
 import me.cauadeveloper.commands.task.ReportarFaltaRecurso;
-import me.cauadeveloper.database.tables.*;
 import me.cauadeveloper.database.dataconfig.Config;
+import me.cauadeveloper.database.tables.versionOne.*;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.requests.GatewayIntent;
@@ -39,37 +39,5 @@ public class StanleyBot {
         jda.addEventListener(new EscolherGrupoSemana());
         jda.addEventListener(new GrupoSemana());
         jda.addEventListener(new ReportarFaltaRecurso());
-
-        for (int i = 1; i < 4; i++ ) {
-            Table_Funcionarios_Omega.insert(1, "Ana Clara", "contabilidade blabla", "financeiro", true);
-            Table_Funcionarios_Omega.insert(2, "Paula Fernanda", "refaturação blabla", "programador", true);
-            Table_Funcionarios_Omega.insert(3, "Carlos Miguel", "gerencia", "chefe fodase", true);
-        }
-
-        for (int i = 1; i < 4; i++ ) {
-            Table_Funcionario_Grupo.insert(1, true);
-            Table_Funcionario_Grupo.insert(2, true);
-            Table_Funcionario_Grupo.insert(3, true);
-        }
-
-        for (int i = 1; i < 4; i++ ) {
-            Table_Time.insert(1, "teste", true);
-            Table_Time.insert(2, "Reposicao132", true);
-            Table_Time.insert(3, "CoaLegal123", true);
-        }
-
-        for (int i = 1; i < 4; i++ ) {
-            Table_Tarefa.insert(1, "Reposicao");
-            Table_Tarefa.insert(2, "Esquentar agua");
-            Table_Tarefa.insert(3, "Coar o cafe");
-        }
-
-        for (int i = 1; i < 4; i++ ) {
-            Table_Time_Tarefa.insert(i, i, i, true);
-            Table_Time_Tarefa.insert(i, i, i, true);
-            Table_Time_Tarefa.insert(i, i, i, true);
-        }
-
-
     }
 }
