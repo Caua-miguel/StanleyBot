@@ -1,4 +1,4 @@
-package me.cauadeveloper.database.tables;
+package me.cauadeveloper.database.tables.versionOne;
 
 import me.cauadeveloper.database.dataconfig.ConnectionFactory;
 
