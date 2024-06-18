@@ -1,6 +1,6 @@
 package me.cauadeveloper.commands.group;
 
-import me.cauadeveloper.database.tables.versionOne.Table_Time;
+import me.cauadeveloper.database.tables.refact.table_time;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -21,7 +21,7 @@ public class GrupoSemana extends ListenerAdapter {
 
             try {
 
-                    String nomeGrupo = Table_Time.selectID();
+                    String nomeGrupo = table_time.select();
                     channel.sendMessage("Seu grupo da semana é: " + nomeGrupo).queue();
 
             } catch (SQLException e) {
