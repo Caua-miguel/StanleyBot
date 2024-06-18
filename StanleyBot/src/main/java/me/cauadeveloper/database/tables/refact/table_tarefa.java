@@ -11,7 +11,7 @@ public class table_tarefa {
 
         String sql = """
                 CREATE TABLE tarefa(
-                    id integer AUTOINCREMENT PRIMARY KEY NOT NULL,
+                    id integer PRIMARY KEY AUTOINCREMENT NOT NULL,
                     descricao varchar NOT NULL
                 )
                 """;

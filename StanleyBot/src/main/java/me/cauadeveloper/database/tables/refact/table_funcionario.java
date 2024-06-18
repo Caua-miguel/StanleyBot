@@ -11,7 +11,7 @@ public class table_funcionario {
 
         String sql = """
                 CREATE TABLE funcionario (
-                    id integer AUTOINCREMENT PRIMARY KEY NOT NULL,
+                    id integer PRIMARY KEY AUTOINCREMENT NOT NULL,
                     nome varchar(255) NOT NULL,
                     idTime,
                     FOREIGN KEY (idTime) REFERENCES time (id)
