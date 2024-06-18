@@ -1,16 +1,14 @@
 package me.cauadeveloper.commands.group;
 
-import me.cauadeveloper.database.tables.versionOne.Table_Time;
+import me.cauadeveloper.database.tables.refact.table_time;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import java.sql.SQLException;
+import static me.cauadeveloper.Utils.utilsStaticMethods.currentID;
+import static me.cauadeveloper.Utils.utilsStaticMethods.maxLines;
 
-// variáveis estáticas
-
-import static me.cauadeveloper.database.tables.versionOne.Table_Time.currentID;
-import static me.cauadeveloper.database.tables.versionOne.Table_Time.maxLines;
 
 public class EscolherGrupoSemana extends ListenerAdapter {
 
@@ -28,11 +26,11 @@ public class EscolherGrupoSemana extends ListenerAdapter {
 
                 if (currentID >= maxLines){
                     currentID = 0;
-                    Table_Time.updateAll();
+                    table_time.updateAll();
                     channel.sendMessage("update de toda a coluna realizado com sucesso").queue();
                 }else{
-                    Table_Time.update();
-                    String nomeGrupo = Table_Time.selectID();
+                    table_time.update();
+                    String nomeGrupo = table_time.select();
                     channel.sendMessage("Seu grupo da semana é: " + nomeGrupo).queue();
                     channel.sendMessage("update com sucesso").queue();
                 }

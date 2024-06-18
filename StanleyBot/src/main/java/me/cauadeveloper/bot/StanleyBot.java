@@ -11,7 +11,6 @@ import me.cauadeveloper.commands.roles.createRoleDefault;
 import me.cauadeveloper.commands.roles.createRoleEmpty;
 import me.cauadeveloper.commands.task.ReportarFaltaRecurso;
 import me.cauadeveloper.database.dataconfig.Config;
-import me.cauadeveloper.database.tables.versionOne.*;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.requests.GatewayIntent;

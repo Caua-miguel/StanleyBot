@@ -1,6 +1,6 @@
 package me.cauadeveloper.commands.task;
 
-import me.cauadeveloper.database.tables.versionOne.Table_Time;
+import me.cauadeveloper.database.tables.refact.table_time;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -21,7 +21,7 @@ public class ReportarFaltaRecurso extends ListenerAdapter {
             } else {
                 try {
 
-                    String nomeGrupo = Table_Time.selectID();
+                    String nomeGrupo = table_time.select();
 
                     channel.sendMessage("Olá, pessoal. Estamos reportando a falta do item: **__" + command[1] + "__**\nTime **__"  + nomeGrupo +
                             "__**, poderia selecionar alguém para fazer a reposição?").queue();
