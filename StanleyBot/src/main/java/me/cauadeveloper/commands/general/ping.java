@@ -19,6 +19,7 @@ public class ping extends ListenerAdapter {
         if(content.equalsIgnoreCase(  "!Ping")) {
 
             channel.sendMessage(BotPing + " ms").queue();
+
         }
     }
 }
