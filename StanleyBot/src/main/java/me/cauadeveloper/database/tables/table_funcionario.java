@@ -1,4 +1,4 @@
-package me.cauadeveloper.database.tables.refact;
+package me.cauadeveloper.database.tables;
 
 import me.cauadeveloper.database.dataconfig.ConnectionFactory;
 

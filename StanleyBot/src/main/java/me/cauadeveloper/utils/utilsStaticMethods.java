@@ -1,4 +1,4 @@
-package me.cauadeveloper.Utils;
+package me.cauadeveloper.utils;
 
 public class utilsStaticMethods {
 

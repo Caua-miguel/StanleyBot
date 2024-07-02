@@ -1,6 +1,6 @@
 package me.cauadeveloper.commands.task;
 
-import me.cauadeveloper.database.tables.refact.table_time;
+import me.cauadeveloper.database.tables.table_time;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;

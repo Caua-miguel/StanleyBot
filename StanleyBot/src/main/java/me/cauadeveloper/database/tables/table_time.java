@@ -1,4 +1,4 @@
-package me.cauadeveloper.database.tables.refact;
+package me.cauadeveloper.database.tables;
 
 import me.cauadeveloper.database.dataconfig.ConnectionFactory;
 
@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static me.cauadeveloper.Utils.utilsStaticMethods.currentID;
+import static me.cauadeveloper.utils.utilsStaticMethods.currentID;
 
 public class table_time {
 
