@@ -26,7 +26,6 @@ public class start extends ListenerAdapter {
 
         if(content.equalsIgnoreCase("!Start")){
 
-
                 embed.addField("**Stanley Bot**","Olá, meu nome é Stanely e eu vou ajudar você a gerenciar o preparo do café para que você e seus" +
                         "colegas de equipe possam trabalhar sem se preocupar com a falta de café.\n Primeiro me deixe conhecer os integrates da equipe, os nomes" +
                         "que vocês vão usar para os times e quais tarefas vocês querem a minha ajuda. Para isso vou precisar da sua ajuda, preencha o arquivo abaixo" +
@@ -34,7 +33,7 @@ public class start extends ListenerAdapter {
                         "dedscrições, uma por linha na coluna **I**. Assim que vocẽ terminar, vai precisar rodar o comando ... <anexo> me develvendo o arquivo editado" +
                         "assim eu vou saber dos nomes que preciso. A partir dai, podemos começar.",false);
             channel.sendMessageEmbeds(embed.build()).queue();
-                channel.sendFiles(fileUpload).queue();
+            channel.sendFiles(fileUpload).queue();
 
 
 

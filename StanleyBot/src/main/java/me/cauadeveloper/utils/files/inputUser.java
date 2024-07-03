@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class inputUser {
 
-    public static ArrayList<String> readFileUser(){
+    public static ArrayList<String> readFileUserCollumnA(){
 
         //Esse aqui vai pegar os valores que vierem do anexo que o usuário vai enviar
-        File file = new File("");
+        File file = new File("//home/caua/Documentos/Dev/Backend/LearnFolders/Data/grupos.xls");
         ArrayList<String> list = new ArrayList<>();
 
         try(BufferedReader bf = new BufferedReader(new FileReader(file))){
@@ -25,9 +25,7 @@ public class inputUser {
                 String[] collumnA = line.split(",");
                 list.add(collumnA[0]);
                 line = bf.readLine();
-
             }
-
 
         }catch (IOException e){
             e.getMessage();

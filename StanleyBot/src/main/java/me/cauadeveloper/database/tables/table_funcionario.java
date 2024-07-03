@@ -7,6 +7,21 @@ import java.sql.SQLException;
 
 public class table_funcionario {
 
+    public static void insert_data_user() throws SQLException{
+        String sql = """
+                INSERT into nome(nome) values (?)
+                )
+                """;
+        try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
+
+            stmt.execute();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+
     public static void create_table() throws SQLException {
 
         String sql = """
