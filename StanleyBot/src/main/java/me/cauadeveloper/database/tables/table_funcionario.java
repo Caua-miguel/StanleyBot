@@ -4,6 +4,10 @@ import me.cauadeveloper.database.dataconfig.ConnectionFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import static me.cauadeveloper.database.dataconfig.readConfig.dataUser;
+import static me.cauadeveloper.utils.files.inputUser.readFileUserCollumnA;
 
 public class table_funcionario {
 
@@ -14,7 +18,13 @@ public class table_funcionario {
                 """;
         try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
 
-            stmt.execute();
+            String[] data;
+            data = dataUser();
+
+            for (int i = 1; i <= data.length-1; i++){
+                stmt.setString(1, data[i]);
+                stmt.execute();
+            }
 
         }catch (SQLException e){
             e.printStackTrace();
