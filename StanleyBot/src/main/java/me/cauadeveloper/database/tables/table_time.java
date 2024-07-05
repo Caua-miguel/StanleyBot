@@ -6,9 +6,33 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static me.cauadeveloper.database.dataconfig.readConfig.dataUserCollumnI;
 import static me.cauadeveloper.utils.utilsStaticMethods.currentID;
 
 public class table_time {
+
+    public static void insert_data_user_time() throws SQLException{
+
+        String sql = """
+                INSERT INTO time(nome, status) values (?, ?)
+                """;
+        try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
+
+            String[] data;
+            data = dataUserCollumnI();
+
+            for (int i = 1; i <= data.length-1; i++){
+                stmt.setString(1, data[i]);
+                stmt.setString(2, "true");
+                stmt.execute();
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Erro no insert_data_user\n" + e.getMessage());
+        }
+    }
 
     public static String select() throws SQLException{
 

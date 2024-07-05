@@ -33,4 +33,54 @@ public class inputUser {
         return list;
     }
 
+    public static ArrayList<String> readFileUserCollumnI(){
+
+        //Esse aqui vai pegar os valores que vierem do anexo que o usuário vai enviar
+        File file = new File("//home/caua/Documentos/Dev/Backend/LearnFolders/Data/grupos.xls");
+        ArrayList<String> list = new ArrayList<>();
+
+        try(BufferedReader bf = new BufferedReader(new FileReader(file))){
+
+            String line = bf.readLine();
+            bf.readLine();
+
+            while (line != null) {
+
+                String[] collumnA = line.split(",");
+                //Mudar index para a coluna certa
+                list.add(collumnA[3]);
+                line = bf.readLine();
+            }
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static ArrayList<String> readFileUserCollumnO(){
+
+        //Esse aqui vai pegar os valores que vierem do anexo que o usuário vai enviar
+        File file = new File("//home/caua/Documentos/Dev/Backend/LearnFolders/Data/grupos.xls");
+        ArrayList<String> list = new ArrayList<>();
+
+        try(BufferedReader bf = new BufferedReader(new FileReader(file))){
+
+            String line = bf.readLine();
+            bf.readLine();
+
+            while (line != null) {
+
+                String[] collumnA = line.split(",");
+                //Mudar index para a coluna certa
+                list.add(collumnA[5]);
+                line = bf.readLine();
+            }
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 }
