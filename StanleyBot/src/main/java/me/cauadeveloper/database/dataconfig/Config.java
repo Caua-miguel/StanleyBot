@@ -5,7 +5,6 @@ import me.cauadeveloper.database.tables.table_tarefa;
 import me.cauadeveloper.database.tables.table_time;
 
 import java.io.File;
-import java.nio.file.Files;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -15,12 +14,12 @@ public class Config {
 
     public static void createFilesAndTable() throws IOException, SQLException {
 
-        if(Files.notExists(databaseFile.toPath())){
-
-            Files.createFile(databaseFile.toPath());
+        if(!databaseFile.exists()){
+            databaseFile.createNewFile();
             table_funcionario.create_table();
             table_time.create_table();
             table_tarefa.create_table();
+            table_funcionario.insert_data_user();
         }
 
     }
