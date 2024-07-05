@@ -14,7 +14,6 @@ public class create {
         try{
             if(!file.exists()){
                 file.createNewFile();
-
             }
             writeFileDefalt();
         }catch (IOException e){

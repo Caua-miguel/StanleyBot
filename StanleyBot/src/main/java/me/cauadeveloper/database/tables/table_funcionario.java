@@ -13,8 +13,7 @@ public class table_funcionario {
 
     public static void insert_data_user() throws SQLException{
         String sql = """
-                INSERT into nome(nome) values (?)
-                )
+                INSERT INTO funcionario(nome, idTime) values (?, ?)
                 """;
         try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
 
@@ -23,11 +22,14 @@ public class table_funcionario {
 
             for (int i = 1; i <= data.length-1; i++){
                 stmt.setString(1, data[i]);
+                stmt.setInt(2, i);
                 stmt.execute();
             }
 
         }catch (SQLException e){
             e.printStackTrace();
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Erro no insert_data_user\n" + e.getMessage());
         }
     }
 

@@ -11,8 +11,12 @@ public class readConfig {
         ArrayList<String> dataUser = readFileUserCollumnA();
         String[] data = new String[dataUser.size()];
 
-        for (int i = 0; i < dataUser.size(); i++){
-            data[i] = dataUser.get(i);
+        try{
+            for (int i = 0; i < dataUser.size(); i++){
+                data[i] = dataUser.get(i);
+            }
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Erro no dataUser - readConfig\n" + e.getMessage());
         }
 
         return data;

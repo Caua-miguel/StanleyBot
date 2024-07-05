@@ -18,7 +18,7 @@ public class inputUser {
 
             String line = bf.readLine();
             bf.readLine();
-            bf.readLine();
+//            bf.readLine();
 
             while (line != null) {
 
@@ -28,7 +28,7 @@ public class inputUser {
             }
 
         }catch (IOException e){
-            e.getMessage();
+            e.printStackTrace();
         }
         return list;
     }
