@@ -5,7 +5,7 @@ import me.cauadeveloper.database.dataconfig.ConnectionFactory;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static me.cauadeveloper.database.dataconfig.readConfig.dataUserCollumnO;
+import static me.cauadeveloper.database.dataconfig.readConfig.dataUserCollumnI;
 
 public class table_tarefa {
 
@@ -17,9 +17,9 @@ public class table_tarefa {
         try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
 
             String[] data;
-            data = dataUserCollumnO();
+            data = dataUserCollumnI();
 
-            for (int i = 1; i <= data.length-1; i++){
+            for (int i = 1; i < data.length-1; i++){
                 stmt.setString(1, data[i]);
                 stmt.execute();
             }
@@ -27,7 +27,7 @@ public class table_tarefa {
         }catch (SQLException e){
             e.printStackTrace();
         }catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("Erro no insert_data_user\n" + e.getMessage());
+            System.out.println("Erro no insert_data_user_tarefa\n" + e.getMessage());
         }
     }
 

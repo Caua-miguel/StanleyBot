@@ -18,7 +18,7 @@ public class table_funcionario {
             String[] data;
             data = dataUserCollumnA();
 
-            for (int i = 1; i <= data.length-1; i++){
+            for (int i = 1; i < data.length-1; i++){
                 stmt.setString(1, data[i]);
                 stmt.setInt(2, i);
                 stmt.execute();
@@ -27,7 +27,7 @@ public class table_funcionario {
         }catch (SQLException e){
             e.printStackTrace();
         }catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("Erro no insert_data_user\n" + e.getMessage());
+            System.out.println("Erro no insert_data_user_func\n" + e.getMessage());
         }
     }
 
