@@ -1,9 +1,6 @@
 package me.cauadeveloper.bot;
 
-import me.cauadeveloper.commands.general.Help;
-import me.cauadeveloper.commands.general.Prefix;
-import me.cauadeveloper.commands.general.ping;
-import me.cauadeveloper.commands.general.start;
+import me.cauadeveloper.commands.general.*;
 import me.cauadeveloper.commands.group.EscolherGrupoSemana;
 import me.cauadeveloper.commands.group.GrupoSemana;
 import me.cauadeveloper.commands.roles.ListOfRoles;
@@ -40,5 +37,6 @@ public class StanleyBot {
         jda.addEventListener(new GrupoSemana());
         jda.addEventListener(new ReportarFaltaRecurso());
         jda.addEventListener(new start());
+        jda.addEventListener(new test());
     }
 }

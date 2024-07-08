@@ -22,9 +22,9 @@ public class readConfig {
         return data;
     }
 
-    public static String[] dataUserCollumnI(){
+    public static String[] dataUserCollumnE(){
 
-        ArrayList<String> dataUser = readFileUserCollumnI();
+        ArrayList<String> dataUser = readFileUserCollumnE();
         String[] data = new String[dataUser.size()];
 
         try{
@@ -38,9 +38,9 @@ public class readConfig {
         return data;
     }
 
-    public static String[] dataUserCollumnO(){
+    public static String[] dataUserCollumnI(){
 
-        ArrayList<String> dataUser = readFileUserCollumnO();
+        ArrayList<String> dataUser = readFileUserCollumnI();
         String[] data = new String[dataUser.size()];
 
         try{

@@ -8,10 +8,12 @@ import java.util.ArrayList;
 
 public class inputUser {
 
+    public static File file = new File("//home/caua/Documentos/Dev/Backend/LearnFolders/Data/grupos.xls");
+
     public static ArrayList<String> readFileUserCollumnA(){
 
         //Esse aqui vai pegar os valores que vierem do anexo que o usuário vai enviar
-        File file = new File("//home/caua/Documentos/Dev/Backend/LearnFolders/Data/grupos.xls");
+
         ArrayList<String> list = new ArrayList<>();
 
         try(BufferedReader bf = new BufferedReader(new FileReader(file))){
@@ -33,10 +35,8 @@ public class inputUser {
         return list;
     }
 
-    public static ArrayList<String> readFileUserCollumnI(){
+    public static ArrayList<String> readFileUserCollumnE(){
 
-        //Esse aqui vai pegar os valores que vierem do anexo que o usuário vai enviar
-        File file = new File("//home/caua/Documentos/Dev/Backend/LearnFolders/Data/grupos.xls");
         ArrayList<String> list = new ArrayList<>();
 
         try(BufferedReader bf = new BufferedReader(new FileReader(file))){
@@ -46,9 +46,10 @@ public class inputUser {
 
             while (line != null) {
 
-                String[] collumnA = line.split(",");
-                //Mudar index para a coluna certa
-                list.add(collumnA[3]);
+                String[] collumnE = line.split(",");
+                if(collumnE.length > 4){
+                    list.add(collumnE[4]);
+                }
                 line = bf.readLine();
             }
 
@@ -58,10 +59,8 @@ public class inputUser {
         return list;
     }
 
-    public static ArrayList<String> readFileUserCollumnO(){
+    public static ArrayList<String> readFileUserCollumnI(){
 
-        //Esse aqui vai pegar os valores que vierem do anexo que o usuário vai enviar
-        File file = new File("//home/caua/Documentos/Dev/Backend/LearnFolders/Data/grupos.xls");
         ArrayList<String> list = new ArrayList<>();
 
         try(BufferedReader bf = new BufferedReader(new FileReader(file))){
@@ -71,9 +70,10 @@ public class inputUser {
 
             while (line != null) {
 
-                String[] collumnA = line.split(",");
-                //Mudar index para a coluna certa
-                list.add(collumnA[5]);
+                String[] collumnI = line.split(",");
+                if(collumnI.length > 8){
+                    list.add(collumnI[8]);
+                }
                 line = bf.readLine();
             }
 
