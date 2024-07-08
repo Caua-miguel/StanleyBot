@@ -47,7 +47,9 @@ public class inputUser {
             while (line != null) {
 
                 String[] collumnE = line.split(",");
-                list.add(collumnE[4]);
+                if(collumnE.length > 4){
+                    list.add(collumnE[4]);
+                }
                 line = bf.readLine();
             }
 
@@ -69,7 +71,9 @@ public class inputUser {
             while (line != null) {
 
                 String[] collumnI = line.split(",");
-                list.add(collumnI[8]);
+                if(collumnI.length > 8){
+                    list.add(collumnI[8]);
+                }
                 line = bf.readLine();
             }
 
