@@ -19,7 +19,9 @@ public class Config {
             table_funcionario.create_table();
             table_time.create_table();
             table_tarefa.create_table();
-            table_funcionario.insert_data_user();
+            table_funcionario.insert_data_user_func();
+            table_time.insert_data_user_time();
+            table_tarefa.insert_data_user_tarefa();
         }
 
     }
