@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class inputUser {
 
-    public static File file = new File("//home/caua/Documentos/Dev/Backend/LearnFolders/Data/grupos.xls");
+    public static File file = new File("//home/caua/Documentos/Dev/Backend/Learn_Java/LearnFolders/Data/grupos.xls");
 
     public static ArrayList<String> readFileUserCollumnA(){
 
@@ -18,17 +18,19 @@ public class inputUser {
 
         try(BufferedReader bf = new BufferedReader(new FileReader(file))){
 
-            String line = bf.readLine();
             bf.readLine();
-//            bf.readLine();
+            bf.readLine();
+            String line = bf.readLine();
 
             while (line != null) {
 
                 String[] collumnA = line.split(",");
-                list.add(collumnA[0]);
+                if(collumnA.length > 0){
+                    list.add(collumnA[0]);
+                }
                 line = bf.readLine();
             }
-
+            list.remove(list.size() - 1);
         }catch (IOException e){
             e.printStackTrace();
         }
