@@ -43,8 +43,9 @@ public class inputUser {
 
         try(BufferedReader bf = new BufferedReader(new FileReader(file))){
 
-            String line = bf.readLine();
             bf.readLine();
+            bf.readLine();
+            String line = bf.readLine();
 
             while (line != null) {
 
@@ -67,8 +68,9 @@ public class inputUser {
 
         try(BufferedReader bf = new BufferedReader(new FileReader(file))){
 
-            String line = bf.readLine();
             bf.readLine();
+            bf.readLine();
+            String line = bf.readLine();
 
             while (line != null) {
 
