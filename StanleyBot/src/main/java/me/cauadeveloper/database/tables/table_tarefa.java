@@ -19,7 +19,7 @@ public class table_tarefa {
             String[] data;
             data = dataUserCollumnI();
 
-            for (int i = 1; i < data.length-1; i++){
+            for (int i = 0; i <= data.length-1; i++){
                 stmt.setString(1, data[i]);
                 stmt.execute();
             }

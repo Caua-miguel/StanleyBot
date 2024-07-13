@@ -18,9 +18,9 @@ public class table_funcionario {
             String[] data;
             data = dataUserCollumnA();
 
-            for (int i = 1; i < data.length-1; i++){
+            for (int i = 0; i <= data.length-1; i++){
                 stmt.setString(1, data[i]);
-                stmt.setInt(2, i);
+                stmt.setInt(2, i + 1);
                 stmt.execute();
             }
 
