@@ -21,7 +21,7 @@ public class table_time {
             String[] data;
             data = dataUserCollumnE();
 
-            for (int i = 1; i < data.length-1; i++){
+            for (int i = 0; i <= data.length-1; i++){
                 stmt.setString(1, data[i]);
                 stmt.setString(2, "true");
                 stmt.execute();
