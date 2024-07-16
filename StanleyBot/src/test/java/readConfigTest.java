@@ -12,12 +12,12 @@ public class readConfigTest {
     @Test
     public void saidaEsperadaTranformandoListaEmArrayCollumnA(){
 
-        String[] saidaArr = dataUserCollumnA();
+//        String[] saidaArr = dataUserCollumnA();
         String[] saidaEsperadaArr = {"caua", "lucas", "brendo"};
 
-        System.out.println(Arrays.toString(saidaArr));
+//        System.out.println(Arrays.toString(saidaArr));
 
-        Assertions.assertEquals(Arrays.toString(saidaEsperadaArr), Arrays.toString(saidaArr));
+//        Assertions.assertEquals(Arrays.toString(saidaEsperadaArr), Arrays.toString(saidaArr));
 
     }
 

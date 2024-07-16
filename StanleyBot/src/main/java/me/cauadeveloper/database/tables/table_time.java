@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static me.cauadeveloper.database.dataconfig.readConfig.dataUserCollumnE;
-import static me.cauadeveloper.utils.utilsStaticMethods.currentID;
+import static me.cauadeveloper.utils.fixValues.utilsStaticMethods.currentID;
 
 public class table_time {
 

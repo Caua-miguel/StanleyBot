@@ -1,14 +1,15 @@
 package me.cauadeveloper.database.dataconfig;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static me.cauadeveloper.utils.files.inputUser.*;
 
 public class readConfig {
 
-    public static String[] dataUserCollumnA(){
+    public static String[] dataUserCollumnA(ArrayList<String> list){
 
-        ArrayList<String> dataUser = readFileUserCollumnA();
+        ArrayList<String> dataUser = list;
         String[] data = new String[dataUser.size()];
 
         try{

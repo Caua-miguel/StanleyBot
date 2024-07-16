@@ -9,14 +9,14 @@ import static me.cauadeveloper.database.dataconfig.readConfig.dataUserCollumnA;
 
 public class table_funcionario {
 
-    public static void insert_data_user_func() throws SQLException{
+    public static void insert_data_user_func(String[] dataUser) throws SQLException{
         String sql = """
                 INSERT INTO funcionario(nome, idTime) values (?, ?)
                 """;
         try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
 
             String[] data;
-            data = dataUserCollumnA();
+            data = dataUser;
 
             for (int i = 0; i <= data.length-1; i++){
                 stmt.setString(1, data[i]);
