@@ -6,8 +6,8 @@ import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import java.sql.SQLException;
-import static me.cauadeveloper.utils.utilsStaticMethods.currentID;
-import static me.cauadeveloper.utils.utilsStaticMethods.maxLines;
+import static me.cauadeveloper.utils.fixValues.utilsStaticMethods.currentID;
+import static me.cauadeveloper.utils.fixValues.utilsStaticMethods.maxLines;
 
 
 public class EscolherGrupoSemana extends ListenerAdapter {

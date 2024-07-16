@@ -8,9 +8,6 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.utils.FileUpload;
 
 import java.io.File;
-import java.util.Collection;
-
-import static me.cauadeveloper.utils.files.create.createFile;
 
 public class start extends ListenerAdapter {
 
@@ -21,7 +18,7 @@ public class start extends ListenerAdapter {
         String content = message.getContentRaw();
         MessageChannel channel = event.getChannel();
         EmbedBuilder embed = new EmbedBuilder();
-        File file = createFile();
+        File file = new File("/home/caua/Documentos/Dev/Backend/CoffeBot/StanleyBot/StanleyBot/src/main/java/me/cauadeveloper/database/assents/grupos.xls");
         FileUpload fileUpload = FileUpload.fromData(file);
 
         if(content.equalsIgnoreCase("!Start")){
@@ -34,9 +31,6 @@ public class start extends ListenerAdapter {
                         "assim eu vou saber dos nomes que preciso. A partir dai, podemos começar.",false);
             channel.sendMessageEmbeds(embed.build()).queue();
             channel.sendFiles(fileUpload).queue();
-
-
-
 
         }
 

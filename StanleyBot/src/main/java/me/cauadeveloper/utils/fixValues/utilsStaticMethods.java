@@ -1,4 +1,4 @@
-package me.cauadeveloper.utils;
+package me.cauadeveloper.utils.fixValues;
 
 public class utilsStaticMethods {
 
