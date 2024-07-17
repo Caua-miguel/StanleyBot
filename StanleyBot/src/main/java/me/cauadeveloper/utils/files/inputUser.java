@@ -5,8 +5,6 @@ import java.util.ArrayList;
 
 public class inputUser {
 
-    public static File file = new File("//home/caua/Documentos/Dev/Backend/Learn_Java/LearnFolders/Data/grupos.xls");
-
     public static ArrayList<String> readFileUserCollumnA(String path){
 
         //Esse aqui vai pegar os valores que vierem do anexo que o usuário vai enviar
@@ -33,11 +31,11 @@ public class inputUser {
         return list;
     }
 
-    public static ArrayList<String> readFileUserCollumnE(){
+    public static ArrayList<String> readFileUserCollumnE(String path){
 
         ArrayList<String> list = new ArrayList<>();
 
-        try(BufferedReader bf = new BufferedReader(new FileReader(file))){
+        try(BufferedReader bf = new BufferedReader(new FileReader(path))){
 
             bf.readLine();
             bf.readLine();
@@ -58,11 +56,11 @@ public class inputUser {
         return list;
     }
 
-    public static ArrayList<String> readFileUserCollumnI(){
+    public static ArrayList<String> readFileUserCollumnI(String path){
 
         ArrayList<String> list = new ArrayList<>();
 
-        try(BufferedReader bf = new BufferedReader(new FileReader(file))){
+        try(BufferedReader bf = new BufferedReader(new FileReader(path))){
 
             bf.readLine();
             bf.readLine();

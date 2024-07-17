@@ -9,7 +9,7 @@ import static me.cauadeveloper.database.dataconfig.readConfig.dataUserCollumnI;
 
 public class table_tarefa {
 
-    public static void insert_data_user_tarefa() throws SQLException{
+    public static void insert_data_user_tarefa(String[] dataUser) throws SQLException{
 
         String sql = """
                 INSERT INTO tarefa(descricao) values (?)
@@ -17,7 +17,7 @@ public class table_tarefa {
         try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
 
             String[] data;
-            data = dataUserCollumnI();
+            data = dataUser;
 
             for (int i = 0; i <= data.length-1; i++){
                 stmt.setString(1, data[i]);
