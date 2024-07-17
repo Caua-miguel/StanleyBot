@@ -1,24 +1,19 @@
 package me.cauadeveloper.utils.files;
 
-import net.dv8tion.jda.api.entities.Message;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class inputUser {
 
     public static File file = new File("//home/caua/Documentos/Dev/Backend/Learn_Java/LearnFolders/Data/grupos.xls");
 
-    public static ArrayList<String> readFileUserCollumnA(Message.Attachment attachment){
+    public static ArrayList<String> readFileUserCollumnA(String path){
 
         //Esse aqui vai pegar os valores que vierem do anexo que o usuário vai enviar
 
         ArrayList<String> list = new ArrayList<>();
 
-        try(BufferedReader bf = new BufferedReader(new FileReader(String.valueOf(attachment)))){
+        try(BufferedReader bf = new BufferedReader(new FileReader(path))){
 
             bf.readLine();
             bf.readLine();
@@ -32,9 +27,8 @@ public class inputUser {
                 }
                 line = bf.readLine();
             }
-            list.remove(list.size() - 1);
         }catch (IOException e){
-            e.printStackTrace();
+            System.out.println("Erro no readFileUserCollumnA: " + e);
         }
         return list;
     }
