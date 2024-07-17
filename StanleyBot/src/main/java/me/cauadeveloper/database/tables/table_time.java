@@ -11,7 +11,7 @@ import static me.cauadeveloper.utils.fixValues.utilsStaticMethods.currentID;
 
 public class table_time {
 
-    public static void insert_data_user_time() throws SQLException{
+    public static void insert_data_user_time(String[] dataUser) throws SQLException{
 
         String sql = """
                 INSERT INTO time(nome, status) values (?, ?)
@@ -19,7 +19,7 @@ public class table_time {
         try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
 
             String[] data;
-            data = dataUserCollumnE();
+            data = dataUser;
 
             for (int i = 0; i <= data.length-1; i++){
                 stmt.setString(1, data[i]);
