@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static me.cauadeveloper.database.dataconfig.readConfig.dataUserCollumnE;
 import static me.cauadeveloper.utils.fixValues.utilsStaticMethods.currentID;
 
 public class table_time {
@@ -42,7 +41,7 @@ public class table_time {
 
         try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
 
-            stmt.setInt(1, currentID);
+            stmt.setInt(1, currentID-1);
 
             ResultSet resultSet = stmt.executeQuery();
 

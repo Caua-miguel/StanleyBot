@@ -6,8 +6,9 @@ import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import java.sql.SQLException;
+
+import static me.cauadeveloper.database.query.countLinesTable.maxLinesTableTime;
 import static me.cauadeveloper.utils.fixValues.utilsStaticMethods.currentID;
-import static me.cauadeveloper.utils.fixValues.utilsStaticMethods.maxLines;
 
 
 public class EscolherGrupoSemana extends ListenerAdapter {
@@ -24,15 +25,17 @@ public class EscolherGrupoSemana extends ListenerAdapter {
 
             try {
 
-                if (currentID >= maxLines){
-                    currentID = 0;
+                if (currentID > maxLinesTableTime()){
+                    currentID = 1;
                     table_time.updateAll();
                     channel.sendMessage("update de toda a coluna realizado com sucesso").queue();
                 }else{
                     table_time.update();
+                    currentID++;
                     String nomeGrupo = table_time.select();
                     channel.sendMessage("Seu grupo da semana é: " + nomeGrupo).queue();
                     channel.sendMessage("update com sucesso").queue();
+
                 }
 
 

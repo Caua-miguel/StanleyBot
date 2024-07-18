@@ -21,10 +21,16 @@ public class ReportarFaltaRecurso extends ListenerAdapter {
             } else {
                 try {
 
-                    String nomeGrupo = table_time.select();
+                    if(table_time.select() != null){
+                        String nomeGrupo = table_time.select();
+                        channel.sendMessage("Olá, pessoal. Estamos reportando a falta do item: **__" + command[1] + "__**\nTime **__"  + nomeGrupo +
+                                "__**, poderia selecionar alguém para fazer a reposição?").queue();
+                    }else{
+                        String nomeGrupo = "Escolham o time da semana para que a tarefa possa ser atribuída a algum time.";
+                        channel.sendMessage("Olá, pessoal. Estamos reportando a falta do item: **__" + command[1] + "__**." +
+                                "\n**__"  + nomeGrupo + "__**").queue();
+                    }
 
-                    channel.sendMessage("Olá, pessoal. Estamos reportando a falta do item: **__" + command[1] + "__**\nTime **__"  + nomeGrupo +
-                            "__**, poderia selecionar alguém para fazer a reposição?").queue();
 
                 } catch (SQLException e) {
                     throw new RuntimeException(e);

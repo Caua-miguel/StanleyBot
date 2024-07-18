@@ -18,9 +18,6 @@ import java.util.Map;
 
 public class StanleyBot {
 
-    // Ta com problema no prefixMap
-    public static Map<String, Character> prefixMap = new HashMap<>();
-
     public static void main(String[] args) throws Exception{
 
         Config.createFilesAndTable();
@@ -31,7 +28,6 @@ public class StanleyBot {
         jda.addEventListener(new ping());
         jda.addEventListener(new createRoleEmpty(), new createRoleDefault(), new createCopyRole());
         jda.addEventListener(new ListOfRoles());
-        jda.addEventListener(new Prefix());
         jda.addEventListener(new Help());
         jda.addEventListener(new EscolherGrupoSemana());
         jda.addEventListener(new GrupoSemana());
