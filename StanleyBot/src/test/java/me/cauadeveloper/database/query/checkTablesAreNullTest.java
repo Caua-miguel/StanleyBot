@@ -17,7 +17,7 @@ public class checkTablesAreNullTest {
     public void check_if_tableFunc_is_null() throws SQLException {
 
         String sql = """
-                SELECT COUNT(*) as contador FROM funcionario;
+                SELECT COUNT(*) as contador FROM time;
                 """;
         try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
 
