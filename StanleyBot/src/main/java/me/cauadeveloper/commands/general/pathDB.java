@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.concurrent.ExecutionException;
 
 import static me.cauadeveloper.database.dataconfig.readConfig.*;
+import static me.cauadeveloper.database.query.checkTablesAreNull.check_if_tableFunc_is_null;
 import static me.cauadeveloper.utils.files.inputUser.*;
 
 public class pathDB extends ListenerAdapter {
@@ -30,11 +31,18 @@ public class pathDB extends ListenerAdapter {
                     channel.sendMessage("Por favor, forneça o caminho do arquivo.").queue();
                 } else {
                     try {
-                        // Fazer para todas as colunas que faltam;
-                        table_funcionario.insert_data_user_func(dataUserCollumnA(readFileUserCollumnA(command[1])));
-                        table_tarefa.insert_data_user_tarefa(dataUserCollumnI(readFileUserCollumnI(command[1])));
-                        table_time.insert_data_user_time(dataUserCollumnE(readFileUserCollumnE(command[1])));
-                        channel.sendMessage("O arquivo foi recebido com sucesso").queue();
+
+                        if(check_if_tableFunc_is_null() == 0){
+                            table_funcionario.insert_data_user_func(dataUserCollumnA(readFileUserCollumnA(command[1])));
+                            table_tarefa.insert_data_user_tarefa(dataUserCollumnI(readFileUserCollumnI(command[1])));
+                            table_time.insert_data_user_time(dataUserCollumnE(readFileUserCollumnE(command[1])));
+                            channel.sendMessage("O arquivo foi recebido com sucesso").queue();
+                        }else{
+                            channel.sendMessage("A sua tabela já foi preenchida com os dados iniciais. Caso queira adicionar dados você" +
+                                    " precisa usar o comando **!novoFuncionario**").queue();
+                        }
+
+
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
