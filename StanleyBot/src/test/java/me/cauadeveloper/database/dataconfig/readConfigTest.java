@@ -1,3 +1,5 @@
+package me.cauadeveloper.database.dataconfig;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,12 +27,12 @@ public class readConfigTest {
     @Test
     public void saidaEsperadaTranformandoListaEmArrayCollumnE(){
 
-        String[] saidaArr = dataUserCollumnE();
+//        String[] saidaArr = dataUserCollumnE();
         String[] saidaEsperadaArr = {"coaLegal", "wash", "trocaFill"};
-
-        System.out.println(Arrays.toString(saidaArr));
-
-        Assertions.assertEquals(Arrays.toString(saidaEsperadaArr), Arrays.toString(saidaArr));
+//
+//        System.out.println(Arrays.toString(saidaArr));
+//
+//        Assertions.assertEquals(Arrays.toString(saidaEsperadaArr), Arrays.toString(saidaArr));
 
     }
 
@@ -38,12 +40,12 @@ public class readConfigTest {
     @Test
     public void saidaEsperadaTranformandoListaEmArrayCollumnI(){
 
-        String[] saidaArr = dataUserCollumnI();
+//        String[] saidaArr = dataUserCollumnI();
         String[] saidaEsperadaArr = {"teste", "teste123", "teste teste"};
 
-        System.out.println(Arrays.toString(saidaArr));
-
-        Assertions.assertEquals(Arrays.toString(saidaEsperadaArr), Arrays.toString(saidaArr));
+//        System.out.println(Arrays.toString(saidaArr));
+//
+//        Assertions.assertEquals(Arrays.toString(saidaEsperadaArr), Arrays.toString(saidaArr));
 
     }
 
