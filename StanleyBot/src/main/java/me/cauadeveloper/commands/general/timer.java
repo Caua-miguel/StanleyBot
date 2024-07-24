@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.utils.messages.MessageCreateData;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -48,8 +49,26 @@ public class timer extends ListenerAdapter {
             if (!tSeg.isAlive())
                 tSeg.start();
 
-            Runnable timer = () -> channel.sendMessage("Timer: " + txtMin + ":" + txtSeg).queue();
-            ScheduledFuture timerHandle = scheduler.scheduleAtFixedRate(timer, 0, 1, TimeUnit.SECONDS);
+            String text = "Seu café estara pronto em 6 minutos...";
+
+//            try{
+//                channel.sendMessage(text).queue(sentMessage -> {
+//                    sentMessage.editMessage("Editado").queue();
+//                });
+//            }catch(Exception e){
+//                System.out.println("Erro na atualização da mensagem: " + e.getMessage());
+//            }
+
+            channel.sendMessage(text).queue(sentMessage -> {
+                sentMessage.editMessage(text).queue();
+            });
+
+
+            Runnable timer = () -> channel.sendMessage(text).queue(sentMessage -> {
+                sentMessage.editMessage("Seu café está pronto!").queue();
+            });
+
+            ScheduledFuture timerHandle = scheduler.scheduleAtFixedRate(timer, 0, 10, TimeUnit.SECONDS);
             Runnable canceller = () -> timerHandle.cancel(false);
             scheduler.schedule(canceller, 60, TimeUnit.SECONDS);
 
