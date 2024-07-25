@@ -14,6 +14,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import static java.util.concurrent.TimeUnit.*;
 import static me.cauadeveloper.utils.fixValues.utilsStaticMethods.txtMin;
 import static me.cauadeveloper.utils.fixValues.utilsStaticMethods.txtSeg;
 
@@ -44,33 +45,17 @@ public class timer extends ListenerAdapter {
             segundo = new Segundo();
             tSeg = new Thread(segundo);
 
-            if (!tMin.isAlive())
-                tMin.start();
-            if (!tSeg.isAlive())
-                tSeg.start();
 
             String text = "Seu café estara pronto em 6 minutos...";
 
-//            try{
-//                channel.sendMessage(text).queue(sentMessage -> {
-//                    sentMessage.editMessage("Editado").queue();
-//                });
-//            }catch(Exception e){
-//                System.out.println("Erro na atualização da mensagem: " + e.getMessage());
-//            }
-
-            channel.sendMessage(text).queue(sentMessage -> {
-                sentMessage.editMessage(text).queue();
-            });
-
 
             Runnable timer = () -> channel.sendMessage(text).queue(sentMessage -> {
-                sentMessage.editMessage("Seu café está pronto!").queue();
+                sentMessage.editMessage("Seu café está pronto!").queueAfter(10, SECONDS);
             });
 
-            ScheduledFuture timerHandle = scheduler.scheduleAtFixedRate(timer, 0, 10, TimeUnit.SECONDS);
+            ScheduledFuture timerHandle = scheduler.schedule(timer, 0, SECONDS);
             Runnable canceller = () -> timerHandle.cancel(false);
-            scheduler.schedule(canceller, 60, TimeUnit.SECONDS);
+            scheduler.schedule(canceller, 30, SECONDS);
 
               //Mensagem
 //            embed.setTitle("Cronometro");
