@@ -1,4 +1,4 @@
-package me.cauadeveloper.commands.group;
+package me.cauadeveloper.commands.group.general;
 
 import me.cauadeveloper.database.tables.table_time;
 import net.dv8tion.jda.api.entities.Message;
@@ -6,8 +6,6 @@ import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import java.sql.SQLException;
-
-import static me.cauadeveloper.utils.fixValues.utilsStaticMethods.currentID;
 
 public class GrupoSemana extends ListenerAdapter {
 

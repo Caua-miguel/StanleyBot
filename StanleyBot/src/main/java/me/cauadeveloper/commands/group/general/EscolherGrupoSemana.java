@@ -1,4 +1,4 @@
-package me.cauadeveloper.commands.group;
+package me.cauadeveloper.commands.group.general;
 
 import me.cauadeveloper.database.tables.table_time;
 import net.dv8tion.jda.api.entities.Message;
