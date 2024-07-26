@@ -1,8 +1,8 @@
 package me.cauadeveloper.bot;
 
 import me.cauadeveloper.commands.general.*;
-import me.cauadeveloper.commands.group.EscolherGrupoSemana;
-import me.cauadeveloper.commands.group.GrupoSemana;
+import me.cauadeveloper.commands.group.general.EscolherGrupoSemana;
+import me.cauadeveloper.commands.group.general.GrupoSemana;
 import me.cauadeveloper.commands.roles.ListOfRoles;
 import me.cauadeveloper.commands.roles.createCopyRole;
 import me.cauadeveloper.commands.roles.createRoleDefault;
