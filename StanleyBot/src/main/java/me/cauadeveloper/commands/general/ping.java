@@ -16,7 +16,7 @@ public class ping extends ListenerAdapter {
         MessageChannel channel = event.getChannel();
         long BotPing =  event.getJDA().getGatewayPing();
 
-        if(content.equalsIgnoreCase(  "!Ping")) {
+        if(content.equalsIgnoreCase("!Ping")) {
 
             channel.sendMessage(BotPing + " ms").queue();
 
