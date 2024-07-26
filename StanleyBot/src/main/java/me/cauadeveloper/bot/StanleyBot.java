@@ -9,12 +9,11 @@ import me.cauadeveloper.commands.roles.createRoleDefault;
 import me.cauadeveloper.commands.roles.createRoleEmpty;
 import me.cauadeveloper.commands.task.ReportarFaltaRecurso;
 import me.cauadeveloper.database.dataconfig.Config;
+import me.cauadeveloper.joinServer.Apresentacao;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Map;
 
 public class StanleyBot {
 
@@ -35,5 +34,7 @@ public class StanleyBot {
         jda.addEventListener(new start());
         jda.addEventListener(new pathDB());
         jda.addEventListener(new timer());
+        jda.addEventListener(new Apresentacao());
+
     }
 }
