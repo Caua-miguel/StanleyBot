@@ -11,7 +11,7 @@ public class table_funcionario {
 
     public static void insert_data_user_func(String[] dataUser) throws SQLException{
         String sql = """
-                INSERT INTO funcionario(nome, idTime) values (?, ?)
+                INSERT INTO funcionario(nome) values (?)
                 """;
         try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
 
@@ -20,7 +20,6 @@ public class table_funcionario {
 
             for (int i = 0; i <= data.length-1; i++){
                 stmt.setString(1, data[i]);
-                stmt.setInt(2, i + 1);
                 stmt.execute();
             }
 
