@@ -1,4 +1,4 @@
-package me.cauadeveloper.utils.files;
+package me.cauadeveloper.utils.files.initialDataBase;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -6,8 +6,6 @@ import java.util.ArrayList;
 public class inputUser {
 
     public static ArrayList<String> readFileUserCollumnA(String path){
-
-        //Esse aqui vai pegar os valores que vierem do anexo que o usuário vai enviar
 
         ArrayList<String> list = new ArrayList<>();
 

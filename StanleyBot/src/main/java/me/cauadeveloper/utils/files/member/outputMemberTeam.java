@@ -1,13 +1,13 @@
-package me.cauadeveloper.utils.files;
+package me.cauadeveloper.utils.files.member;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import static me.cauadeveloper.utils.files.inputDefault.readFileDefault;
+import static me.cauadeveloper.utils.files.initialDataBase.inputDefault.readFileDefault;
 
-public class output {
+public class outputMemberTeam {
 
     public static void writeFileDefalt(){
 

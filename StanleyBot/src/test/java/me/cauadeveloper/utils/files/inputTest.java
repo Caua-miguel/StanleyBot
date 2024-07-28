@@ -1,12 +1,9 @@
 package me.cauadeveloper.utils.files;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-
-import static me.cauadeveloper.utils.files.inputUser.*;
 
 public class inputTest {
 
