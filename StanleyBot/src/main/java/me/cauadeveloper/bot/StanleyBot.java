@@ -32,7 +32,7 @@ public class StanleyBot {
         jda.addEventListener(new GrupoSemana());
         jda.addEventListener(new ReportarFaltaRecurso());
         jda.addEventListener(new start());
-        jda.addEventListener(new pathDB());
+        jda.addEventListener(new userDataTables());
         jda.addEventListener(new timer());
         jda.addEventListener(new Apresentacao());
 

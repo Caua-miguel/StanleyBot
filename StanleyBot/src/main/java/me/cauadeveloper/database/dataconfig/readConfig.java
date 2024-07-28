@@ -1,9 +1,6 @@
 package me.cauadeveloper.database.dataconfig;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import static me.cauadeveloper.utils.files.inputUser.*;
 
 public class readConfig {
 

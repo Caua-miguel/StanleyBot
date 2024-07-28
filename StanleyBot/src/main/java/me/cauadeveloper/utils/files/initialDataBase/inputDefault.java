@@ -1,4 +1,4 @@
-package me.cauadeveloper.utils.files;
+package me.cauadeveloper.utils.files.initialDataBase;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,7 +9,7 @@ public class inputDefault {
 
     public static StringBuilder readFileDefault(){
 
-        File file = new File("/home/caua/Documentos/Dev/Backend/CoffeBot/StanleyBot/StanleyBot/src/main/java/me/cauadeveloper/database/assents/grupos.csv");
+        File file = new File("/home/caua/Documentos/Dev/Backend/CoffeBot/StanleyBot/StanleyBot/src/main/java/me/cauadeveloper/database/assents/grupos.xls");
         StringBuilder text = new StringBuilder();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))){
