@@ -14,8 +14,8 @@ import static me.cauadeveloper.utils.files.member.outputMemberTeam.writeFileDefa
 
 public class AdicionarMembroAoTime extends ListenerAdapter {
 
-    //Vou usar um comando para ler um txt que me retorne os nomes dos funcionarios para inserir os idTimes na tabela funcionario
-
+    // Vai ser um slash command - o usuário tem que conseguir escolher os nomes dos funcionários que foram adicionados na tabela inicial
+    // e os funcionários que ele escoleher vai ajustar o idTime da tabela funcionário de acordo com o id dos times.
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
