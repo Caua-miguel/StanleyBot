@@ -1,13 +1,19 @@
 package me.cauadeveloper.commands.group.individual;
 
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
+import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.commands.build.CommandData;
+import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.utils.FileUpload;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.nio.channels.Channel;
 import java.util.ArrayList;
+import java.util.List;
 
 import static me.cauadeveloper.utils.files.member.inputMemberOnTeam.inputMemberDefault;
 import static me.cauadeveloper.utils.files.member.outputMemberTeam.writeFileDefaltMember;
@@ -18,27 +24,27 @@ public class AdicionarMembroAoTime extends ListenerAdapter {
     // e os funcionários que ele escoleher vai ajustar o idTime da tabela funcionário de acordo com o id dos times.
 
     @Override
-    public void onMessageReceived(MessageReceivedEvent event) {
+    public void onSlashCommandInteraction(SlashCommandInteractionEvent event){
 
-        String[] command = event.getMessage().getContentRaw().split(" ", 2);
-        MessageChannel channel = event.getChannel();
-        File file = new File("/home/caua/Documentos/Dev/Backend/CoffeBot/StanleyBot/StanleyBot/src/main/java/me/cauadeveloper/database/assents/MembersTeam.pdf");
-        FileUpload fileUpload = FileUpload.fromData(file);
-
-        if (command[0].equalsIgnoreCase("!startMembros")){
-
-            if (command.length < 2){
-                channel.sendMessage("Porfavor, forneça o nome do time para adicionar os funcionários!!!").queue();
-            }else{
-
-                writeFileDefaltMember(command[1]);
-                channel.sendMessage("Por favor escreva o nome de todos os funcionários que fazem parte do time " + command[1]).addFiles(fileUpload).queue();
-
-
-
-            }
-
+        String command = event.getName();
+        if (command.equals("welcome")){ // slash /welcome
+            String userTag = event.getUser().getAsTag();
+            event.reply("Welcome to the server, **" + userTag + "**!").queue();
         }
 
     }
+
+    //Guild command -- instantly update (max 100)
+
+    @Override
+    public void onGuildReady(@NotNull GuildReadyEvent event){
+
+        List<CommandData> commandData = new ArrayList<>();
+        commandData.add(Commands.slash("welcome", "Get welcomed by the bot."));
+        event.getGuild().updateCommands().addCommands(commandData).queue();
+
+//        if (event.getGuild().getIdLong() == id do servidor){} -- server para fazer commando especifico para o servidor
+
+    }
+
 }
