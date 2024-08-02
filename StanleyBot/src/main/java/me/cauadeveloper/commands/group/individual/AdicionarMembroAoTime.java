@@ -27,11 +27,10 @@ public class AdicionarMembroAoTime extends ListenerAdapter {
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event){
 
         String command = event.getName();
-        if (command.equals("welcome")){ // slash /welcome
+        if (command.equals("welcome")){
             String userTag = event.getUser().getAsTag();
             event.reply("Welcome to the server, **" + userTag + "**!").queue();
         }
-
     }
 
     //Guild command -- instantly update (max 100)
@@ -39,6 +38,7 @@ public class AdicionarMembroAoTime extends ListenerAdapter {
     @Override
     public void onGuildReady(@NotNull GuildReadyEvent event){
 
+        // Vou precisar adicionar uma lista com os nomes dos funcionário para criar várias opções no comando.
         List<CommandData> commandData = new ArrayList<>();
         commandData.add(Commands.slash("welcome", "Get welcomed by the bot."));
         event.getGuild().updateCommands().addCommands(commandData).queue();
