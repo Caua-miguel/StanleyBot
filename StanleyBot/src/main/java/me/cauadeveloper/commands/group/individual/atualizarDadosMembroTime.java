@@ -1,33 +1,22 @@
 package me.cauadeveloper.commands.group.individual;
 
-import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
-import net.dv8tion.jda.api.utils.FileUpload;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
-import java.nio.channels.Channel;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.cauadeveloper.utils.files.member.inputMemberOnTeam.inputMemberDefault;
-import static me.cauadeveloper.utils.files.member.outputMemberTeam.writeFileDefaltMember;
-
-public class AdicionarMembroAoTime extends ListenerAdapter {
-
-    // Vai ser um slash command - o usuário tem que conseguir escolher os nomes dos funcionários que foram adicionados na tabela inicial
-    // e os funcionários que ele escoleher vai ajustar o idTime da tabela funcionário de acordo com o id dos times.
+public class atualizarDadosMembroTime extends ListenerAdapter {
 
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event){
 
         String command = event.getName();
-        if (command.equals("adicionarMembro")){
+        if (command.equals("atualizarMembro")){
             String userTag = event.getUser().getAsTag();
             event.reply("Welcome to the server, **" + userTag + "**!").queue();
         }
