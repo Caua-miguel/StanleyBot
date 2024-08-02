@@ -27,7 +27,6 @@ public class removerMembroTime extends ListenerAdapter {
     @Override
     public void onGuildReady(@NotNull GuildReadyEvent event){
 
-        // Vou precisar adicionar uma lista com os nomes dos funcionário para criar várias opções no comando.
         List<CommandData> commandData = new ArrayList<>();
         commandData.add(Commands.slash("welcome", "Get welcomed by the bot."));
         event.getGuild().updateCommands().addCommands(commandData).queue();
