@@ -28,7 +28,7 @@ public class atualizarDadosMembroTime extends ListenerAdapter {
     public void onGuildReady(@NotNull GuildReadyEvent event){
 
         List<CommandData> commandData = new ArrayList<>();
-        commandData.add(Commands.slash("welcome", "Get welcomed by the bot."));
+        commandData.add(Commands.slash("atualizarMembro", "Get welcomed by the bot."));
         event.getGuild().updateCommands().addCommands(commandData).queue();
 
 //        if (event.getGuild().getIdLong() == id do servidor){} -- server para fazer commando especifico para o servidor
