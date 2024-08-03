@@ -16,9 +16,9 @@ public class removerMembroTime extends ListenerAdapter {
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event){
 
         String command = event.getName();
-        if (command.equals("removerMembro")){
+        if (command.equals("Remover_funcionario")){
             String userTag = event.getUser().getAsTag();
-            event.reply("Welcome to the server, **" + userTag + "**!").queue();
+            event.reply("Remover funcionario no servidor, **" + userTag + "**!").queue();
         }
     }
 
@@ -28,7 +28,7 @@ public class removerMembroTime extends ListenerAdapter {
     public void onGuildReady(@NotNull GuildReadyEvent event){
 
         List<CommandData> commandData = new ArrayList<>();
-        commandData.add(Commands.slash("removerMembro", "Get welcomed by the bot."));
+        commandData.add(Commands.slash("remover_funcionario", "Remove um funcionario."));
         event.getGuild().updateCommands().addCommands(commandData).queue();
 
 //        if (event.getGuild().getIdLong() == id do servidor){} -- server para fazer commando especifico para o servidor
