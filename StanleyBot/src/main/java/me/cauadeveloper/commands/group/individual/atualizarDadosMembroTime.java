@@ -1,72 +1,106 @@
 package me.cauadeveloper.commands.group.individual;
 
-import me.cauadeveloper.database.tables.table_time;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
+import net.dv8tion.jda.api.events.interaction.component.StringSelectInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
-import net.dv8tion.jda.api.interactions.commands.build.OptionData;
+import net.dv8tion.jda.api.interactions.components.selections.SelectOption;
+import net.dv8tion.jda.api.interactions.components.selections.StringSelectMenu;
 import org.jetbrains.annotations.NotNull;
 
-import javax.naming.InvalidNameException;
-import javax.naming.NameNotFoundException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.ErrorManager;
 
-public class atualizarDadosMembroTime extends ListenerAdapter {
+import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectNomeFunc;
+import static me.cauadeveloper.database.query.collumn_names.allNamesTeam.selectNomeTime;
 
-    // Vai ser um slash command - o usuário tem que conseguir escolher os nomes dos funcionários que foram adicionados na tabela inicial
-    // e os funcionários que ele escoleher vai ajustar o idTime da tabela funcionário de acordo com o id dos times.
+public class atualizarDadosMembroTime extends ListenerAdapter{
+
+    ArrayList<String> nomeTime;
+    ArrayList<String> nomeFunc;
 
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event){
 
         String command = event.getName();
-        String estado = null;
-
-        switch (command){
-
-            case "adicionar_funcionario":
-
-                event.reply("Por favor, me diga o nome do time:").queue();
-                event.deferReply().queue();
-
-                break;
-            case "atualizar_funcionario":
-                String updateFunc = event.getUser().getAsTag();
-                event.reply("Atualiza funcionario no servidor, **" + updateFunc + "**!").queue();
-                break;
-            case "remover_funcionario":
-                String removerFunc = event.getUser().getAsTag();
-                event.reply("Remover funcionario no servidor, **" + removerFunc + "**!").queue();
-        }
-
-    }
-
-    //Guild command -- instantly update (max 100)
-
-    @Override
-    public void onGuildReady(@NotNull GuildReadyEvent event){
 
         try {
+            nomeTime = selectNomeTime();
+            List<SelectOption> optionsNomeTime = new ArrayList<>();
+            for (int i = 0; i < nomeTime.size(); i++){
+                optionsNomeTime.add(SelectOption.of(nomeTime.get(i), nomeTime.get(i)));
+            }
 
-            // Vou precisar adicionar uma lista com os nomes dos funcionário para criar várias opções no comando.
-            List<CommandData> commandData = new ArrayList<>();
-            commandData.add(Commands.slash("adicionar_funcionario", "Adiciona um novo funcionario a tabela funcionario."));
-            commandData.add(Commands.slash("atualizar_funcionario", "Atualiza os dados de um funcionario"));
-            commandData.add(Commands.slash("remover_funcionario", "Remove um funcionario"));
-            event.getGuild().updateCommands().addCommands(commandData).queue();
+            if (command.equals("adicionar_func_ao_time")){
 
-//        if (event.getGuild().getIdLong() == id do servidor){} -- server para fazer commando especifico para o servidor
+                StringSelectMenu menu_time = StringSelectMenu.create("menu_time")
+                        .setPlaceholder("Escolha uma opção...")
+                        .addOptions(
+                            optionsNomeTime
+                        )
+                        .build();
+
+                event.reply("Escolha uma opção do menu suspenso:")
+                        .addActionRow(menu_time)
+                        .queue();
+            }
 
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    @Override
+    public void onStringSelectInteraction(StringSelectInteractionEvent event) {
+
+        String selectValue = event.getValues().get(0);
+        try {
+            nomeFunc = selectNomeFunc();
+            List<SelectOption> optionsNomeFunc = new ArrayList<>();
+            for (int i = 0; i < nomeFunc.size(); i++){
+                optionsNomeFunc.add(SelectOption.of(nomeFunc.get(i), nomeFunc.get(i)));
+            }
+
+            for (int i = 0; i < nomeTime.size(); i++){
+                if (selectValue.equalsIgnoreCase(nomeTime.get(i))){
+                    StringSelectMenu menu_funcionario = StringSelectMenu.create("menu_funcionario")
+                            .setPlaceholder("Escolha uma opção...")
+                            .addOptions(
+                                    optionsNomeFunc
+                            )
+                            .build();
+
+                    event.reply("Adicione um funcionario ao time " + nomeTime.get(i) + ":")
+                            .addActionRow(menu_funcionario)
+                            .queue();
+                }
+            }
+            for (int i = 0; i < nomeFunc.size(); i++){
+                if (selectValue.equalsIgnoreCase(nomeFunc.get(i))){
+                    event.reply("Você adicionou o funcionário **" + nomeFunc.get(i) + "**.").queue();
+                }
+            }
+
+            event.getMessage().delete().queue();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void onGuildReady(@NotNull GuildReadyEvent event){
+
+        List<CommandData> commandData = new ArrayList<>();
+        commandData.add(Commands.slash("adicionar_func_ao_time", "Adiciona um funcionário ao time selecionado."));
+        event.getGuild().updateCommands().addCommands(commandData).queue();
+
+//        if (event.getGuild().getIdLong() == id do servidor){} -- server para fazer commando especifico para o servidor
 
 
     }

@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import java.sql.SQLException;
 
 import static me.cauadeveloper.database.dataconfig.readConfig.*;
-import static me.cauadeveloper.database.query.checkTablesAreNull.check_if_tableFunc_is_null;
+import static me.cauadeveloper.database.query.general.checkTablesAreNull.check_if_tableFunc_is_null;
 import static me.cauadeveloper.utils.files.initialDataBase.inputUser.*;
 
 public class userDataTables extends ListenerAdapter {
