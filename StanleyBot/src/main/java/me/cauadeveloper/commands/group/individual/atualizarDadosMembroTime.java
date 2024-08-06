@@ -13,9 +13,11 @@ import org.jetbrains.annotations.NotNull;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectNomeFunc;
 import static me.cauadeveloper.database.query.collumn_names.allNamesTeam.selectNomeTime;
+import static me.cauadeveloper.database.query.relationship_tables.relacao_tabelaFunc_tabelaTime.insert_idTime_in_func;
 
 public class atualizarDadosMembroTime extends ListenerAdapter{
 
@@ -67,28 +69,27 @@ public class atualizarDadosMembroTime extends ListenerAdapter{
             }
 
             for (int i = 0; i < nomeTime.size(); i++){
-                if (selectValue.equalsIgnoreCase(nomeTime.get(i))){
-                    StringSelectMenu menu_funcionario = StringSelectMenu.create("menu_funcionario")
-                            .setPlaceholder("Escolha uma opção...")
-                            .addOptions(
-                                    optionsNomeFunc
-                            )
-                            .build();
+                    if (selectValue.equalsIgnoreCase(nomeTime.get(i))) {
+                        StringSelectMenu menu_funcionario = StringSelectMenu.create("menu_funcionario")
+                                .setPlaceholder("Escolha uma opção...")
+                                .addOptions(
+                                        optionsNomeFunc
+                                )
+                                .build();
 
-                    event.reply("Adicione um funcionario ao time " + nomeTime.get(i) + ":")
-                            .addActionRow(menu_funcionario)
-                            .queue();
-                }
+                        event.reply("Adicione um funcionario ao time " + nomeTime.get(i) + ":")
+                                .addActionRow(menu_funcionario)
+                                .setEphemeral(true)
+                                .queue();
+                    }else if (selectValue.equalsIgnoreCase(nomeFunc.get(i))) {
+                        insert_idTime_in_func(nomeTime.get(i), selectValue);
+                        event.reply("Você adicionou o funcionário **" + selectValue + "** ao time **" + nomeTime.get(i) + "**.")
+                                .setEphemeral(true)
+                                .queue();
+                    }
             }
-            for (int i = 0; i < nomeFunc.size(); i++){
-                if (selectValue.equalsIgnoreCase(nomeFunc.get(i))){
-                    event.reply("Você adicionou o funcionário **" + nomeFunc.get(i) + "**.").queue();
-                }
-            }
-
             event.getMessage().delete().queue();
-
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
