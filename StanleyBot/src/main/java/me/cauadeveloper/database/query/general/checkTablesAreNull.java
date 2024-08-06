@@ -1,4 +1,4 @@
-package me.cauadeveloper.database.query;
+package me.cauadeveloper.database.query.general;
 
 import me.cauadeveloper.database.dataconfig.ConnectionFactory;
 

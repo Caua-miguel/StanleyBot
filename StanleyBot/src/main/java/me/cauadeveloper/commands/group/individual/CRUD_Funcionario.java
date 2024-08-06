@@ -1,5 +1,7 @@
 package me.cauadeveloper.commands.group.individual;
 
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -34,7 +36,6 @@ public class CRUD_Funcionario extends ListenerAdapter {
                 String removerFunc = event.getUser().getAsTag();
                 event.reply("Remover funcionario no servidor, **" + removerFunc + "**!").queue();
         }
-
     }
 
     //Guild command -- instantly update (max 100)

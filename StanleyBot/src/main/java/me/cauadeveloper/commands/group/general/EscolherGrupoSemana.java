@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import java.sql.SQLException;
 
-import static me.cauadeveloper.database.query.countLinesTable.maxLinesTableTime;
+import static me.cauadeveloper.database.query.general.countLinesTable.maxLinesTableTime;
 import static me.cauadeveloper.utils.fixValues.utilsStaticMethods.currentID;
 
 
