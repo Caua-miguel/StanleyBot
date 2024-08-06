@@ -15,8 +15,7 @@ public class table_funcionario {
                 """;
         try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
 
-            String[] data;
-            data = dataUser;
+            String[] data = dataUser;
 
             for (int i = 0; i <= data.length-1; i++){
                 stmt.setString(1, data[i]);
