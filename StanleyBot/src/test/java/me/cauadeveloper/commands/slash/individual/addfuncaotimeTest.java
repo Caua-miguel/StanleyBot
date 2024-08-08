@@ -1,7 +1,5 @@
-package me.cauadeveloper.commands.group.individual;
+package me.cauadeveloper.commands.slash.individual;
 
-import net.dv8tion.jda.api.interactions.components.selections.SelectOption;
-import net.dv8tion.jda.api.interactions.components.selections.StringSelectMenu;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +8,6 @@ import java.util.ArrayList;
 
 import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectNomeFunc;
 import static me.cauadeveloper.database.query.collumn_names.allNamesTeam.selectNomeTime;
-import static me.cauadeveloper.database.query.relationship_tables.relacao_tabelaFunc_tabelaTime.insert_idTime_in_func;
 
 public class addfuncaotimeTest {
     

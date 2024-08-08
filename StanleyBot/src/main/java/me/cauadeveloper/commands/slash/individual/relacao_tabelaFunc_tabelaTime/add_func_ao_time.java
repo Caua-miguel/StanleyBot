@@ -1,4 +1,4 @@
-package me.cauadeveloper.commands.group.individual.relacao_tabelaFunc_tabelaTime;
+package me.cauadeveloper.commands.slash.individual.relacao_tabelaFunc_tabelaTime;
 
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -103,18 +103,6 @@ public class add_func_ao_time extends ListenerAdapter{
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    public void onGuildReady(@NotNull GuildReadyEvent event){
-
-        List<CommandData> commandData = new ArrayList<>();
-        commandData.add(Commands.slash("adicionar_func_ao_time", "Adiciona um funcionário ao time selecionado."));
-        event.getGuild().updateCommands().addCommands(commandData).queue();
-
-//        if (event.getGuild().getIdLong() == id do servidor){} -- server para fazer commando especifico para o servidor
-
-
     }
 
 }

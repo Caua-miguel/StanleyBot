@@ -1,4 +1,4 @@
-package me.cauadeveloper.commands.group.general;
+package me.cauadeveloper.commands.slash.general;
 
 import me.cauadeveloper.database.tables.table_time;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
