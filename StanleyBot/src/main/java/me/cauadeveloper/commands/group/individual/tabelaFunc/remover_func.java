@@ -1,4 +1,4 @@
-package me.cauadeveloper.commands.group.individual.atualizar;
+package me.cauadeveloper.commands.group.individual.tabelaFunc;
 
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class removerMembroTime extends ListenerAdapter {
+public class remover_func extends ListenerAdapter {
 
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event){

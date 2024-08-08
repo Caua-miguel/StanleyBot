@@ -12,7 +12,7 @@ import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectN
 import static me.cauadeveloper.database.query.collumn_names.allNamesTeam.selectNomeTime;
 import static me.cauadeveloper.database.query.relationship_tables.relacao_tabelaFunc_tabelaTime.insert_idTime_in_func;
 
-public class atualizarDadosMembroTimeTest {
+public class addfuncaotimeTest {
     
     @Test
     @DisplayName("Testar os loops e as variáveis nomeTime e nomeFunc")
