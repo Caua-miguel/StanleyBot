@@ -1,4 +1,4 @@
-package me.cauadeveloper.commands.group.individual.atualizar;
+package me.cauadeveloper.commands.group.individual.tabelaFunc;
 
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CRUD_Funcionario extends ListenerAdapter {
+public class add_func extends ListenerAdapter {
 
     // Vai ser um slash command - o usuário tem que conseguir escolher os nomes dos funcionários que foram adicionados na tabela inicial
     // e os funcionários que ele escoleher vai ajustar o idTime da tabela funcionário de acordo com o id dos times.

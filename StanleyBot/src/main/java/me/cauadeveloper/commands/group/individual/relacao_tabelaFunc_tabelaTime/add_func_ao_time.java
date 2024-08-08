@@ -1,4 +1,4 @@
-package me.cauadeveloper.commands.group.individual;
+package me.cauadeveloper.commands.group.individual.relacao_tabelaFunc_tabelaTime;
 
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -13,13 +13,12 @@ import org.jetbrains.annotations.NotNull;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectNomeFunc;
 import static me.cauadeveloper.database.query.collumn_names.allNamesTeam.selectNomeTime;
 import static me.cauadeveloper.database.query.relationship_tables.relacao_tabelaFunc_tabelaTime.insert_idTime_in_func;
 
-public class atualizarDadosMembroTime extends ListenerAdapter{
+public class add_func_ao_time extends ListenerAdapter{
 
     ArrayList<String> nomeTime;
     ArrayList<String> nomeFunc;
