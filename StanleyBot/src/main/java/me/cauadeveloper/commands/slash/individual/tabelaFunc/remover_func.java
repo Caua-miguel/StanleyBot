@@ -1,4 +1,4 @@
-package me.cauadeveloper.commands.group.individual.tabelaFunc;
+package me.cauadeveloper.commands.slash.individual.tabelaFunc;
 
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -20,19 +20,6 @@ public class remover_func extends ListenerAdapter {
             String userTag = event.getUser().getAsTag();
             event.reply("Remover funcionario no servidor, **" + userTag + "**!").queue();
         }
-    }
-
-    //Guild command -- instantly update (max 100)
-
-    @Override
-    public void onGuildReady(@NotNull GuildReadyEvent event){
-
-        List<CommandData> commandData = new ArrayList<>();
-        commandData.add(Commands.slash("remover_funcionario", "Remove um funcionario."));
-        event.getGuild().updateCommands().addCommands(commandData).queue();
-
-//        if (event.getGuild().getIdLong() == id do servidor){} -- server para fazer commando especifico para o servidor
-
     }
 
 }
