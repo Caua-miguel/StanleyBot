@@ -33,9 +33,10 @@ public class userDataTables extends ListenerAdapter {
                             table_time.insert_data_user_time(dataUserCollumnE(readFileUserCollumnE(command[1])));
                             channel.sendMessage("O arquivo foi recebido com sucesso").queue();
                         }else{
-                            channel.sendMessage("A sua tabela já foi preenchida com os dados iniciais. Caso queira adicionar dados você" +
-                                    " precisa usar o comando **!novoFuncionario**").queue();
+                            channel.sendMessage("A sua tabela já foi preenchida com os dados iniciais. Caso queira adicionar dados, você" +
+                                    " precisa usar o slash command **/adicionar_func_ao_time**").queue();
                         }
+                    // PRECISO DE UM RETORNO DE ERRO CASO A TABELA ESTEJA VAZIA
 
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

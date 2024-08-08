@@ -1,7 +1,5 @@
-package me.cauadeveloper.commands.group.individual;
+package me.cauadeveloper.commands.group.individual.atualizar;
 
-import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;

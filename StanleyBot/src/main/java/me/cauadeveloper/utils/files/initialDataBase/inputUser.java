@@ -24,6 +24,7 @@ public class inputUser {
                 line = bf.readLine();
             }
         }catch (IOException e){
+            // ADICIONAR O ERRO AO USUÁRIO para falar que vocẽ passou um diretório e não o arquivo .xls
             System.out.println("Erro no readFileUserCollumnA: " + e);
         }
         return list;

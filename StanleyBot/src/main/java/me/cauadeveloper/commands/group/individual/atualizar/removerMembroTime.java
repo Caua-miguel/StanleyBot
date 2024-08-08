@@ -1,4 +1,4 @@
-package me.cauadeveloper.commands.group.individual;
+package me.cauadeveloper.commands.group.individual.atualizar;
 
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;

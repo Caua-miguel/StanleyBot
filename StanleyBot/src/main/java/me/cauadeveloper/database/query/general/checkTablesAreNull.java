@@ -20,6 +20,7 @@ public class checkTablesAreNull {
 
         }catch (SQLException e){
             System.out.println("Erro no check_if_tableFunc_is_null\n" + e.getMessage());
+            // Preciso mandar uma mensagem para o usuário.
         }
         return 1;
     }

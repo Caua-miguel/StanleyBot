@@ -11,14 +11,15 @@ public class table_funcionario {
 
     public static void insert_data_user_func(String[] dataUser) throws SQLException{
         String sql = """
-                INSERT INTO funcionario(nome) values (?)
+                INSERT INTO funcionario(id, nome) values (?,?)
                 """;
         try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
 
             String[] data = dataUser;
 
-            for (int i = 0; i <= data.length-1; i++){
-                stmt.setString(1, data[i]);
+            for (int i = 0; i < data.length; i++){
+                stmt.setInt(1, i + 1);
+                stmt.setString(2, data[i]);
                 stmt.execute();
             }
 

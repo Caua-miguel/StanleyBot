@@ -3,7 +3,6 @@ package me.cauadeveloper.bot;
 import me.cauadeveloper.commands.general.*;
 import me.cauadeveloper.commands.group.general.EscolherGrupoSemana;
 import me.cauadeveloper.commands.group.general.GrupoSemana;
-import me.cauadeveloper.commands.group.individual.CRUD_Funcionario;
 import me.cauadeveloper.commands.group.individual.atualizarDadosMembroTime;
 import me.cauadeveloper.commands.roles.ListOfRoles;
 import me.cauadeveloper.commands.roles.createCopyRole;
