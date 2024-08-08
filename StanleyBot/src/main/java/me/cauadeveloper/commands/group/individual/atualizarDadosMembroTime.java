@@ -23,6 +23,7 @@ public class atualizarDadosMembroTime extends ListenerAdapter{
 
     ArrayList<String> nomeTime;
     ArrayList<String> nomeFunc;
+    private String armazenaNomeTime;
 
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event){
@@ -62,32 +63,43 @@ public class atualizarDadosMembroTime extends ListenerAdapter{
 
         String selectValue = event.getValues().get(0);
         try {
+
             nomeFunc = selectNomeFunc();
             List<SelectOption> optionsNomeFunc = new ArrayList<>();
-            for (int i = 0; i < nomeFunc.size(); i++){
-                optionsNomeFunc.add(SelectOption.of(nomeFunc.get(i), nomeFunc.get(i)));
+
+            for (int cont = 0; cont < nomeFunc.size(); cont++){
+                optionsNomeFunc.add(SelectOption.of(nomeFunc.get(cont), nomeFunc.get(cont)));
             }
 
             for (int i = 0; i < nomeTime.size(); i++){
-                    if (selectValue.equalsIgnoreCase(nomeTime.get(i))) {
-                        StringSelectMenu menu_funcionario = StringSelectMenu.create("menu_funcionario")
-                                .setPlaceholder("Escolha uma opção...")
-                                .addOptions(
-                                        optionsNomeFunc
-                                )
-                                .build();
+                if (selectValue.equalsIgnoreCase(nomeTime.get(i))) {
+                    StringSelectMenu menu_funcionario = StringSelectMenu.create("menu_funcionario")
+                            .setPlaceholder("Escolha uma opção...")
+                            .addOptions(
+                                    optionsNomeFunc
+                            )
+                            .build();
 
-                        event.reply("Adicione um funcionario ao time " + nomeTime.get(i) + ":")
-                                .addActionRow(menu_funcionario)
-                                .setEphemeral(true)
-                                .queue();
-                    }else if (selectValue.equalsIgnoreCase(nomeFunc.get(i))) {
-                        insert_idTime_in_func(nomeTime.get(i), selectValue);
-                        event.reply("Você adicionou o funcionário **" + selectValue + "** ao time **" + nomeTime.get(i) + "**.")
-                                .setEphemeral(true)
-                                .queue();
-                    }
+                    event.reply("Adicione um funcionario ao time " + nomeTime.get(i) + ":")
+                            .addActionRow(menu_funcionario)
+                            .setEphemeral(true)
+                            .queue();
+                        armazenaNomeTime = nomeTime.get(i);
+                }
+
             }
+
+            for (int j = 0; j < nomeFunc.size(); j++){
+
+                if (selectValue.equalsIgnoreCase(nomeFunc.get(j))) {
+                    insert_idTime_in_func(armazenaNomeTime, nomeFunc.get(j));
+                    event.reply("Você adicionou o funcionário **" + nomeFunc.get(j) + "** ao time **" + armazenaNomeTime + "**.")
+                            .setEphemeral(true)
+                            .queue();
+                }
+
+            }
+
             event.getMessage().delete().queue();
         }catch (SQLException e) {
             throw new RuntimeException(e);
