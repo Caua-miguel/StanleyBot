@@ -30,4 +30,27 @@ public class allNamesFunc {
         return list;
     }
 
+    public static ArrayList<Object> selectIdNomesFunc() throws SQLException {
+
+        String sql = """
+                SELECT id, nome from funcionario
+                """;
+        ArrayList<Object> list = new ArrayList<>();
+
+
+        try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()){
+                list.add(resultSet.getInt("id"));
+                list.add(resultSet.getString("nome"));
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 }
