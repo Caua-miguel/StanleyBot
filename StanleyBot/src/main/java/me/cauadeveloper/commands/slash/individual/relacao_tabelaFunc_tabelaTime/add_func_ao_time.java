@@ -14,8 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static me.cauadeveloper.database.query.collumn_names.NamesTeam.selectAllNomeTime;
 import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectNomeFunc;
-import static me.cauadeveloper.database.query.collumn_names.allNamesTeam.selectNomeTime;
 import static me.cauadeveloper.database.query.relationship_tables.relacao_tabelaFunc_tabelaTime.insert_idTime_in_func;
 
 public class add_func_ao_time extends ListenerAdapter{
@@ -30,7 +30,7 @@ public class add_func_ao_time extends ListenerAdapter{
         String command = event.getName();
 
         try {
-            nomeTime = selectNomeTime();
+            nomeTime = selectAllNomeTime();
             List<SelectOption> optionsNomeTime = new ArrayList<>();
             for (int i = 0; i < nomeTime.size(); i++){
                 optionsNomeTime.add(SelectOption.of(nomeTime.get(i), nomeTime.get(i)));
@@ -41,7 +41,7 @@ public class add_func_ao_time extends ListenerAdapter{
                 StringSelectMenu menu_time = StringSelectMenu.create("menu_time")
                         .setPlaceholder("Escolha uma opção...")
                         .addOptions(
-                            optionsNomeTime
+                                optionsNomeTime
                         )
                         .build();
 
@@ -83,7 +83,7 @@ public class add_func_ao_time extends ListenerAdapter{
                             .addActionRow(menu_funcionario)
                             .setEphemeral(true)
                             .queue();
-                        armazenaNomeTime = nomeTime.get(i);
+                    armazenaNomeTime = nomeTime.get(i);
                 }
 
             }
@@ -102,6 +102,8 @@ public class add_func_ao_time extends ListenerAdapter{
             event.getMessage().delete().queue();
         }catch (SQLException e) {
             throw new RuntimeException(e);
+        }catch (NullPointerException e){
+            System.out.println("O comando adicionar_func_ao_time está sem parametro!");
         }
     }
 

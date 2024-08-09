@@ -1,4 +1,4 @@
-package me.cauadeveloper.commands.slash;
+package me.cauadeveloper.commands.slash.config;
 
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class config extends ListenerAdapter {
+public class addSlashCommands extends ListenerAdapter {
 
         @Override
         public void onGuildReady(@NotNull GuildReadyEvent event){
@@ -19,10 +19,11 @@ public class config extends ListenerAdapter {
             List<CommandData> commandData = new ArrayList<>();
             commandData.add(Commands.slash("adicionar_func_ao_time", "Adiciona um funcionário ao time selecionado."));
 
-            OptionData opNameFunc = new OptionData(OptionType.STRING, "nome", "Nome do funcionário", true);
-            commandData.add(Commands.slash("adicionar_funcionario", "Adiciona um novo funcionario a tabela funcionario.").addOptions(opNameFunc));
-            commandData.add(Commands.slash("atualizar_funcionario", "Atualiza os dados de um funcionario").addOptions(opNameFunc));
-            commandData.add(Commands.slash("remover_funcionario", "Remove um funcionario").addOptions(opNameFunc));
+            OptionData opNomeFunc = new OptionData(OptionType.STRING, "nome_func", "Nome do funcionário", true);
+            OptionData opNomeTime = new OptionData(OptionType.STRING, "nome_time", "Nome do time", true);
+            commandData.add(Commands.slash("adicionar_funcionario", "Adiciona um novo funcionario a tabela funcionario.").addOptions(opNomeFunc).addOptions(opNomeTime));
+            commandData.add(Commands.slash("atualizar_funcionario", "Atualiza os dados de um funcionario").addOptions(opNomeFunc).addOptions(opNomeTime));
+            commandData.add(Commands.slash("remover_funcionario", "Remove um funcionario").addOptions(opNomeFunc));
             event.getGuild().updateCommands().addCommands(commandData).queue();
 
     }

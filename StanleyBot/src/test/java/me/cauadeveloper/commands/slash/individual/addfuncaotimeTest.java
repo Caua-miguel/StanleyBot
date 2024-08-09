@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectNomeFunc;
-import static me.cauadeveloper.database.query.collumn_names.allNamesTeam.selectNomeTime;
+import static me.cauadeveloper.database.query.collumn_names.NamesTeam.selectAllNomeTime;
 
 public class addfuncaotimeTest {
     
@@ -18,7 +18,7 @@ public class addfuncaotimeTest {
         ArrayList<String> nomeTime;
         ArrayList<String> nomeFunc;
 
-        nomeTime = selectNomeTime();
+        nomeTime = selectAllNomeTime();
         nomeFunc = selectNomeFunc();
         int i;
         String dadoArmazenado = "";
