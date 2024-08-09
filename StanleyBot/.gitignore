@@ -3,6 +3,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 !**/classes/**/target/
+!**/classes/me/cauadeveloper/bot/StanleyBot.class
+!**/classes/me/cauadeveloper/commands/roles/createCopyRole.class
+!**/classes/me/cauadeveloper/commands/roles/createRoleDefault.class
+!**/classes/me/cauadeveloper/commands/roles/createRoleEmpty.class
 */target/
 .idea
 devbot.db

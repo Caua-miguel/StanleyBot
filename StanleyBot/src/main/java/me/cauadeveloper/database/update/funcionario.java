@@ -1,4 +1,4 @@
-package me.cauadeveloper.database.insert;
+package me.cauadeveloper.database.update;
 
 import me.cauadeveloper.database.dataconfig.ConnectionFactory;
 
@@ -6,25 +6,23 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import static me.cauadeveloper.database.query.collumn_names.NamesTeam.selectNomeTime;
-import static me.cauadeveloper.database.query.general.checkTablesAreNull.check_if_tableFunc_is_null;
 
-public class novo_funcionario {
+public class funcionario {
 
-    public static void insert_novo_func(String func, String nomeTime) throws SQLException {
+    public static void updateFuncionario(int id, String nomeFunc, String nomeTime) throws SQLException{
+
         String sql = """
-                INSERT INTO funcionario(id, nome, idTime) values (?,?,?)
+                UPDATE funcionario set nome = ?, idTime = ? WHERE id = ?
                 """;
-        //Contador para os id da tabela time
-        int contCollumnIdFunc = check_if_tableFunc_is_null();
 
         try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
 
-            int  idTime = selectNomeTime(nomeTime);
+            int idTime = selectNomeTime(nomeTime);
 
             if (idTime != -1){
-                stmt.setInt(1, contCollumnIdFunc + 1);
-                stmt.setString(2, func);
-                stmt.setInt(3, idTime);
+                stmt.setString(1, nomeFunc);
+                stmt.setInt(2, idTime);
+                stmt.setInt(3, id);
                 stmt.execute();
             }else {
                 throw new SQLException();
@@ -32,6 +30,7 @@ public class novo_funcionario {
         }catch (ArrayIndexOutOfBoundsException e){
             System.out.println("Erro no insert_novo_func\n" + e.getMessage());
         }
+
     }
 
 }
