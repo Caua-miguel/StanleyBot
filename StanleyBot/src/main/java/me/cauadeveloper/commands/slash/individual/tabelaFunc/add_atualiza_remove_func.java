@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static me.cauadeveloper.database.insert.novo_funcionario.insert_novo_func;
+import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectIdNomesFunc;
 import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectNomeFunc;
 import static me.cauadeveloper.database.update.funcionario.updateFuncionario;
 
@@ -38,25 +39,26 @@ public class add_atualiza_remove_func extends ListenerAdapter {
                     event.reply("Não encontrei nenhum time com esse nome! Por favor insira o nome do time corretamente para que seu funcionário possa ser atribuído a algum.").queue();
                 }
                 break;
-                // Pensar em uma forma de o usuário atualizar o funcionario caso ele erre algo.
+                // Para fazer isso no mesmo comando, vamos fazer ele passar dois parametros, o ID do usuário do Discord e o nome do funcionário
+                // Assim, o primeiro parametro seleciona, o segundo parametro atualiza.
             case "atualizar_funcionario":
 
                 try {
+                    ArrayList<Object> listaFunc = selectIdNomesFunc();
 
-                    SetMenu setMenu = new SetMenu();
-                    StringSelectMenu menu_atualiza_funcionario = setMenu.menuNomesFunc();
+                    for (int i = 0; i <= listaFunc.size(); i++){
 
-                    event.reply("Selecione um funcionario:")
-                            .addActionRow(menu_atualiza_funcionario)
-                            .setEphemeral(true)
-                            .queue();
+                    }
 
-                    updateFuncionario(id, nomeFunc, nomeTime);
-                    event.reply("Você atualizou o funcionário **" + nomeFunc + "**!").queue();
+
+                    event.getChannel().sendMessage("").queue();
+
                 } catch (SQLException e) {
-                    System.out.println("Erro no insert_novo_func do case atualizar_funcionario.\nErro: " + e);
-                    event.reply("Não encontrei nenhum time com esse nome! Por favor insira o nome do time corretamente para que seu funcionário possa ser atribuído a algum.").queue();
+                    throw new RuntimeException(e);
                 }
+
+                    event.reply("Você atualizou o funcionário **" + nomeFunc + "**!").queue();
+
                 break;
             case "remover_funcionario":
                 event.reply("Você removeu o funcionário **" + nomeFunc + "**!").queue();
@@ -64,27 +66,6 @@ public class add_atualiza_remove_func extends ListenerAdapter {
             default:
                 event.reply("Adicione o nome do seu funcionário, por favor!").queue();
         }
-    }
-
-    @Override
-    public void onStringSelectInteraction(StringSelectInteractionEvent event) {
-
-        String selectValue = event.getValues().get(0);
-        try {
-            ArrayList<String> nomeFunc = selectNomeFunc();
-
-            for (int i = 0; i < nomeFunc.size(); i++){
-                if (selectValue.equalsIgnoreCase(nomeFunc.get(i))){
-
-                    id = i;
-
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-
     }
 
 }
