@@ -30,12 +30,12 @@ public class allNamesFunc {
         return list;
     }
 
-    public static ArrayList<Object> selectIdNomesFunc() throws SQLException {
+    public static ArrayList<Integer> selectIdFunc() throws SQLException {
 
         String sql = """
-                SELECT id, nome from funcionario
+                SELECT id from funcionario
                 """;
-        ArrayList<Object> list = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>();
 
 
         try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
@@ -44,7 +44,6 @@ public class allNamesFunc {
 
             while (resultSet.next()){
                 list.add(resultSet.getInt("id"));
-                list.add(resultSet.getString("nome"));
             }
 
         }catch (SQLException e){

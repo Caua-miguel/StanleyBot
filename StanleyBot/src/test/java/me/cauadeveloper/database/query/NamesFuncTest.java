@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectIdNomesFunc;
+import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectIdFunc;
+import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectNomeFunc;
+
 
 public class NamesFuncTest {
 
@@ -14,12 +16,15 @@ public class NamesFuncTest {
     @DisplayName("Resultado para a query que retorna as colunas id e nome da tabela funcionario")
     public void saidaDoArrayComIntegerESring() throws SQLException {
 
-        System.out.println(selectIdNomesFunc());
+        System.out.println(selectNomeFunc());
 
-        ArrayList<Object> listaFunc = selectIdNomesFunc();
+        ArrayList<String> listaFunc = selectNomeFunc();
+        ArrayList<Integer> listaID = selectIdFunc();
 
-        for (int i = 0; i < listaFunc.size()-1; i++){
-            System.out.println(listaFunc.get(i) + " - " + listaFunc.get(i + 1));
+        for (int i = 0; i < listaFunc.size(); i++){
+
+            System.out.print("Selecione o numero que corresponde ao usuário e atualize-o:" + "\n" + listaID.get(i) + " - " + listaFunc.get(i));
+
         }
 
 

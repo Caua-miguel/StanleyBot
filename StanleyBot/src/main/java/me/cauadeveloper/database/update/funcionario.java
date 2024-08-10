@@ -23,7 +23,7 @@ public class funcionario {
                 stmt.setString(1, nomeFunc);
                 stmt.setInt(2, idTime);
                 stmt.setInt(3, id);
-                stmt.execute();
+                stmt.executeUpdate();
             }else {
                 throw new SQLException();
             }
