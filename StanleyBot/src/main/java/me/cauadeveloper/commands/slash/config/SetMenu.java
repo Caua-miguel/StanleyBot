@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.cauadeveloper.database.query.collumn_names.NamesTeam.selectAllNomeTime;
-import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectNomeFunc;
+import static me.cauadeveloper.database.query.tables.NamesTeam.selectAllNomeTime;
+import static me.cauadeveloper.database.query.tables.NamesFunc.selectNomeFunc;
 
 public class SetMenu {
 

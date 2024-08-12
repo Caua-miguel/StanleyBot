@@ -10,6 +10,7 @@ import me.cauadeveloper.commands.roles.ListOfRoles;
 import me.cauadeveloper.commands.roles.createCopyRole;
 import me.cauadeveloper.commands.roles.createRoleDefault;
 import me.cauadeveloper.commands.roles.createRoleEmpty;
+import me.cauadeveloper.commands.task.ListaDeTarefas;
 import me.cauadeveloper.commands.task.ReportarFaltaRecurso;
 import me.cauadeveloper.database.dataconfig.Config;
 import me.cauadeveloper.joinServer.Apresentacao;
@@ -41,6 +42,7 @@ public class StanleyBot {
         jda.addEventListener(new add_atualiza_remove_func());
         jda.addEventListener(new add_func_ao_time());
         jda.addEventListener(new addSlashCommands());
+        jda.addEventListener(new ListaDeTarefas());
 
     }
 }

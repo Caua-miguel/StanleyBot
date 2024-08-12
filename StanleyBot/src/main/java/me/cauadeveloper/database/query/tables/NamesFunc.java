@@ -1,4 +1,4 @@
-package me.cauadeveloper.database.query.collumn_names;
+package me.cauadeveloper.database.query.tables;
 
 import me.cauadeveloper.database.dataconfig.ConnectionFactory;
 
@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class allNamesFunc {
+public class NamesFunc {
 
     public static ArrayList<String> selectNomeFunc() throws SQLException {
 

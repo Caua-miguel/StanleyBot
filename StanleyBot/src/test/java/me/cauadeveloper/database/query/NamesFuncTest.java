@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectIdFunc;
-import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectNomeFunc;
+import static me.cauadeveloper.database.query.tables.NamesFunc.selectIdFunc;
+import static me.cauadeveloper.database.query.tables.NamesFunc.selectNomeFunc;
 
 
 public class NamesFuncTest {
