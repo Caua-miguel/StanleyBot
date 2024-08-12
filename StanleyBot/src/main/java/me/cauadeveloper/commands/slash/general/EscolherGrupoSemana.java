@@ -28,13 +28,12 @@ public class EscolherGrupoSemana extends ListenerAdapter {
                 if (currentID > maxLinesTableTime()){
                     currentID = 1;
                     table_time.updateAll();
-                    channel.sendMessage("update de toda a coluna realizado com sucesso").queue();
+                    channel.sendMessage("Todos os grupos já foram escolhidos, use o comando novamente para iniciarmos novamente a sequencia de grupos!").queue();
                 }else{
                     table_time.update();
                     currentID++;
                     String nomeGrupo = table_time.select();
                     channel.sendMessage("Seu grupo da semana é: " + nomeGrupo).queue();
-                    channel.sendMessage("update com sucesso").queue();
 
                 }
 

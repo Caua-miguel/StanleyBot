@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import static me.cauadeveloper.database.dataconfig.readConfig.*;
@@ -40,6 +41,8 @@ public class userDataTables extends ListenerAdapter {
 
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
+                    } catch (FileNotFoundException e) {
+                        event.getChannel().sendMessage("Arquivo não reconhecido, passe o caminho correto!").queue();
                     }
                 }
             }
