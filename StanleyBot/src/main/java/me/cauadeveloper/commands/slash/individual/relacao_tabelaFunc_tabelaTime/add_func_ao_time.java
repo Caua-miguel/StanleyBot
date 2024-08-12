@@ -1,21 +1,17 @@
 package me.cauadeveloper.commands.slash.individual.relacao_tabelaFunc_tabelaTime;
 
-import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.component.StringSelectInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.interactions.commands.build.CommandData;
-import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.interactions.components.selections.SelectOption;
 import net.dv8tion.jda.api.interactions.components.selections.StringSelectMenu;
-import org.jetbrains.annotations.NotNull;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.cauadeveloper.database.query.collumn_names.NamesTeam.selectAllNomeTime;
-import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectNomeFunc;
+import static me.cauadeveloper.database.query.tables.NamesTeam.selectAllNomeTime;
+import static me.cauadeveloper.database.query.tables.NamesFunc.selectNomeFunc;
 import static me.cauadeveloper.database.query.relationship_tables.relacao_tabelaFunc_tabelaTime.insert_idTime_in_func;
 
 public class add_func_ao_time extends ListenerAdapter{

@@ -5,7 +5,7 @@ import me.cauadeveloper.database.dataconfig.ConnectionFactory;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static me.cauadeveloper.database.query.collumn_names.NamesTeam.selectNomeTime;
+import static me.cauadeveloper.database.query.tables.NamesTeam.selectNomeTime;
 import static me.cauadeveloper.database.query.general.checkTablesAreNull.check_if_tableFunc_is_null;
 
 public class novo_funcionario {

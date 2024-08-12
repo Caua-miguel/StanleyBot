@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static me.cauadeveloper.database.query.collumn_names.NamesTeam.selectAllNomeTime;
-import static me.cauadeveloper.database.query.collumn_names.NamesTeam.selectNomeTime;
+import static me.cauadeveloper.database.query.tables.NamesTeam.selectAllNomeTime;
+import static me.cauadeveloper.database.query.tables.NamesTeam.selectNomeTime;
 
 
 public class allNameTeamTest {

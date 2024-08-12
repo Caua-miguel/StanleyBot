@@ -12,7 +12,7 @@ import java.util.Map;
 
 import static me.cauadeveloper.database.delete.removerFunc.removerFunc;
 import static me.cauadeveloper.database.insert.novo_funcionario.insert_novo_func;
-import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.*;
+import static me.cauadeveloper.database.query.tables.NamesFunc.*;
 import static me.cauadeveloper.database.update.updateFunc.updateFuncionario;
 
 public class add_atualiza_remove_func extends ListenerAdapter {

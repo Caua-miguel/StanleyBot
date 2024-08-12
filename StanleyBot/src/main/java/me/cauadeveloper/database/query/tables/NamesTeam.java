@@ -1,4 +1,4 @@
-package me.cauadeveloper.database.query.collumn_names;
+package me.cauadeveloper.database.query.tables;
 
 import me.cauadeveloper.database.dataconfig.ConnectionFactory;
 

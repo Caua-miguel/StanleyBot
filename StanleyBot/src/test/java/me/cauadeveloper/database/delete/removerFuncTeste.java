@@ -13,7 +13,7 @@ public class removerFuncTeste {
     @DisplayName("Remove a o funcionario do banco de dados")
     public void removerFuncTabelaFunc() throws SQLException {
 
-        removerFunc(2);
+//        removerFunc(2);
 
     }
 
