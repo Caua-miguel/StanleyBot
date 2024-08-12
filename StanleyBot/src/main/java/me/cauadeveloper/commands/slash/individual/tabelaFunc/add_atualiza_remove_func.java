@@ -1,38 +1,46 @@
 package me.cauadeveloper.commands.slash.individual.tabelaFunc;
 
-import me.cauadeveloper.commands.slash.config.SetMenu;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
-import net.dv8tion.jda.api.events.interaction.component.StringSelectInteractionEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
-import net.dv8tion.jda.api.interactions.components.selections.StringSelectMenu;
-
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import static me.cauadeveloper.database.delete.removerFunc.removerFunc;
 import static me.cauadeveloper.database.insert.novo_funcionario.insert_novo_func;
-import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectIdFunc;
-import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.selectNomeFunc;
-import static me.cauadeveloper.database.update.funcionario.updateFuncionario;
+import static me.cauadeveloper.database.query.collumn_names.allNamesFunc.*;
+import static me.cauadeveloper.database.update.updateFunc.updateFuncionario;
 
 public class add_atualiza_remove_func extends ListenerAdapter {
 
-    int id = -1;
+    private final Map<User, ConversationstateAtualizaFuncAtualizaFunc> conversationAtualizaFunc = new HashMap<>();
+    private final Map<User, ConversationstateAtualizaFuncDeletaFunc> conversationDeletaFunc = new HashMap<>();
+
+    private static class ConversationstateAtualizaFuncAtualizaFunc{
+        int stepAtualizaFunc = 0;
+        String idFuncSessaoAtualizaFunc, nomeFuncSessaoAtualizaFunc;
+    }
+
+    private static class ConversationstateAtualizaFuncDeletaFunc{
+        int stepDeletaFunc = 0;
+        String idFuncSessaoDeletaFunc;
+    }
 
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event){
 
         String command = event.getName();
-        OptionMapping idFuncOption = event.getOption("id_func");
         OptionMapping nomeFuncOption = event.getOption("nome_func");
         OptionMapping nomeTimeOption = event.getOption("nome_time");
-        String IDFunc = idFuncOption.getAsString();
-        String nomeFunc = nomeFuncOption.getAsString();
-        String nomeTime = nomeTimeOption.getAsString();
 
         switch (command) {
             case "adicionar_funcionario":
+                String nomeFunc = nomeFuncOption.getAsString();
+                String nomeTime = nomeTimeOption.getAsString();
                 try {
                     insert_novo_func(nomeFunc, nomeTime);
                     event.reply("Você adicionou o funcionário **" + nomeFunc + "!**\nEles estão no time **" + nomeTime + "!**").queue();
@@ -46,32 +54,107 @@ public class add_atualiza_remove_func extends ListenerAdapter {
             case "atualizar_funcionario":
 
                 try {
-                    ArrayList<String> listaFunc = selectNomeFunc();
-                    ArrayList<Integer> listaID = selectIdFunc();
+                    ArrayList<String> listaNomeFunc = selectNomeFunc();
+                    ArrayList<Integer> listaIdFunc = selectIdFunc();
 
-                    event.getChannel().sendMessage("Selecione o numero que corresponde ao usuário e atualize-o:").queue();
+                    event.reply("Escolha um usuário da lista para atualizar, use os identificadores numéricos:").queue();
 
-                    for (int i = 0; i < listaFunc.size(); i++){
-                        event.getChannel().sendMessage("\n" + listaID.get(i) + " - " + listaFunc.get(i)).queue();
+                    for (int i = 0; i < listaIdFunc.size(); i++){
+                        event.getChannel().sendMessage("\n" + listaIdFunc.get(i) + " - " + listaNomeFunc.get(i)).queue();
                     }
 
-                    updateFuncionario(Integer.parseInt(IDFunc),nomeFunc,nomeTime);
+                    conversationAtualizaFunc.put(event.getUser(), new ConversationstateAtualizaFuncAtualizaFunc());
 
                 } catch (SQLException e) {
-                    event.reply("O index digitado não corresponde a um funcionário, digite um index válido de acordo com o menu apresentado!").queue();
-                }catch (NumberFormatException e){
-                    event.reply("O primerio parâmetro precisar ser um numero inteiro!").queue();
+                    throw new RuntimeException(e);
                 }
-
-                    event.reply("Você atualizou o funcionário **" + nomeFunc + "**!").queue();
 
                 break;
             case "remover_funcionario":
-                event.reply("Você removeu o funcionário **" + nomeFunc + "**!").queue();
+
+                try {
+                    ArrayList<String> listaNomeFunc = selectNomeFunc();
+                    ArrayList<Integer> listaIdFunc = selectIdFunc();
+
+                    event.reply("Escolha um usuário da lista para deletar, use os identificadores numéricos:").queue();
+
+                    for (int i = 0; i < listaIdFunc.size(); i++){
+                        event.getChannel().sendMessage("\n" + listaIdFunc.get(i) + " - " + listaNomeFunc.get(i)).queue();
+                    }
+
+                    conversationDeletaFunc.put(event.getUser(), new ConversationstateAtualizaFuncDeletaFunc());
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
-            default:
-                event.reply("Adicione o nome do seu funcionário, por favor!").queue();
         }
     }
 
+    @Override
+    public void onMessageReceived(MessageReceivedEvent event) {
+
+        if (event.getAuthor().isBot()) {
+            return;
+        }
+
+        User user = event.getAuthor();
+        ConversationstateAtualizaFuncAtualizaFunc stateAtualizaFunc = conversationAtualizaFunc.get(user);
+
+        if (stateAtualizaFunc != null) {
+
+            switch (stateAtualizaFunc.stepAtualizaFunc) {
+
+                case 0:
+
+                    stateAtualizaFunc.idFuncSessaoAtualizaFunc = event.getMessage().getContentRaw();
+
+                    try {
+                        String relacao_nomeFunc_idFunc = selectUmNomeFunc(Integer.parseInt(stateAtualizaFunc.idFuncSessaoAtualizaFunc));
+
+                        stateAtualizaFunc.stepAtualizaFunc = 1;
+                        event.getChannel().sendMessage("Por favor, escreva um novo nome para o funcionário **" + relacao_nomeFunc_idFunc + "**, para que ele seja atualizado!").queue();
+
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    } catch (NumberFormatException e) {
+                        event.getChannel().sendMessage("Por favor, use os identificadores numéricos para selecionar um usuário!").queue();
+                    }
+                    break;
+                case 1:
+                    stateAtualizaFunc.nomeFuncSessaoAtualizaFunc = event.getMessage().getContentRaw();
+
+                    try {
+                        updateFuncionario(Integer.parseInt(stateAtualizaFunc.idFuncSessaoAtualizaFunc), stateAtualizaFunc.nomeFuncSessaoAtualizaFunc);
+                        event.getChannel().sendMessage("Funcionário atualizado com sucesso!").queue();
+                        conversationAtualizaFunc.remove(user);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+            }
+            return;
+        }
+
+        ConversationstateAtualizaFuncDeletaFunc stateDeletaFunc = conversationDeletaFunc.get(user);
+
+        if (stateDeletaFunc != null) {
+
+            if (stateDeletaFunc.stepDeletaFunc == 0) {
+                stateDeletaFunc.idFuncSessaoDeletaFunc = event.getMessage().getContentRaw();
+                try {
+                    String relacao_nomeFunc_idFunc = selectUmNomeFunc(Integer.parseInt(stateDeletaFunc.idFuncSessaoDeletaFunc));
+                    removerFunc(Integer.parseInt(stateDeletaFunc.idFuncSessaoDeletaFunc));
+                    event.getChannel().sendMessage("O funcionário **" + relacao_nomeFunc_idFunc + "** foi removido com sucesso!").queue();
+                    conversationDeletaFunc.remove(user);
+                } catch (SQLException | NumberFormatException e) {
+                    event.getChannel().sendMessage("Por favor, use os identificadores numéricos para selecionar um usuário!.").queue();
+                } catch (RuntimeException e){
+                    event.getChannel().sendMessage("Usuário não encontrado! Por favor, selecione um usuário válido!").queue();
+                }
+            }
+
+        }
+
+    }
 }

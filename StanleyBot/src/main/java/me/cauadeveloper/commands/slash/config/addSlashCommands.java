@@ -20,13 +20,12 @@ public class addSlashCommands extends ListenerAdapter {
 
             OptionData opNomeFunc = new OptionData(OptionType.STRING, "nome_func", "Nome do funcionário", true);
             OptionData opNomeTime = new OptionData(OptionType.STRING, "nome_time", "Nome do time", true);
-            OptionData opIDFunc = new OptionData(OptionType.STRING, "id_func", "Indice para selecionar o usuário", true);
 
 
             commandData.add(Commands.slash("adicionar_func_ao_time", "Adiciona um funcionário ao time selecionado."));
             commandData.add(Commands.slash("adicionar_funcionario", "Adiciona um novo funcionario a tabela funcionario.").addOptions(opNomeFunc).addOptions(opNomeTime));
-            commandData.add(Commands.slash("atualizar_funcionario", "Atualiza os dados de um funcionario").addOptions(opIDFunc).addOptions(opNomeFunc).addOptions(opNomeTime));
-            commandData.add(Commands.slash("remover_funcionario", "Remove um funcionario").addOptions(opNomeFunc));
+            commandData.add(Commands.slash("atualizar_funcionario", "Atualiza os dados de um funcionario"));
+            commandData.add(Commands.slash("remover_funcionario", "Remove um funcionario"));
             event.getGuild().updateCommands().addCommands(commandData).queue();
 
     }

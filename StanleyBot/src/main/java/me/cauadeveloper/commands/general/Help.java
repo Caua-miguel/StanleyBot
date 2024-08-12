@@ -23,7 +23,7 @@ public class Help extends ListenerAdapter {
             embed.setTitle("Help");
             embed.setDescription("O StanleyBot é seu auxiliar na preparação do seu café.\n\n" +
                     "Os comandos que nós temos são os seguintes:\n\n 1 - !createRoleEmpty\n 2 - !createRoleDefault\n 3 - !createCopyRole\n 4 - !listRole\n 5 - !ping\n" +
-                    " 6 - !EscolherGPSemana\n 7 - !GPSemana\n 8 - !ReportarFalta");
+                    " 6 - !EscolherGPSemana\n 7 - !GPSemana\n 8 - !ReportarFalta \n 9 - !startCoffe");
             embed.addField("Cargo Vazio", "O comando **!createRoleEmpty** é usado quando você precisa criar um novo cargo" +
                     " no seu servidor, mas sem nenhuma permissão, para que você configure de acordo com a sua necessidade. \n\nFormato: **<!createRoleEmpty> <nome do cargo>**"
                     , false);
