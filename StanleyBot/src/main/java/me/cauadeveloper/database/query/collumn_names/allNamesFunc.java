@@ -30,6 +30,28 @@ public class allNamesFunc {
         return list;
     }
 
+    public static String selectUmNomeFunc(int idFunc) throws SQLException {
+
+        String sql = """
+                SELECT nome from funcionario WHERE id = ?
+                """;
+
+        try(PreparedStatement stmt = ConnectionFactory.getConn().prepareStatement(sql)){
+
+
+            stmt.setInt(1, idFunc);
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()){
+               return resultSet.getString("nome");
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        throw new RuntimeException();
+    }
+
     public static ArrayList<Integer> selectIdFunc() throws SQLException {
 
         String sql = """
