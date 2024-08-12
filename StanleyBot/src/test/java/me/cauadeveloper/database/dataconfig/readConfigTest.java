@@ -13,12 +13,12 @@ public class readConfigTest {
     @DisplayName("Saida esperada Da Operacão De Transformar Lista Em Array Na Coluna A")
     @Test
     public void saidaEsperadaTranformandoListaEmArrayCollumnA(){
-
+//
 //        String[] saidaArr = dataUserCollumnA();
-        String[] saidaEsperadaArr = {"caua", "lucas", "brendo"};
-
+//        String[] saidaEsperadaArr = {"caua", "lucas", "brendo"};
+//
 //        System.out.println(Arrays.toString(saidaArr));
-
+//
 //        Assertions.assertEquals(Arrays.toString(saidaEsperadaArr), Arrays.toString(saidaArr));
 
     }
@@ -28,7 +28,7 @@ public class readConfigTest {
     public void saidaEsperadaTranformandoListaEmArrayCollumnE(){
 
 //        String[] saidaArr = dataUserCollumnE();
-        String[] saidaEsperadaArr = {"coaLegal", "wash", "trocaFill"};
+//        String[] saidaEsperadaArr = {"coaLegal", "wash", "trocaFill"};
 //
 //        System.out.println(Arrays.toString(saidaArr));
 //
@@ -41,7 +41,7 @@ public class readConfigTest {
     public void saidaEsperadaTranformandoListaEmArrayCollumnI(){
 
 //        String[] saidaArr = dataUserCollumnI();
-        String[] saidaEsperadaArr = {"teste", "teste123", "teste teste"};
+//        String[] saidaEsperadaArr = {"teste", "teste123", "teste teste"};
 
 //        System.out.println(Arrays.toString(saidaArr));
 //

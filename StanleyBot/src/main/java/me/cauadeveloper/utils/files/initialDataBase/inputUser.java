@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class inputUser {
 
-    public static ArrayList<String> readFileUserCollumnA(String path){
+    public static ArrayList<String> readFileUserCollumnA(String path) throws FileNotFoundException {
 
         ArrayList<String> list = new ArrayList<>();
 
@@ -24,8 +24,7 @@ public class inputUser {
                 line = bf.readLine();
             }
         }catch (IOException e){
-            // ADICIONAR O ERRO AO USUÁRIO para falar que vocẽ passou um diretório e não o arquivo .xls
-            System.out.println("Erro no readFileUserCollumnA: " + e);
+            throw new FileNotFoundException();
         }
         return list;
     }
