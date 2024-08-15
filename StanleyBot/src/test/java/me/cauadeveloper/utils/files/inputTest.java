@@ -4,13 +4,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static me.cauadeveloper.database.dataconfig.readConfig.dataUserCollumnA;
+import static me.cauadeveloper.utils.files.initialDataBase.inputUser.readFileUserCollumnA;
 import static me.cauadeveloper.utils.files.member.inputMemberOnTeam.inputMemberDefault;
 
 public class inputTest {
@@ -18,17 +17,23 @@ public class inputTest {
     @Test
     @DisplayName("Deve retornar a saída esperada para a coluna A")
     public void saidaEsperadaCollumnA(){
-//        ArrayList<String> resultadoFinal = readFileUserCollumnA();
-        ArrayList<String> resultadoEsperado = new ArrayList<>();
+        String[] resultadoFinal = null;
+        try {
+            resultadoFinal = dataUserCollumnA(readFileUserCollumnA("/home/caua/Downloads/grupos.xls"));
 
-//        resultadoEsperado.add("Tabela Nomes Funcionários");
-        resultadoEsperado.add("caua");
-        resultadoEsperado.add("lucas");
-        resultadoEsperado.add("brendo");
+            String[] resultadoEsperado = new String[3];
 
-//        System.out.println(resultadoFinal);
+            resultadoEsperado[0] = "Cauã";
+            resultadoEsperado[1] = "Diogo";
+            resultadoEsperado[2] = "Rapha";
 
-//        Assertions.assertEquals(resultadoEsperado, resultadoFinal);
+            System.out.println(Arrays.toString(resultadoFinal));
+
+            Assertions.assertEquals(Arrays.toString(resultadoEsperado), Arrays.toString(resultadoFinal));
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
