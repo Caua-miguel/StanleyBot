@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import static me.cauadeveloper.database.query.tables.NamesFunc.selectNomeFunc;
 import static me.cauadeveloper.database.query.tables.NamesTeam.selectAllNomeTime;
 
-public class addfuncaotimeTest {
+public class addFuncAoTimeTest {
     
     @Test
     @DisplayName("Testar os loops e as variáveis nomeTime e nomeFunc")
