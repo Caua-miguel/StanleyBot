@@ -1,15 +1,15 @@
 package me.cauadeveloper.bot;
 
 import me.cauadeveloper.comandos.geral.*;
-import me.cauadeveloper.comandos.barra.config.addSlashCommands;
-import me.cauadeveloper.comandos.barra.time.EscolherGrupoSemana;
-import me.cauadeveloper.comandos.barra.time.GrupoSemana;
-import me.cauadeveloper.comandos.barra.funcionario.relacao_func_time.add_func_ao_time;
-import me.cauadeveloper.comandos.barra.funcionario.add_atualiza_remove_func;
-import me.cauadeveloper.comandos.cargos.ListOfRoles;
-import me.cauadeveloper.comandos.cargos.createCopyRole;
-import me.cauadeveloper.comandos.cargos.createRoleDefault;
-import me.cauadeveloper.comandos.cargos.createRoleEmpty;
+import me.cauadeveloper.comandos.barra.config.RegistrarComandos;
+import me.cauadeveloper.comandos.barra.time.time_semana.EscolherTimeSemana;
+import me.cauadeveloper.comandos.barra.time.time_semana.TimeSemana;
+import me.cauadeveloper.comandos.barra.funcionario.relacao_func_time.AdicionarFuncAoTime;
+import me.cauadeveloper.comandos.barra.funcionario.AdicionarAtualizarRemoverFunc;
+import me.cauadeveloper.comandos.cargos.ListarCargos;
+import me.cauadeveloper.comandos.cargos.CopiarCargo;
+import me.cauadeveloper.comandos.cargos.CargoPadrao;
+import me.cauadeveloper.comandos.cargos.CargoVazio;
 import me.cauadeveloper.comandos.tarefa.ListaDeTarefas;
 import me.cauadeveloper.comandos.tarefa.ReportarFaltaRecurso;
 import me.cauadeveloper.sqlite.config_banco.Config;
@@ -28,20 +28,20 @@ public class StanleyBot {
         JDA jda = JDABuilder.createDefault(System.getenv("TOKEN"),
                 EnumSet.allOf(GatewayIntent.class)).build();
 
-        jda.addEventListener(new ping());
-        jda.addEventListener(new createRoleEmpty(), new createRoleDefault(), new createCopyRole());
-        jda.addEventListener(new ListOfRoles());
+        jda.addEventListener(new Ping());
+        jda.addEventListener(new CargoVazio(), new CargoPadrao(), new CopiarCargo());
+        jda.addEventListener(new ListarCargos());
         jda.addEventListener(new Help());
-        jda.addEventListener(new EscolherGrupoSemana());
-        jda.addEventListener(new GrupoSemana());
+        jda.addEventListener(new EscolherTimeSemana());
+        jda.addEventListener(new TimeSemana());
         jda.addEventListener(new ReportarFaltaRecurso());
-        jda.addEventListener(new start());
-        jda.addEventListener(new userDataTables());
-        jda.addEventListener(new timer());
+        jda.addEventListener(new Iniciar());
+        jda.addEventListener(new InserirDadosIniciais());
+        jda.addEventListener(new Cronometro());
         jda.addEventListener(new Apresentacao());
-        jda.addEventListener(new add_atualiza_remove_func());
-        jda.addEventListener(new add_func_ao_time());
-        jda.addEventListener(new addSlashCommands());
+        jda.addEventListener(new AdicionarAtualizarRemoverFunc());
+        jda.addEventListener(new AdicionarFuncAoTime());
+        jda.addEventListener(new RegistrarComandos());
         jda.addEventListener(new ListaDeTarefas());
 
     }

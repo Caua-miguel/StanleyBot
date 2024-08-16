@@ -8,7 +8,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTarefas.selectListaTarefas;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListarTarefas.selectListaTarefas;
 
 public class ListaDeTarefas extends ListenerAdapter {
 

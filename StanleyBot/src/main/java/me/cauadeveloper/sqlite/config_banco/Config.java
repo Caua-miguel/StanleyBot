@@ -1,8 +1,8 @@
 package me.cauadeveloper.sqlite.config_banco;
 
-import me.cauadeveloper.sqlite.tabelas.table_funcionario;
-import me.cauadeveloper.sqlite.tabelas.table_tarefa;
-import me.cauadeveloper.sqlite.tabelas.table_time;
+import me.cauadeveloper.sqlite.tabelas.TabelaFunc;
+import me.cauadeveloper.sqlite.tabelas.TabelaTarefa;
+import me.cauadeveloper.sqlite.tabelas.TabelaTime;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,9 +16,9 @@ public class Config {
 
         if(!databaseFile.exists()){
             databaseFile.createNewFile();
-            table_funcionario.create_table();
-            table_time.create_table();
-            table_tarefa.create_table();
+            TabelaFunc.create_table();
+            TabelaTime.create_table();
+            TabelaTarefa.create_table();
 //            table_funcionario.insert_data_user_func();
 //            table_time.insert_data_user_time();
 //            table_tarefa.insert_data_user_tarefa();

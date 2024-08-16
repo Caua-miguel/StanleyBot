@@ -8,9 +8,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static me.cauadeveloper.sqlite.config_banco.readConfig.dataUserCollumnA;
-import static me.cauadeveloper.utils.arquivos.tabelas_iniciais.inputUser.readFileUserCollumnA;
-import static me.cauadeveloper.utils.arquivos.funcionarios.inputMemberOnTeam.inputMemberDefault;
+import static me.cauadeveloper.utils.arquivos.tabelas_iniciais.ConverterLista.dataUserCollumnA;
+import static me.cauadeveloper.utils.arquivos.tabelas_iniciais.LerDadosUsuario.readFileUserCollumnA;
+import static me.cauadeveloper.utils.arquivos.funcionarios.LerFuncDoTime.inputMemberDefault;
 
 public class inputTest {
 
