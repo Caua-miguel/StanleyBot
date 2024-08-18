@@ -8,7 +8,7 @@ import me.cauadeveloper.comandos.barra.funcionario.relacao_func_time.AdicionarFu
 import me.cauadeveloper.comandos.barra.funcionario.AdicionarAtualizarRemoverFunc;
 import me.cauadeveloper.comandos.cargos.ListarCargos;
 import me.cauadeveloper.comandos.cargos.CopiarCargo;
-import me.cauadeveloper.comandos.cargos.CargoPadrao;
+import me.cauadeveloper.comandos.barra.cargos.CargoPadrao;
 import me.cauadeveloper.comandos.cargos.CargoVazio;
 import me.cauadeveloper.comandos.tarefa.ListaDeTarefas;
 import me.cauadeveloper.comandos.tarefa.ReportarFaltaRecurso;
