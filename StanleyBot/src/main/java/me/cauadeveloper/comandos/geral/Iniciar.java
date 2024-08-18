@@ -18,7 +18,7 @@ public class Iniciar extends ListenerAdapter {
         String content = message.getContentRaw();
         MessageChannel channel = event.getChannel();
         EmbedBuilder embed = new EmbedBuilder();
-        File file = new File("/home/caua/Documentos/Dev/Backend/CoffeBot/StanleyBot/StanleyBot/src/main/java/me/cauadeveloper/database/assents/grupos.xls");
+        File file = new File("/home/caua/Documentos/Dev/Backend/CoffeBot/StanleyBot/StanleyBot/src/main/java/me/cauadeveloper/sqlite/recursos/grupos.xls");
         FileUpload fileUpload = FileUpload.fromData(file);
 
         if(content.equalsIgnoreCase("!Start")){
