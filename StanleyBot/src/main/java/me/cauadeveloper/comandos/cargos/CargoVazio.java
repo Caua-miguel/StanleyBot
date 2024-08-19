@@ -1,28 +1,40 @@
 package me.cauadeveloper.comandos.cargos;
 
 import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Role;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class CargoVazio extends ListenerAdapter {
 
-    public void onMessageReceived(@NotNull MessageReceivedEvent event) {
+    @Override
+    public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
 
-        if (event.isFromGuild()) {
-            String[] command = event.getMessage().getContentRaw().split(" ", 2);
+        String command = event.getName();
+        OptionMapping nomeCargoOption = event.getOption("nome_cargo");
+        Member member = event.getMember();
 
-            if (command[0].equalsIgnoreCase("!createRoleEmpty")) {
-                if (command.length < 2) {
-                    event.getChannel().sendMessage("Por favor, forneça o nome do cargo.").queue();
-                } else {
-                    String roleName = command[1];
-                    event.getGuild().createRole()
-                            .setPermissions(new Permission[]{})
-                            .setName(roleName)
-                            .queue(role -> event.getChannel().sendMessage("Cargo `" + roleName + "` criado com sucesso!").queue());
+
+        if (member.hasPermission(Permission.ADMINISTRATOR) && event.isFromGuild() && command.equalsIgnoreCase("criar_cargo_vazio")){
+
+            String nomeCargo = nomeCargoOption.getAsString();
+            List<Role> listaCargos = event.getGuild().getRolesByName(nomeCargo, true);
+
+                if (listaCargos.isEmpty()){
+                    event.getGuild().createRole().setPermissions(new Permission[]{}).setName(nomeCargo).queue();
+                    event.reply("O cargo `" + nomeCargo + "` foi criado com sucesso!").setEphemeral(true).queue();
+                }else {
+                    event.reply("Já existe um cargo com o nome `" + nomeCargo + "`! Por favor forneça outro nome.").setEphemeral(true).queue();
                 }
-            }
+
+        }else {
+            event.reply("Você não tem permissão para usar esse comando!").setEphemeral(true).queue();
         }
     }
 }
