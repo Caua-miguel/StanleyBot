@@ -7,9 +7,7 @@ import me.cauadeveloper.comandos.barra.time.time_semana.TimeSemana;
 import me.cauadeveloper.comandos.barra.funcionario.relacao_func_time.AdicionarFuncAoTime;
 import me.cauadeveloper.comandos.barra.funcionario.AdicionarAtualizarRemoverFunc;
 import me.cauadeveloper.comandos.cargos.ListarCargos;
-import me.cauadeveloper.comandos.cargos.CopiarCargo;
-import me.cauadeveloper.comandos.barra.cargos.CargoPadrao;
-import me.cauadeveloper.comandos.cargos.CargoVazio;
+import me.cauadeveloper.comandos.barra.cargos.CriarCargos;
 import me.cauadeveloper.comandos.tarefa.ListaDeTarefas;
 import me.cauadeveloper.comandos.tarefa.ReportarFaltaRecurso;
 import me.cauadeveloper.sqlite.config_banco.Config;
@@ -29,7 +27,7 @@ public class StanleyBot {
                 EnumSet.allOf(GatewayIntent.class)).build();
 
         jda.addEventListener(new Ping());
-        jda.addEventListener(new CargoVazio(), new CargoPadrao(), new CopiarCargo());
+        jda.addEventListener(new CriarCargos());
         jda.addEventListener(new ListarCargos());
         jda.addEventListener(new Help());
         jda.addEventListener(new EscolherTimeSemana());
