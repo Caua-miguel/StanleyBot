@@ -27,6 +27,7 @@ public class RegistrarComandos extends ListenerAdapter {
             commandData.add(Commands.slash("criar_cargo_padrao", "Cria um cargo no servidor com as mesmas permissões de @everyone.").addOptions(opNomeCargo));
             commandData.add(Commands.slash("criar_cargo_vazio", "Cria um cargo no servidor sem nenhuma permissão.").addOptions(opNomeCargo));
             commandData.add(Commands.slash("criar_cargo_copia", "Cria um cargo no servidor com as mesmas permissões de um cargo existente.").addOptions(opNomeCargo).addOptions(opNomeCargoCopia));
+            commandData.add(Commands.slash("listar_cargos", "Exibe uma lista dos cargos existentes no servidor."));
 
 
 
