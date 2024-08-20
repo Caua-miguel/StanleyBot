@@ -21,10 +21,12 @@ public class RegistrarComandos extends ListenerAdapter {
             OptionData opNomeFunc = new OptionData(OptionType.STRING, "nome_func", "Nome do funcionário", true);
             OptionData opNomeTime = new OptionData(OptionType.STRING, "nome_time", "Nome do time", true);
             OptionData opNomeCargo = new OptionData(OptionType.STRING, "nome_cargo", "Nome do cargo", true);
+            OptionData opNomeCargoCopia = new OptionData(OptionType.STRING, "nome_cargo_copia", "Nome do cargo copiado", true);
 
             // Cargos
             commandData.add(Commands.slash("criar_cargo_padrao", "Cria um cargo no servidor com as mesmas permissões de @everyone.").addOptions(opNomeCargo));
             commandData.add(Commands.slash("criar_cargo_vazio", "Cria um cargo no servidor sem nenhuma permissão.").addOptions(opNomeCargo));
+            commandData.add(Commands.slash("criar_cargo_copia", "Cria um cargo no servidor com as mesmas permissões de um cargo existente.").addOptions(opNomeCargo).addOptions(opNomeCargoCopia));
 
 
 

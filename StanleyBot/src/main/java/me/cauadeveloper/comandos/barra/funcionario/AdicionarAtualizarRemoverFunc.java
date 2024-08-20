@@ -43,21 +43,19 @@ public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {
                 String nomeTime = nomeTimeOption.getAsString();
                 try {
                     insert_novo_func(nomeFunc, nomeTime);
-                    event.reply("Você adicionou o funcionário **" + nomeFunc + "!**\nEles estão no time **" + nomeTime + "!**").queue();
+                    event.reply("Você adicionou o funcionário **" + nomeFunc + "!**\nEles estão no time **" + nomeTime + "!**").setEphemeral(true).queue();
                 } catch (SQLException e) {
                     System.out.println("Erro no insert_novo_func do case adicionar_funcionario.\nErro: " + e);
-                    event.reply("Não encontrei nenhum time com esse nome! Por favor insira o nome do time corretamente para que seu funcionário possa ser atribuído a algum.").queue();
+                    event.reply("Não encontrei nenhum time com esse nome! Por favor insira o nome do time corretamente para que seu funcionário possa ser atribuído a algum.").setEphemeral(true).queue();
                 }
                 break;
-                // Vou precisar usar o comando sem parâmetros, para retornar o menu. Depois vou precisar de dois comandos para selecionar o funcionário e outro para atualizar.
-                // ERRO: Quando é digitado um numero maior que o que saiu no menu, ele não retorna um erro de SQL. Apenas não faz nada.
             case "atualizar_funcionario":
 
                 try {
                     ArrayList<String> listaNomeFunc = selectNomeFunc();
                     ArrayList<Integer> listaIdFunc = selectIdFunc();
 
-                    event.reply("Escolha um usuário da lista para atualizar, use os identificadores numéricos:").queue();
+                    event.reply("Escolha um usuário da lista para atualizar, use os identificadores numéricos:").setEphemeral(true).queue();
 
                     for (int i = 0; i < listaIdFunc.size(); i++){
                         event.getChannel().sendMessage("\n" + listaIdFunc.get(i) + " - " + listaNomeFunc.get(i)).queue();
@@ -76,7 +74,7 @@ public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {
                     ArrayList<String> listaNomeFunc = selectNomeFunc();
                     ArrayList<Integer> listaIdFunc = selectIdFunc();
 
-                    event.reply("Escolha um usuário da lista para deletar, use os identificadores numéricos:").queue();
+                    event.reply("Escolha um usuário da lista para deletar, use os identificadores numéricos:").setEphemeral(true).queue();
 
                     for (int i = 0; i < listaIdFunc.size(); i++){
                         event.getChannel().sendMessage("\n" + listaIdFunc.get(i) + " - " + listaNomeFunc.get(i)).queue();
