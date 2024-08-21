@@ -1,12 +1,13 @@
 package me.cauadeveloper.bot;
 
+import me.cauadeveloper.comandos.barra.geral.Cronometro;
+import me.cauadeveloper.comandos.barra.listas.ListarCagos;
 import me.cauadeveloper.comandos.geral.*;
 import me.cauadeveloper.comandos.barra.config.RegistrarComandos;
 import me.cauadeveloper.comandos.barra.time.time_semana.EscolherTimeSemana;
 import me.cauadeveloper.comandos.barra.time.time_semana.TimeSemana;
 import me.cauadeveloper.comandos.barra.funcionario.relacao_func_time.AdicionarFuncAoTime;
 import me.cauadeveloper.comandos.barra.funcionario.AdicionarAtualizarRemoverFunc;
-import me.cauadeveloper.comandos.cargos.ListarCargos;
 import me.cauadeveloper.comandos.barra.cargos.CriarCargos;
 import me.cauadeveloper.comandos.tarefa.ListaDeTarefas;
 import me.cauadeveloper.comandos.tarefa.ReportarFaltaRecurso;
@@ -28,7 +29,6 @@ public class StanleyBot {
 
         jda.addEventListener(new Ping());
         jda.addEventListener(new CriarCargos());
-        jda.addEventListener(new ListarCargos());
         jda.addEventListener(new Help());
         jda.addEventListener(new EscolherTimeSemana());
         jda.addEventListener(new TimeSemana());
@@ -41,6 +41,7 @@ public class StanleyBot {
         jda.addEventListener(new AdicionarFuncAoTime());
         jda.addEventListener(new RegistrarComandos());
         jda.addEventListener(new ListaDeTarefas());
+        jda.addEventListener(new ListarCagos());
 
     }
 }

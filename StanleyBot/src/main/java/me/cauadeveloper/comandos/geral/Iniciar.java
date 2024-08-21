@@ -8,6 +8,8 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.utils.FileUpload;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.InputStream;
 
 public class Iniciar extends ListenerAdapter {
 
@@ -18,8 +20,8 @@ public class Iniciar extends ListenerAdapter {
         String content = message.getContentRaw();
         MessageChannel channel = event.getChannel();
         EmbedBuilder embed = new EmbedBuilder();
-        File file = new File("/home/caua/Documentos/Dev/Backend/CoffeBot/StanleyBot/StanleyBot/src/main/java/me/cauadeveloper/sqlite/recursos/grupos.xls");
-        FileUpload fileUpload = FileUpload.fromData(file);
+        InputStream inputStream = Iniciar.class.getClassLoader().getResourceAsStream("grupos.xls");
+        FileUpload fileUpload = FileUpload.fromData(inputStream, "grupos.xls");
 
         if(content.equalsIgnoreCase("!Start")){
 
