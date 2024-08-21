@@ -19,9 +19,6 @@ public class Config {
             TabelaFunc.create_table();
             TabelaTime.create_table();
             TabelaTarefa.create_table();
-//            table_funcionario.insert_data_user_func();
-//            table_time.insert_data_user_time();
-//            table_tarefa.insert_data_user_tarefa();
         }
 
     }

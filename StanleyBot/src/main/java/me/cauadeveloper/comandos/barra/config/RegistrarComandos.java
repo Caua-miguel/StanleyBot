@@ -25,8 +25,8 @@ public class RegistrarComandos extends ListenerAdapter {
             OptionData opNomeCargo = new OptionData(OptionType.STRING, "nome_cargo", "Nome do cargo", true);
             OptionData opNomeCargoCopia = new OptionData(OptionType.STRING, "nome_cargo_copia", "Nome do cargo copiado", true);
 
-
             OptionData opCronometro = new OptionData(OptionType.INTEGER, "tempo_em_minutos", "Tempo em minutos", false);
+            OptionData opIniciar = new OptionData(OptionType.ATTACHMENT, "dados_iniciais", "Arquivo com os dados dos times", true);
 
             // Cargos
             commandData.add(Commands.slash("criar_cargo_padrao", "Cria um cargo no servidor com as mesmas permissões de @everyone.").addOptions(opNomeCargo));
