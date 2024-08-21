@@ -18,10 +18,15 @@ public class RegistrarComandos extends ListenerAdapter {
 
             List<CommandData> commandData = new ArrayList<>();
 
+            // Parâmetros
             OptionData opNomeFunc = new OptionData(OptionType.STRING, "nome_func", "Nome do funcionário", true);
             OptionData opNomeTime = new OptionData(OptionType.STRING, "nome_time", "Nome do time", true);
+
             OptionData opNomeCargo = new OptionData(OptionType.STRING, "nome_cargo", "Nome do cargo", true);
             OptionData opNomeCargoCopia = new OptionData(OptionType.STRING, "nome_cargo_copia", "Nome do cargo copiado", true);
+
+
+            OptionData opCronometro = new OptionData(OptionType.INTEGER, "tempo_em_minutos", "Tempo em minutos", false);
 
             // Cargos
             commandData.add(Commands.slash("criar_cargo_padrao", "Cria um cargo no servidor com as mesmas permissões de @everyone.").addOptions(opNomeCargo));
@@ -36,6 +41,13 @@ public class RegistrarComandos extends ListenerAdapter {
             commandData.add(Commands.slash("adicionar_funcionario", "Adiciona um novo funcionario a tabela funcionario.").addOptions(opNomeFunc).addOptions(opNomeTime));
             commandData.add(Commands.slash("atualizar_funcionario", "Atualiza os dados de um funcionario"));
             commandData.add(Commands.slash("remover_funcionario", "Remove um funcionario"));
+
+
+            // Geral
+            commandData.add(Commands.slash("cronometro", "Vai gerar um aviso quando o tempo acabar.").addOptions(opCronometro));
+
+
+
             event.getGuild().updateCommands().addCommands(commandData).queue();
 
     }

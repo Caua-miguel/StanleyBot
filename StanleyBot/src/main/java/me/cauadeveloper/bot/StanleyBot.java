@@ -1,5 +1,6 @@
 package me.cauadeveloper.bot;
 
+import me.cauadeveloper.comandos.barra.geral.Cronometro;
 import me.cauadeveloper.comandos.barra.listas.ListarCagos;
 import me.cauadeveloper.comandos.geral.*;
 import me.cauadeveloper.comandos.barra.config.RegistrarComandos;

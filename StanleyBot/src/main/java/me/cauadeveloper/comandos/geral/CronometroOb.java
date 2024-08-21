@@ -3,7 +3,7 @@ package me.cauadeveloper.comandos.geral;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import static java.util.concurrent.TimeUnit.*;
-public class Cronometro extends ListenerAdapter {
+public class CronometroOb extends ListenerAdapter {
 
 
     @Override
