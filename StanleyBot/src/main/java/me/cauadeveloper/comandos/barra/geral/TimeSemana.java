@@ -1,4 +1,4 @@
-package me.cauadeveloper.comandos.barra.time.time_semana;
+package me.cauadeveloper.comandos.barra.geral;
 
 import me.cauadeveloper.sqlite.tabelas.TabelaTime;
 import net.dv8tion.jda.api.entities.Message;

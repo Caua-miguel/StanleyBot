@@ -1,4 +1,4 @@
-package me.cauadeveloper.comandos.barra.funcionario.relacao_func_time;
+package me.cauadeveloper.comandos.barra.geral.listas;
 
 import me.cauadeveloper.sqlite.tabelas.TabelaTime;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
