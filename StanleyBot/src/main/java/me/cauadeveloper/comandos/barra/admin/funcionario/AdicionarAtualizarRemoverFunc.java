@@ -1,5 +1,7 @@
-package me.cauadeveloper.comandos.barra.funcionario;
+package me.cauadeveloper.comandos.barra.admin.funcionario;
 
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -36,6 +38,17 @@ public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {
         String command = event.getName();
         OptionMapping nomeFuncOption = event.getOption("nome_func");
         OptionMapping nomeTimeOption = event.getOption("nome_time");
+        Member member = event.getMember();
+
+        if (member == null) {
+            event.reply("Não foi possível identificar o membro.").setEphemeral(true).queue();
+            return;
+        }
+
+        if (!member.hasPermission(Permission.ADMINISTRATOR)){
+            event.reply("Você não tem permissão para usar esse comando!").setEphemeral(true).queue();
+            return;
+        }
 
         switch (command) {
             case "adicionar_funcionario":

@@ -1,4 +1,4 @@
-package me.cauadeveloper.comandos.geral;
+package me.cauadeveloper.comandos.barra.geral;
 
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -16,7 +16,6 @@ public class Ping extends ListenerAdapter {
             event.reply(BotPing + " ms").queue();
             return;
         }
-
     }
 }
 

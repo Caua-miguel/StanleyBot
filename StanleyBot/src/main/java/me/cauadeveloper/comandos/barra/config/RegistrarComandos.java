@@ -43,9 +43,15 @@ public class RegistrarComandos extends ListenerAdapter {
             commandData.add(Commands.slash("remover_funcionario", "Remove um funcionario"));
 
 
+            //Time
+            commandData.add(Commands.slash("escolher_time_da_semana", "Decide qual time da semana vai ficar responsável pelo café."));
+
+
+
             // Geral
             commandData.add(Commands.slash("cronometro", "Vai gerar um aviso quando o tempo acabar.").addOptions(opCronometro));
             commandData.add(Commands.slash("ping", "Vai exibir o ping do bot."));
+            commandData.add(Commands.slash("time_da_semana", "Mostra qual time é responsável pelo café essa semana."));
 
 
 

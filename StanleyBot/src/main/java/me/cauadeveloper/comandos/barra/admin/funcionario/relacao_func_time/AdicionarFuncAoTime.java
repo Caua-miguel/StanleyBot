@@ -1,5 +1,7 @@
-package me.cauadeveloper.comandos.barra.funcionario.relacao_func_time;
+package me.cauadeveloper.comandos.barra.admin.funcionario.relacao_func_time;
 
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.component.StringSelectInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -24,12 +26,23 @@ public class AdicionarFuncAoTime extends ListenerAdapter{
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event){
 
         String command = event.getName();
+        Member member = event.getMember();
 
         try {
             nomeTime = selectAllNomeTime();
             List<SelectOption> optionsNomeTime = new ArrayList<>();
             for (int i = 0; i < nomeTime.size(); i++){
                 optionsNomeTime.add(SelectOption.of(nomeTime.get(i), nomeTime.get(i)));
+            }
+
+            if (member == null) {
+                event.reply("Não foi possível identificar o membro.").setEphemeral(true).queue();
+                return;
+            }
+
+            if (!member.hasPermission(Permission.ADMINISTRATOR)){
+                event.reply("Você não tem permissão para usar esse comando!").setEphemeral(true).queue();
+                return;
             }
 
             if (command.equals("adicionar_func_ao_time")){

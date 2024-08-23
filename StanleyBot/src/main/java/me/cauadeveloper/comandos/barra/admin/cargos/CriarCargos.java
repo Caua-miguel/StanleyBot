@@ -1,4 +1,4 @@
-package me.cauadeveloper.comandos.barra.cargos;
+package me.cauadeveloper.comandos.barra.admin.cargos;
 
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;

@@ -1,14 +1,15 @@
 package me.cauadeveloper.bot;
 
 import me.cauadeveloper.comandos.barra.geral.Cronometro;
-import me.cauadeveloper.comandos.barra.listas.ListarCagos;
+import me.cauadeveloper.comandos.barra.geral.Ping;
+import me.cauadeveloper.comandos.barra.geral.listas.ListarCagos;
 import me.cauadeveloper.comandos.geral.*;
 import me.cauadeveloper.comandos.barra.config.RegistrarComandos;
-import me.cauadeveloper.comandos.barra.time.time_semana.EscolherTimeSemana;
-import me.cauadeveloper.comandos.barra.time.time_semana.TimeSemana;
-import me.cauadeveloper.comandos.barra.funcionario.relacao_func_time.AdicionarFuncAoTime;
-import me.cauadeveloper.comandos.barra.funcionario.AdicionarAtualizarRemoverFunc;
-import me.cauadeveloper.comandos.barra.cargos.CriarCargos;
+import me.cauadeveloper.comandos.barra.admin.time.EscolherTimeSemana;
+import me.cauadeveloper.comandos.barra.geral.TimeSemana;
+import me.cauadeveloper.comandos.barra.admin.funcionario.relacao_func_time.AdicionarFuncAoTime;
+import me.cauadeveloper.comandos.barra.admin.funcionario.AdicionarAtualizarRemoverFunc;
+import me.cauadeveloper.comandos.barra.admin.cargos.CriarCargos;
 import me.cauadeveloper.comandos.tarefa.ListaDeTarefas;
 import me.cauadeveloper.comandos.tarefa.ReportarFaltaRecurso;
 import me.cauadeveloper.sqlite.config_banco.Config;
