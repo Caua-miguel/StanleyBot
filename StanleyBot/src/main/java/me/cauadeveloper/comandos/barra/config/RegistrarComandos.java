@@ -51,6 +51,7 @@ public class RegistrarComandos extends ListenerAdapter {
             // Geral
             commandData.add(Commands.slash("cronometro", "Vai gerar um aviso quando o tempo acabar.").addOptions(opCronometro));
             commandData.add(Commands.slash("ping", "Vai exibir o ping do bot."));
+            commandData.add(Commands.slash("time_da_semana", "Mostra qual time é responsável pelo café essa semana."));
 
 
 
