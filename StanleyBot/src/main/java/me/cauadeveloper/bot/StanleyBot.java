@@ -10,7 +10,7 @@ import me.cauadeveloper.comandos.barra.geral.TimeSemana;
 import me.cauadeveloper.comandos.barra.admin.funcionario.relacao_func_time.AdicionarFuncAoTime;
 import me.cauadeveloper.comandos.barra.admin.funcionario.AdicionarAtualizarRemoverFunc;
 import me.cauadeveloper.comandos.barra.admin.cargos.CriarCargos;
-import me.cauadeveloper.comandos.tarefa.ListaDeTarefas;
+import me.cauadeveloper.comandos.barra.geral.listas.ListarDeTarefas;
 import me.cauadeveloper.comandos.tarefa.ReportarFaltaRecurso;
 import me.cauadeveloper.sqlite.config_banco.Config;
 import me.cauadeveloper.boas_vindas.Apresentacao;
@@ -41,7 +41,7 @@ public class StanleyBot {
         jda.addEventListener(new AdicionarAtualizarRemoverFunc());
         jda.addEventListener(new AdicionarFuncAoTime());
         jda.addEventListener(new RegistrarComandos());
-        jda.addEventListener(new ListaDeTarefas());
+        jda.addEventListener(new ListarDeTarefas());
         jda.addEventListener(new ListarCagos());
 
     }

@@ -28,6 +28,8 @@ public class RegistrarComandos extends ListenerAdapter {
             OptionData opCronometro = new OptionData(OptionType.INTEGER, "tempo_em_minutos", "Tempo em minutos", false);
             OptionData opIniciar = new OptionData(OptionType.ATTACHMENT, "dados_iniciais", "Arquivo com os dados dos times", true);
 
+            OptionData opReportarFalta = new OptionData(OptionType.STRING, "item_faltante", "Item em falta", true);
+
             // Cargos
             commandData.add(Commands.slash("criar_cargo_padrao", "Cria um cargo no servidor com as mesmas permissões de @everyone.").addOptions(opNomeCargo));
             commandData.add(Commands.slash("criar_cargo_vazio", "Cria um cargo no servidor sem nenhuma permissão.").addOptions(opNomeCargo));
@@ -47,11 +49,16 @@ public class RegistrarComandos extends ListenerAdapter {
             commandData.add(Commands.slash("escolher_time_da_semana", "Decide qual time da semana vai ficar responsável pelo café."));
 
 
+            //Tarefa
+
+
 
             // Geral
             commandData.add(Commands.slash("cronometro", "Vai gerar um aviso quando o tempo acabar.").addOptions(opCronometro));
-            commandData.add(Commands.slash("ping", "Vai exibir o ping do bot."));
+            commandData.add(Commands.slash("ping", "Exibe o ping do bot."));
             commandData.add(Commands.slash("time_da_semana", "Mostra qual time é responsável pelo café essa semana."));
+            commandData.add(Commands.slash("listar_tarefas", "Exibe um lista de tarefas."));
+            commandData.add(Commands.slash("reportar_falta", "Avisa quando faltar algum item.").addOptions(opReportarFalta));
 
 
 
