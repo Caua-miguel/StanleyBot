@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.sql.SQLException;
 
-public class ListaFuncDoTime extends ListenerAdapter {
+public class ListarFuncDoTime extends ListenerAdapter {
 
     //Preciso usar o idTime da tabela funcionario para retornar a lista de funcionários que está em cada grupo
 

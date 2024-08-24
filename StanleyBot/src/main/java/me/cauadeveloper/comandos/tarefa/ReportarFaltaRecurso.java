@@ -2,41 +2,42 @@ package me.cauadeveloper.comandos.tarefa;
 
 import me.cauadeveloper.sqlite.tabelas.TabelaTime;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.commands.OptionMapping;
+
 import java.sql.SQLException;
 
 public class ReportarFaltaRecurso extends ListenerAdapter {
 
-    public void onMessageReceived(MessageReceivedEvent event) {
+    @Override
+    public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
 
+        String command = event.getName();
+        OptionMapping optionMapping = event.getOption("item_faltante");
 
-        String [] command = event.getMessage().getContentRaw().split(" ", 2);
-        MessageChannel channel = event.getChannel();
+        if (command.equalsIgnoreCase("reportar_falta")){
 
-        if(command[0].equalsIgnoreCase("!ReportarFalta")) {
+            String item = optionMapping.getAsString();
 
-            if (command.length < 2) {
-                channel.sendMessage("Por favor, forneça o nome do item.").queue();
-            } else {
                 try {
 
                     if(TabelaTime.select() != null){
-                        String nomeGrupo = TabelaTime.select();
-                        channel.sendMessage("Olá, pessoal. Estamos reportando a falta do item: **__" + command[1] + "__**\nTime **__"  + nomeGrupo +
+                        String nomeTime = TabelaTime.select();
+                        event.reply("Olá, pessoal. Estamos reportando a falta do item: `" + item + "`\nTime **__"  + nomeTime +
                                 "__**, poderia selecionar alguém para fazer a reposição?").queue();
                     }else{
-                        String nomeGrupo = "Escolham o time da semana para que a tarefa possa ser atribuída a algum time.";
-                        channel.sendMessage("Olá, pessoal. Estamos reportando a falta do item: **__" + command[1] + "__**." +
-                                "\n**__"  + nomeGrupo + "__**").queue();
+                        String nomeTime = "Escolham o time da semana para que a tarefa possa ser atribuída a algum time.";
+                        event.reply("Olá, pessoal. Estamos reportando a falta do item: `" + item + "`." +
+                                "\n**__"  + nomeTime + "__**").queue();
                     }
-
-
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
-            }
-        }
-    }
 
+            return;
+        }
+
+    }
 }
