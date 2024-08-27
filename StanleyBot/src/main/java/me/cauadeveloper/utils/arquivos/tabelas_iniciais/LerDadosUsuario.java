@@ -1,15 +1,23 @@
 package me.cauadeveloper.utils.arquivos.tabelas_iniciais;
 
+import net.dv8tion.jda.api.entities.Message;
+
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class LerDadosUsuario {
 
-    public static ArrayList<String> readFileUserCollumnA(String path) throws FileNotFoundException {
+    public static ArrayList<String> readFileUserCollumnA(Message.Attachment att) throws FileNotFoundException {
 
         ArrayList<String> list = new ArrayList<>();
 
-        try(BufferedReader bf = new BufferedReader(new FileReader(path))){
+        try{
+            File arquivoTemp = File.createTempFile("arquivo_temp", att.getFileExtension());
+            att.downloadToFile(arquivoTemp).join();
+
+            BufferedReader bf = new BufferedReader(new FileReader(arquivoTemp));
 
             bf.readLine();
             bf.readLine();
@@ -23,17 +31,25 @@ public class LerDadosUsuario {
                 }
                 line = bf.readLine();
             }
+
+            Files.delete(arquivoTemp.toPath());
+
         }catch (IOException e){
             throw new FileNotFoundException();
         }
         return list;
     }
 
-    public static ArrayList<String> readFileUserCollumnE(String path){
+    public static ArrayList<String> readFileUserCollumnE(Message.Attachment att){
 
         ArrayList<String> list = new ArrayList<>();
 
-        try(BufferedReader bf = new BufferedReader(new FileReader(path))){
+        try{
+            File arquivoTemp = File.createTempFile("arquivo_temp", att.getFileExtension());
+            att.downloadToFile(arquivoTemp).join();
+
+            BufferedReader bf = new BufferedReader(new FileReader(arquivoTemp));
+
 
             bf.readLine();
             bf.readLine();
@@ -48,17 +64,23 @@ public class LerDadosUsuario {
                 line = bf.readLine();
             }
 
+            Files.delete(arquivoTemp.toPath());
+
         }catch (IOException e){
             e.printStackTrace();
         }
         return list;
     }
 
-    public static ArrayList<String> readFileUserCollumnI(String path){
+    public static ArrayList<String> readFileUserCollumnI(Message.Attachment att){
 
         ArrayList<String> list = new ArrayList<>();
 
-        try(BufferedReader bf = new BufferedReader(new FileReader(path))){
+        try{
+            File arquivoTemp = File.createTempFile("arquivo_temp", att.getFileExtension());
+            att.downloadToFile(arquivoTemp).join();
+
+            BufferedReader bf = new BufferedReader(new FileReader(arquivoTemp));
 
             bf.readLine();
             bf.readLine();
@@ -72,6 +94,8 @@ public class LerDadosUsuario {
                 }
                 line = bf.readLine();
             }
+
+            Files.delete(arquivoTemp.toPath());
 
         }catch (IOException e){
             e.printStackTrace();

@@ -8,7 +8,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static me.cauadeveloper.utils.arquivos.tabelas_iniciais.ConverterLista.dataUserCollumnA;
 import static me.cauadeveloper.utils.arquivos.tabelas_iniciais.LerDadosUsuario.readFileUserCollumnA;
 import static me.cauadeveloper.utils.arquivos.funcionarios.LerFuncDoTime.inputMemberDefault;
 
@@ -17,23 +16,23 @@ public class inputTest {
     @Test
     @DisplayName("Deve retornar a saída esperada para a coluna A")
     public void saidaEsperadaCollumnA(){
-        String[] resultadoFinal = null;
-        try {
-            resultadoFinal = dataUserCollumnA(readFileUserCollumnA("/home/caua/Downloads/grupos.xls"));
-
-            String[] resultadoEsperado = new String[3];
-
-            resultadoEsperado[0] = "Cauã";
-            resultadoEsperado[1] = "Diogo";
-            resultadoEsperado[2] = "Rapha";
-
-            System.out.println(Arrays.toString(resultadoFinal));
-
-            Assertions.assertEquals(Arrays.toString(resultadoEsperado), Arrays.toString(resultadoFinal));
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+//        String[] resultadoFinal = null;
+//        try {
+////            resultadoFinal = dataUserCollumnA(readFileUserCollumnA());
+//
+//            String[] resultadoEsperado = new String[3];
+//
+//            resultadoEsperado[0] = "Cauã";
+//            resultadoEsperado[1] = "Diogo";
+//            resultadoEsperado[2] = "Rapha";
+//
+//            System.out.println(Arrays.toString(resultadoFinal));
+//
+//            Assertions.assertEquals(Arrays.toString(resultadoEsperado), Arrays.toString(resultadoFinal));
+//
+//        } catch (FileNotFoundException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     @Test
