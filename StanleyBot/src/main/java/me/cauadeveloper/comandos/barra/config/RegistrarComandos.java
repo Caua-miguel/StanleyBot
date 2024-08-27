@@ -29,6 +29,7 @@ public class RegistrarComandos extends ListenerAdapter {
             OptionData opInserirDados = new OptionData(OptionType.ATTACHMENT, "dados_iniciais", "Arquivo com os dados dos times", true);
 
             OptionData opReportarFalta = new OptionData(OptionType.STRING, "item_faltante", "Item em falta", true);
+            OptionData opHelp = new OptionData(OptionType.STRING, "help_argumento", "palavra_chave", false);
 
             // Cargos
             commandData.add(Commands.slash("criar_cargo_padrao", "Cria um cargo no servidor com as mesmas permissões de @everyone.").addOptions(opNomeCargo));
@@ -59,6 +60,7 @@ public class RegistrarComandos extends ListenerAdapter {
             commandData.add(Commands.slash("time_da_semana", "Mostra qual time é responsável pelo café essa semana."));
             commandData.add(Commands.slash("listar_tarefas", "Exibe um lista de tarefas."));
             commandData.add(Commands.slash("reportar_falta", "Avisa quando faltar algum item.").addOptions(opReportarFalta));
+            commandData.add(Commands.slash("help", "Mostra como funcionam os comandos do bot."));
 
 
 

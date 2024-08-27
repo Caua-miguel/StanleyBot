@@ -43,7 +43,8 @@ public class InserirDadosIniciais extends ListenerAdapter {
                         TabelaFunc.insert_data_user_func(readFileUserCollumnA(arquivoRetornado));
                         TabelaTarefa.insert_data_user_tarefa(readFileUserCollumnI(arquivoRetornado));
                         TabelaTime.insert_data_user_time(readFileUserCollumnE(arquivoRetornado));
-                        event.reply("O arquivo foi recebido com sucesso").setEphemeral(true).queue();
+                        event.reply("O arquivo foi recebido com sucesso!\n\n Agora eu tenho os usuários, time e as tarefas. Todos já podem usar" +
+                                " os comandos sem problemas! Use os comandos de lista para verificar o conteudo registrado: `/listar...`").setEphemeral(true).queue();
                     } else {
                         event.reply("A sua tabela já foi preenchida com os dados iniciais. Caso queira adicionar dados, você" +
                                 " precisa usar o slash command `/adicionar_func_ao_time`").setEphemeral(true).queue();
