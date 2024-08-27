@@ -4,20 +4,21 @@ import me.cauadeveloper.sqlite.config_banco.ConexaoBanco;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 public class TabelaFunc {
 
-    public static void insert_data_user_func(String[] dataUser) throws SQLException{
+    public static void insert_data_user_func(List<String> dataUser) throws SQLException{
         String sql = """
                 INSERT INTO funcionario(id, nome) values (?,?)
                 """;
         try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
 
-            String[] data = dataUser;
+            List<String> data = dataUser;
 
-            for (int i = 0; i < data.length; i++){
+            for (int i = 0; i < data.size(); i++){
                 stmt.setInt(1, i + 1);
-                stmt.setString(2, data[i]);
+                stmt.setString(2, data.get(i));
                 stmt.execute();
             }
 

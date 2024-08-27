@@ -1,5 +1,7 @@
 package me.cauadeveloper.bot;
 
+import me.cauadeveloper.comandos.barra.admin.geral.Iniciar;
+import me.cauadeveloper.comandos.barra.admin.geral.InserirDadosIniciais;
 import me.cauadeveloper.comandos.barra.geral.Cronometro;
 import me.cauadeveloper.comandos.barra.geral.Ping;
 import me.cauadeveloper.comandos.barra.geral.listas.ListarCagos;
@@ -11,7 +13,7 @@ import me.cauadeveloper.comandos.barra.admin.funcionario.relacao_func_time.Adici
 import me.cauadeveloper.comandos.barra.admin.funcionario.AdicionarAtualizarRemoverFunc;
 import me.cauadeveloper.comandos.barra.admin.cargos.CriarCargos;
 import me.cauadeveloper.comandos.barra.geral.listas.ListarDeTarefas;
-import me.cauadeveloper.comandos.tarefa.ReportarFaltaRecurso;
+import me.cauadeveloper.comandos.barra.geral.ReportarFaltaRecurso;
 import me.cauadeveloper.sqlite.config_banco.Config;
 import me.cauadeveloper.boas_vindas.Apresentacao;
 import net.dv8tion.jda.api.JDA;

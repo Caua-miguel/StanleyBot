@@ -26,7 +26,7 @@ public class RegistrarComandos extends ListenerAdapter {
             OptionData opNomeCargoCopia = new OptionData(OptionType.STRING, "nome_cargo_copia", "Nome do cargo copiado", true);
 
             OptionData opCronometro = new OptionData(OptionType.INTEGER, "tempo_em_minutos", "Tempo em minutos", false);
-            OptionData opIniciar = new OptionData(OptionType.ATTACHMENT, "dados_iniciais", "Arquivo com os dados dos times", true);
+            OptionData opInserirDados = new OptionData(OptionType.ATTACHMENT, "dados_iniciais", "Arquivo com os dados dos times", true);
 
             OptionData opReportarFalta = new OptionData(OptionType.STRING, "item_faltante", "Item em falta", true);
 
@@ -61,6 +61,10 @@ public class RegistrarComandos extends ListenerAdapter {
             commandData.add(Commands.slash("reportar_falta", "Avisa quando faltar algum item.").addOptions(opReportarFalta));
 
 
+
+            // Geral Admin
+            commandData.add(Commands.slash("iniciar", "Mensagem com instruções iniciais sobre o bot."));
+            commandData.add(Commands.slash("inserir_dados_iniciais", "Preenche os dados retornados pelo usuário.").addOptions(opInserirDados));
 
             event.getGuild().updateCommands().addCommands(commandData).queue();
 
