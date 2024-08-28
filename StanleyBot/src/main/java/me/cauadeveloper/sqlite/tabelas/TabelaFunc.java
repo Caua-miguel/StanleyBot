@@ -29,7 +29,8 @@ public class TabelaFunc {
         }
     }
 
-
+//Preciso adicionar um idTime nessa tabela
+// trocar o id para ser o idUser do discord
     public static void create_table() throws SQLException {
 
         String sql = """
