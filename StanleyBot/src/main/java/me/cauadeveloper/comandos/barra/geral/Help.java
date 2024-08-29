@@ -15,7 +15,7 @@ public class Help extends ListenerAdapter {
         EmbedBuilder embed = new EmbedBuilder();
 
         if (command.equalsIgnoreCase("help")){
-
+// Preciso dividir o help nos comandos para o setup inicial e o help com parametro para especificar os outros comandos
 //            String helpArgumento = optionMapping.getAsString();
 
                 embed.setTitle("Help");
