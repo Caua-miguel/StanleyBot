@@ -30,7 +30,7 @@ public class TabelaTarefa {
         }
     }
 
-
+// O id das tarefas vai ter relacao com a tabela func e vai estar presente em tarefas atribuidas quando eu fizer a ficha do funcionario
     public static void create_table() throws SQLException {
 
         String sql = """
