@@ -1,15 +1,15 @@
 package me.cauadeveloper.bot;
 
-import me.cauadeveloper.comandos.barra.admin.geral.Iniciar;
-import me.cauadeveloper.comandos.barra.admin.geral.InserirDadosIniciais;
-import me.cauadeveloper.comandos.barra.geral.*;
-import me.cauadeveloper.comandos.barra.geral.listas.ListarCagos;
-import me.cauadeveloper.comandos.barra.config.RegistrarComandos;
-import me.cauadeveloper.comandos.barra.admin.time.EscolherTimeSemana;
-import me.cauadeveloper.comandos.barra.admin.funcionario.relacao_func_time.AdicionarFuncAoTime;
-import me.cauadeveloper.comandos.barra.admin.funcionario.AdicionarAtualizarRemoverFunc;
-import me.cauadeveloper.comandos.barra.admin.cargos.CriarCargos;
-import me.cauadeveloper.comandos.barra.geral.listas.ListarDeTarefas;
+import me.cauadeveloper.comandos.admin.cargos.CriarCargos;
+import me.cauadeveloper.comandos.admin.funcionario.AdicionarAtualizarRemoverFunc;
+import me.cauadeveloper.comandos.admin.funcionario.relacao_func_time.AdicionarFuncAoTime;
+import me.cauadeveloper.comandos.admin.geral.Iniciar;
+import me.cauadeveloper.comandos.admin.geral.InserirDadosIniciais;
+import me.cauadeveloper.comandos.admin.time.EscolherTimeSemana;
+import me.cauadeveloper.comandos.config.RegistrarComandos;
+import me.cauadeveloper.comandos.geral.*;
+import me.cauadeveloper.comandos.geral.listas.ListarCagos;
+import me.cauadeveloper.comandos.geral.listas.ListarDeTarefas;
 import me.cauadeveloper.sqlite.config_banco.Config;
 import me.cauadeveloper.boas_vindas.Apresentacao;
 import net.dv8tion.jda.api.JDA;
