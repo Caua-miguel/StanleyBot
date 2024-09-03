@@ -31,7 +31,7 @@ public class TabelaFunc {
 
 
     public static void create_table() throws SQLException {
-
+ // Ajustar tabela
         String sql = """
                 CREATE TABLE funcionario (
                     id integer PRIMARY KEY AUTOINCREMENT NOT NULL,
