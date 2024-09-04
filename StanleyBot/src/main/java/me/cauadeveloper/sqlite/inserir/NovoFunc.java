@@ -10,19 +10,17 @@ import static me.cauadeveloper.sqlite.consulta.geral.VerificarTabelaVazia.check_
 
 public class NovoFunc {
 
-    public static void insert_novo_func(String func, String nomeTime) throws SQLException {
+    public static void insert_novo_func(String idDisc, String func, String nomeTime) throws SQLException {
         String sql = """
                 INSERT INTO funcionario(id, nome, idTime) values (?,?,?)
                 """;
-        //Contador para os id da tabela time
-        int contCollumnIdFunc = check_if_tableFunc_is_null();
 
         try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
 
             int  idTime = selectNomeTime(nomeTime);
 
             if (idTime != -1){
-                stmt.setInt(1, contCollumnIdFunc + 1);
+                stmt.setString(1, idDisc);
                 stmt.setString(2, func);
                 stmt.setInt(3, idTime);
                 stmt.execute();

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class RemoverFunc {
 
-    public static void removerFunc(int id) throws SQLException {
+    public static void removerFunc(String idDisc) throws SQLException {
 
         String sql = """
                 DELETE FROM funcionario WHERE id = ?
@@ -15,7 +15,7 @@ public class RemoverFunc {
 
         try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
 
-            stmt.setInt(1, id);
+            stmt.setString(1, idDisc);
             stmt.execute();
 
         }catch (ArrayIndexOutOfBoundsException e){

@@ -19,7 +19,7 @@ public class NamesFuncTest {
         System.out.println(selectNomeFunc());
 
         ArrayList<String> listaFunc = selectNomeFunc();
-        ArrayList<Integer> listaID = selectIdFunc();
+        ArrayList<String> listaID = selectIdFunc();
 
         for (int i = 0; i < listaFunc.size(); i++){
 

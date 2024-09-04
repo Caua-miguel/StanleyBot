@@ -36,6 +36,7 @@ public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event){
 
         String command = event.getName();
+        OptionMapping idDiscOption = event.getOption("id_disc");
         OptionMapping nomeFuncOption = event.getOption("nome_func");
         OptionMapping nomeTimeOption = event.getOption("nome_time");
         Member member = event.getMember();
@@ -51,12 +52,14 @@ public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {
         }
 
         switch (command) {
+            // Vai precisar criar um parâmetro para o usuário do discord
             case "adicionar_funcionario":
                 String nomeFunc = nomeFuncOption.getAsString();
+                String idDisc = idDiscOption.getAsString();
                 String nomeTime = nomeTimeOption.getAsString();
                 try {
-                    insert_novo_func(nomeFunc, nomeTime);
-                    event.reply("Você adicionou o funcionário **" + nomeFunc + "!**\nEles estão no time **" + nomeTime + "!**").setEphemeral(true).queue();
+                    insert_novo_func(idDisc, nomeFunc, nomeTime);
+                    event.reply("Você adicionou o funcionário **" + nomeFunc + "!**\nEle está no time **" + nomeTime + "!**").setEphemeral(true).queue();
                 } catch (SQLException e) {
                     System.out.println("Erro no insert_novo_func do case adicionar_funcionario.\nErro: " + e);
                     event.reply("Não encontrei nenhum time com esse nome! Por favor insira o nome do time corretamente para que seu funcionário possa ser atribuído a algum.").setEphemeral(true).queue();
@@ -66,7 +69,7 @@ public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {
 
                 try {
                     ArrayList<String> listaNomeFunc = selectNomeFunc();
-                    ArrayList<Integer> listaIdFunc = selectIdFunc();
+                    ArrayList<String> listaIdFunc = selectIdFunc();
 
                     event.reply("Escolha um usuário da lista para atualizar, use os identificadores numéricos:").setEphemeral(true).queue();
 
@@ -82,12 +85,12 @@ public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {
 
                 break;
             case "remover_funcionario":
-
+                // Mudar a lista para um StringBuilder
                 try {
                     ArrayList<String> listaNomeFunc = selectNomeFunc();
-                    ArrayList<Integer> listaIdFunc = selectIdFunc();
+                    ArrayList<String> listaIdFunc = selectIdFunc();
 
-                    event.reply("Escolha um usuário da lista para deletar, use os identificadores numéricos:").setEphemeral(true).queue();
+                    event.reply("Escolha um usuário da lista para deletar, **use o id do discord para escolher**:").setEphemeral(true).queue();
 
                     for (int i = 0; i < listaIdFunc.size(); i++){
                         event.getChannel().sendMessage("\n" + listaIdFunc.get(i) + " - " + listaNomeFunc.get(i)).queue();
@@ -121,7 +124,7 @@ public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {
                     stateAtualizaFunc.idFuncSessaoAtualizaFunc = event.getMessage().getContentRaw();
 
                     try {
-                        String relacao_nomeFunc_idFunc = selectUmNomeFunc(Integer.parseInt(stateAtualizaFunc.idFuncSessaoAtualizaFunc));
+                        String relacao_nomeFunc_idFunc = selectUmNomeFunc(stateAtualizaFunc.idFuncSessaoAtualizaFunc);
 
                         stateAtualizaFunc.stepAtualizaFunc = 1;
                         event.getChannel().sendMessage("Por favor, escreva um novo nome para o funcionário **" + relacao_nomeFunc_idFunc + "**, para que ele seja atualizado!").queue();
@@ -154,11 +157,11 @@ public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {
             if (stateDeletaFunc.stepDeletaFunc == 0) {
                 stateDeletaFunc.idFuncSessaoDeletaFunc = event.getMessage().getContentRaw();
                 try {
-                    String relacao_nomeFunc_idFunc = selectUmNomeFunc(Integer.parseInt(stateDeletaFunc.idFuncSessaoDeletaFunc));
-                    removerFunc(Integer.parseInt(stateDeletaFunc.idFuncSessaoDeletaFunc));
+                    String relacao_nomeFunc_idFunc = selectUmNomeFunc(stateDeletaFunc.idFuncSessaoDeletaFunc);
+                    removerFunc(stateDeletaFunc.idFuncSessaoDeletaFunc);
                     event.getChannel().sendMessage("O funcionário **" + relacao_nomeFunc_idFunc + "** foi removido com sucesso!").queue();
                     conversationDeletaFunc.remove(user);
-                } catch (SQLException | NumberFormatException e) {
+                } catch (SQLException e) {
                     event.getChannel().sendMessage("Por favor, use os identificadores numéricos para selecionar um usuário!.").queue();
                 } catch (RuntimeException e){
                     event.getChannel().sendMessage("Usuário não encontrado! Por favor, selecione um usuário válido!").queue();

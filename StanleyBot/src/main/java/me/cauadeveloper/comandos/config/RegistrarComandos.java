@@ -20,6 +20,7 @@ public class RegistrarComandos extends ListenerAdapter {
 
             // Parâmetros
             OptionData opNomeFunc = new OptionData(OptionType.STRING, "nome_func", "Nome do funcionário", true);
+            OptionData opIdDisc = new OptionData(OptionType.STRING, "id_disc", "Id do discord", true);
             OptionData opNomeTime = new OptionData(OptionType.STRING, "nome_time", "Nome do time", true);
 
             OptionData opNomeCargo = new OptionData(OptionType.STRING, "nome_cargo", "Nome do cargo", true);
@@ -41,7 +42,7 @@ public class RegistrarComandos extends ListenerAdapter {
 
             // Funcionário
             commandData.add(Commands.slash("adicionar_func_ao_time", "Adiciona um funcionário ao time selecionado."));
-            commandData.add(Commands.slash("adicionar_funcionario", "Adiciona um novo funcionario a tabela funcionario.").addOptions(opNomeFunc).addOptions(opNomeTime));
+            commandData.add(Commands.slash("adicionar_funcionario", "Adiciona um novo funcionario a tabela funcionario.").addOptions(opIdDisc).addOptions(opNomeFunc).addOptions(opNomeTime));
             commandData.add(Commands.slash("atualizar_funcionario", "Atualiza os dados de um funcionario"));
             commandData.add(Commands.slash("remover_funcionario", "Remove um funcionario"));
 

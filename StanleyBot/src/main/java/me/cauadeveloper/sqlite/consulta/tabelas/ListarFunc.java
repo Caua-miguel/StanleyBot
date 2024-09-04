@@ -30,7 +30,7 @@ public class ListarFunc {
         return list;
     }
 
-    public static String selectUmNomeFunc(int idFunc) throws SQLException {
+    public static String selectUmNomeFunc(String idFunc) throws SQLException {
 
         String sql = """
                 SELECT nome from funcionario WHERE id = ?
@@ -39,7 +39,7 @@ public class ListarFunc {
         try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
 
 
-            stmt.setInt(1, idFunc);
+            stmt.setString(1, idFunc);
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()){
@@ -52,12 +52,12 @@ public class ListarFunc {
         throw new RuntimeException();
     }
 
-    public static ArrayList<Integer> selectIdFunc() throws SQLException {
+    public static ArrayList<String> selectIdFunc() throws SQLException {
 
         String sql = """
                 SELECT id from funcionario
                 """;
-        ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
 
 
         try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
@@ -65,7 +65,7 @@ public class ListarFunc {
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()){
-                list.add(resultSet.getInt("id"));
+                list.add(resultSet.getString("id"));
             }
 
         }catch (SQLException e){
