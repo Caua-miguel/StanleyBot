@@ -8,17 +8,18 @@ import java.util.List;
 
 public class TabelaFunc {
 
-    public static void insert_data_user_func(List<String> dataUser) throws SQLException{
+    public static void insert_data_user_func(List<String> dadosDisc, List<String> nomeFunc) throws SQLException{
         String sql = """
                 INSERT INTO funcionario(id, nome) values (?,?)
                 """;
         try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
 
-            List<String> data = dataUser;
+            List<String> usuariosDiscord = dadosDisc;
+            List<String> funcionarios = nomeFunc;
 
-            for (int i = 0; i < data.size(); i++){
-                stmt.setInt(1, i + 1);
-                stmt.setString(2, data.get(i));
+            for (int i = 0; i < usuariosDiscord.size()-1; i++){
+                stmt.setString(1, usuariosDiscord.get(i));
+                stmt.setString(2, funcionarios.get(i));
                 stmt.execute();
             }
 
@@ -29,16 +30,15 @@ public class TabelaFunc {
         }
     }
 
-//Preciso adicionar um idTime nessa tabela
-// trocar o id para ser o idUser do discord
     public static void create_table() throws SQLException {
- // Ajustar tabela
         String sql = """
                 CREATE TABLE funcionario (
-                    id integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+                    id varchar(255) PRIMARY KEY NOT NULL,
                     nome varchar(255) NOT NULL,
                     idTime,
+                    idTarefa,
                     FOREIGN KEY (idTime) REFERENCES time (id)
+                    FOREIGN KEY (idTarefa) REFERENCES tarefa (id)
                 )
                 """;
         try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){

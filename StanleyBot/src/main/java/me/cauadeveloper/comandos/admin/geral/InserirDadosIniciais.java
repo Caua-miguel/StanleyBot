@@ -42,7 +42,7 @@ public class InserirDadosIniciais extends ListenerAdapter {
             try {
                     // Vou precisar resolver o problema de o usuário preencher de maneira errada as tabelas e precisar refazer.
                     if (check_if_tableFunc_is_null() == 0) {
-                        TabelaFunc.insert_data_user_func(readFileUserCollumnA(arquivoRetornado));
+                        TabelaFunc.insert_data_user_func(readFileUserCollumnA(arquivoRetornado),  readFileUserCollumnC(arquivoRetornado));
                         TabelaTarefa.insert_data_user_tarefa(readFileUserCollumnI(arquivoRetornado));
                         TabelaTime.insert_data_user_time(readFileUserCollumnE(arquivoRetornado));
                         event.reply("O arquivo foi recebido com sucesso!\n\n Agora eu tenho os usuários, time e as tarefas. Todos já podem usar" +
