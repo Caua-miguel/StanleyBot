@@ -7,16 +7,17 @@ import java.sql.SQLException;
 
 public class AtualizarFunc {
 
-    public static void updateFuncionario(int id, String nomeFunc) throws SQLException{
+    public static void updateFuncionario(String id, String nome) throws SQLException{
 
         String sql = """
-                UPDATE funcionario set nome = ? WHERE id = ?
+                UPDATE funcionario set id = ?, nome = ? WHERE id = ?
                 """;
 
         try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
 
-                stmt.setString(1, nomeFunc);
-                stmt.setInt(2, id);
+                stmt.setString(1, id);
+                stmt.setString(2, nome);
+                stmt.setString(3, id);
                 stmt.executeUpdate();
 
         }catch (ArrayIndexOutOfBoundsException e){

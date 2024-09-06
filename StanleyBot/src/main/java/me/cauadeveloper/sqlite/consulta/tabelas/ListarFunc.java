@@ -52,20 +52,20 @@ public class ListarFunc {
         throw new RuntimeException();
     }
 
-    public static ArrayList<String> selectIdFunc() throws SQLException {
+    public static ArrayList<String> selectRelacaoIdFunc() throws SQLException {
 
         String sql = """
-                SELECT id from funcionario
+                select id, nome from funcionario
                 """;
         ArrayList<String> list = new ArrayList<>();
-
 
         try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
 
             ResultSet resultSet = stmt.executeQuery();
-
             while (resultSet.next()){
-                list.add(resultSet.getString("id"));
+                String consultaIDAtual = resultSet.getString("id");
+                String consultaNomeAtual = resultSet.getString("nome");
+                list.add(consultaIDAtual + " - " + consultaNomeAtual);
             }
 
         }catch (SQLException e){
