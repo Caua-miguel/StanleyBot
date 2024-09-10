@@ -22,14 +22,9 @@ public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {
     private final Map<User, ConversationstateAtualizaFuncAtualizaFunc> conversationAtualizaFunc = new HashMap<>();
     private final Map<User, ConversationstateAtualizaFuncDeletaFunc> conversationDeletaFunc = new HashMap<>();
 
-    private String idDisc = "";
-    private String nome = "";
-    private int idTime = 0;
-    private int idTarefa = 0;
-
     private static class ConversationstateAtualizaFuncAtualizaFunc{
         int stepAtualizaFunc = 0;
-        String idFuncSessaoAtualizaFunc, nomeFuncSessaoAtualizaFunc;
+        String idFuncSessaoAtualizaFunc, nomeFuncSessaoAtualizaFunc, novoIdFuncSessaoAtualizaFunc, novoNomeFuncSessaoAtualizaFunc;
     }
 
     private static class ConversationstateAtualizaFuncDeletaFunc{
@@ -130,14 +125,12 @@ public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {
             switch (stateAtualizaFunc.stepAtualizaFunc) {
 
                 case 0:
-
-                    stateAtualizaFunc.idFuncSessaoAtualizaFunc = event.getMessage().getContentRaw();
-
                     try {
+                        stateAtualizaFunc.idFuncSessaoAtualizaFunc = event.getMessage().getContentRaw();
                         String relacao_nomeFunc_idFunc = selectUmNomeFunc(stateAtualizaFunc.idFuncSessaoAtualizaFunc);
 
                         stateAtualizaFunc.stepAtualizaFunc = 1;
-                        event.getChannel().sendMessage("Por favor, escreva um novo id do Discord para o funcionário **" + relacao_nomeFunc_idFunc + "**, para que ele seja atualizado!").queue();
+                        event.getChannel().sendMessage("Por favor, escreva um novo id do Discord para o funcionário **"+ stateAtualizaFunc.idFuncSessaoAtualizaFunc+ " - " + relacao_nomeFunc_idFunc + "**, para que ele seja atualizado!").queue();
 
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
@@ -148,28 +141,23 @@ public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {
 
                 case 1:
 
-                    stateAtualizaFunc.idFuncSessaoAtualizaFunc = event.getMessage().getContentRaw();
-
                     try {
-                        idDisc = stateAtualizaFunc.idFuncSessaoAtualizaFunc;
-                        String relacao_nomeFunc_idFunc = selectUmNomeFunc(stateAtualizaFunc.idFuncSessaoAtualizaFunc);
+                        stateAtualizaFunc.novoIdFuncSessaoAtualizaFunc = event.getMessage().getContentRaw();
 
                         stateAtualizaFunc.stepAtualizaFunc = 2;
-                        event.getChannel().sendMessage("Por favor, escreva um novo nome para o funcionário **" + relacao_nomeFunc_idFunc + "**, para que ele seja atualizado!").queue();
+                        event.getChannel().sendMessage("Por favor, escreva um novo nome para o funcionário **"+ stateAtualizaFunc.novoIdFuncSessaoAtualizaFunc + " **, para que ele seja atualizado!").queue();
 
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
-                    } catch (NumberFormatException e) {
+                     } catch (NumberFormatException e) {
                         event.getChannel().sendMessage("Por favor, use os identificadores numéricos para selecionar um usuário!").queue();
                     }
                     break;
 
                 case 2:
-                    stateAtualizaFunc.nomeFuncSessaoAtualizaFunc = event.getMessage().getContentRaw();
+
+                    stateAtualizaFunc.novoNomeFuncSessaoAtualizaFunc = event.getMessage().getContentRaw();
 
                     try {
-                        nome = stateAtualizaFunc.idFuncSessaoAtualizaFunc;
-                        updateFuncionario(idDisc, nome);
+                        updateFuncionario(stateAtualizaFunc.novoIdFuncSessaoAtualizaFunc, stateAtualizaFunc.novoNomeFuncSessaoAtualizaFunc, stateAtualizaFunc.idFuncSessaoAtualizaFunc);
                         event.getChannel().sendMessage("Funcionário atualizado com sucesso!").queue();
                         conversationAtualizaFunc.remove(user);
                     } catch (SQLException e) {
