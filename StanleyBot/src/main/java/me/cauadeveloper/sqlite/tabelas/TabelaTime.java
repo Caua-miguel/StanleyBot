@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import static me.cauadeveloper.utils.constantes.VariaveisAuxiliares.currentID;
+import static me.cauadeveloper.utils.constantes.VariaveisAuxiliares.ID_ATUAL;
 
 public class TabelaTime {
 
@@ -42,7 +42,7 @@ public class TabelaTime {
 
         try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
 
-            stmt.setInt(1, currentID-1);
+            stmt.setInt(1, ID_ATUAL-1);
 
             ResultSet resultSet = stmt.executeQuery();
 
@@ -66,7 +66,7 @@ public class TabelaTime {
 
         try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
 
-            stmt.setInt(1, currentID);
+            stmt.setInt(1, ID_ATUAL);
             stmt.execute();
 
         }catch (SQLException e){

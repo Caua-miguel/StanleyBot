@@ -11,7 +11,7 @@ import java.util.concurrent.*;
 import static java.util.concurrent.TimeUnit.DAYS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static me.cauadeveloper.sqlite.consulta.geral.ContadorLinhasTabela.maxLinesTableTime;
-import static me.cauadeveloper.utils.constantes.VariaveisAuxiliares.currentID;
+import static me.cauadeveloper.utils.constantes.VariaveisAuxiliares.ID_ATUAL;
 
 
 public class EscolherTimeSemana extends ListenerAdapter {
@@ -43,16 +43,16 @@ public class EscolherTimeSemana extends ListenerAdapter {
             final Runnable timeSemana = new Runnable() {
                 public void run() {
                     try {
-                        if (currentID > maxLinesTableTime()){
-                            currentID = 1;
+                        if (ID_ATUAL > maxLinesTableTime()){
+                            ID_ATUAL = 1;
                             TabelaTime.updateAll();
                             TabelaTime.update();
-                            currentID++;
+                            ID_ATUAL++;
                             String nomeGrupo = TabelaTime.select();
                             event.getChannel().sendMessage("Seu grupo da semana é: " + nomeGrupo).queue();
                         }else{
                             TabelaTime.update();
-                            currentID++;
+                            ID_ATUAL++;
                             String nomeGrupo = TabelaTime.select();
                             event.getChannel().sendMessage("Seu grupo da semana é: " + nomeGrupo).queue();
                         }

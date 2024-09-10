@@ -2,6 +2,6 @@ package me.cauadeveloper.utils.constantes;
 
 public class VariaveisAuxiliares {
 
-        public static int currentID = 1;
+        public static int ID_ATUAL = 1;
 
 }
