@@ -42,24 +42,28 @@ public class RegistrarComandos extends ListenerAdapter {
 
             // Funcionário
             commandData.add(Commands.slash("adicionar_func_ao_time", "Adiciona um funcionário ao time selecionado."));
-            commandData.add(Commands.slash("adicionar_funcionario", "Adiciona um novo funcionario a tabela funcionario.").addOptions(opIdDisc).addOptions(opNomeFunc).addOptions(opNomeTime));
-            commandData.add(Commands.slash("atualizar_funcionario", "Atualiza os dados de um funcionario"));
-            commandData.add(Commands.slash("remover_funcionario", "Remove um funcionario"));
+            commandData.add(Commands.slash("adicionar_funcionario", "Adiciona um novo funcionário a tabela funcionário.").addOptions(opIdDisc).addOptions(opNomeFunc).addOptions(opNomeTime));
+            commandData.add(Commands.slash("atualizar_funcionario", "Atualiza os dados de um funcionário"));
+            commandData.add(Commands.slash("remover_funcionario", "Remove um funcionário"));
+            commandData.add(Commands.slash("listar_funcionario", "Lista os funcionários"));
 
+            // Relação funcionário-time
+
+            commandData.add(Commands.slash("listar_funcionarios_do_time", "Lista os funcionários em um time específico").addOptions(opNomeTime));
 
             //Time
             commandData.add(Commands.slash("escolher_time_da_semana", "Decide qual time da semana vai ficar responsável pelo café."));
+            commandData.add(Commands.slash("listar_times", "Lista dos times cadastrados"));
 
 
             //Tarefa
 
-
+            commandData.add(Commands.slash("listar_tarefas", "Exibe um lista de tarefas."));
 
             // Geral
             commandData.add(Commands.slash("cronometro", "Vai gerar um aviso quando o tempo acabar.").addOptions(opCronometro));
             commandData.add(Commands.slash("ping", "Exibe o ping do bot."));
             commandData.add(Commands.slash("time_da_semana", "Mostra qual time é responsável pelo café essa semana."));
-            commandData.add(Commands.slash("listar_tarefas", "Exibe um lista de tarefas."));
             commandData.add(Commands.slash("reportar_falta", "Avisa quando faltar algum item.").addOptions(opReportarFalta));
             commandData.add(Commands.slash("help", "Mostra como funcionam os comandos do bot."));
 

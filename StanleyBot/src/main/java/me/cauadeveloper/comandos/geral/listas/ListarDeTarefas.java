@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListarTarefas.selectListaTarefas;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTarefas.selectListaTarefas;
 
 public class ListarDeTarefas extends ListenerAdapter {
 
@@ -28,7 +28,7 @@ public class ListarDeTarefas extends ListenerAdapter {
                         stringBuilder.append("\n");
                     }
                 }
-                event.reply("Lista das tarefas:\n\n" +  stringBuilder.toString()).setEphemeral(true).queue();
+                event.reply("**Lista das tarefas:**\n" +  stringBuilder.toString()).setEphemeral(true).queue();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

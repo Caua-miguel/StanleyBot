@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ListarFunc {
+public class ListaFunc {
 
     public static ArrayList<String> selectNomeFunc() throws SQLException {
 
@@ -66,6 +66,30 @@ public class ListarFunc {
                 String consultaIDAtual = resultSet.getString("id");
                 String consultaNomeAtual = resultSet.getString("nome");
                 list.add(consultaIDAtual + " - " + consultaNomeAtual);
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static ArrayList<String> selectRelacaoFuncTime(int idTime) throws SQLException {
+
+        String sql = """
+                SELECT nome from funcionario WHERE idTime = ?
+                """;
+
+        ArrayList<String> list = new ArrayList<>();
+
+        try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
+
+
+            stmt.setInt(1, idTime);
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()){
+                list.add( resultSet.getString("nome"));
             }
 
         }catch (SQLException e){

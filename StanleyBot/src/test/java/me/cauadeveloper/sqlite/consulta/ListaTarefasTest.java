@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListarTarefas.selectListaTarefas;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTarefas.selectListaTarefas;
 
-public class ListarTarefasTest {
+public class ListaTarefasTest {
 
     @Test
     @DisplayName("Saída da lista de tarefas")

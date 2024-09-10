@@ -12,8 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListarTimes.selectAllNomeTime;
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListarFunc.selectNomeFunc;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTimes.selectAllNomeTime;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaFunc.selectNomeFunc;
 import static me.cauadeveloper.sqlite.consulta.relacao_tabelas.RelacaoFuncTime.insert_idTime_in_func;
 
 public class AdicionarFuncAoTime extends ListenerAdapter{

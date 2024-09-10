@@ -4,9 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListarFunc.*;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaFunc.selectRelacaoFuncTime;
 
 
 public class NamesFuncTest {
@@ -15,7 +14,7 @@ public class NamesFuncTest {
     @DisplayName("Resultado para a query que retorna as colunas id e nome da tabela funcionario")
     public void saidaDoArrayComIntegerESring() throws SQLException {
 
-        System.out.println(selectIdFunc());
+        System.out.println(selectRelacaoFuncTime(2));
 //        System.out.println(selectNomeFunc());
 
 

@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ListarTimes {
+public class ListaTimes {
 
     public static ArrayList<String> selectAllNomeTime() throws SQLException {
 

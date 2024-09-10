@@ -14,7 +14,7 @@ import java.util.Map;
 
 import static me.cauadeveloper.sqlite.remover.RemoverFunc.removerFunc;
 import static me.cauadeveloper.sqlite.inserir.NovoFunc.insert_novo_func;
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListarFunc.*;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaFunc.*;
 import static me.cauadeveloper.sqlite.atualizar.AtualizarFunc.updateFuncionario;
 
 public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {

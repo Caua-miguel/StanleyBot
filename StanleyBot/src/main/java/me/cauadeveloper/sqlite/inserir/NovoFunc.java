@@ -5,8 +5,7 @@ import me.cauadeveloper.sqlite.config_banco.ConexaoBanco;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListarTimes.selectNomeTime;
-import static me.cauadeveloper.sqlite.consulta.geral.VerificarTabelaVazia.check_if_tableFunc_is_null;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTimes.selectNomeTime;
 
 public class NovoFunc {
 

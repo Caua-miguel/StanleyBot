@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ListarTarefas {
+public class ListaTarefas {
 
     public static ArrayList<String> selectListaTarefas() throws SQLException {
 

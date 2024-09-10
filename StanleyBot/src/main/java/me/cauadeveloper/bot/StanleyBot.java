@@ -8,8 +8,7 @@ import me.cauadeveloper.comandos.admin.geral.InserirDadosIniciais;
 import me.cauadeveloper.comandos.admin.time.EscolherTimeSemana;
 import me.cauadeveloper.comandos.config.RegistrarComandos;
 import me.cauadeveloper.comandos.geral.*;
-import me.cauadeveloper.comandos.geral.listas.ListarCagos;
-import me.cauadeveloper.comandos.geral.listas.ListarDeTarefas;
+import me.cauadeveloper.comandos.geral.listas.*;
 import me.cauadeveloper.sqlite.config_banco.Config;
 import me.cauadeveloper.boas_vindas.Apresentacao;
 import net.dv8tion.jda.api.JDA;
@@ -41,6 +40,9 @@ public class StanleyBot {
         jda.addEventListener(new RegistrarComandos());
         jda.addEventListener(new ListarDeTarefas());
         jda.addEventListener(new ListarCagos());
+        jda.addEventListener(new ListarTimes());
+        jda.addEventListener(new ListarFuncionarios());
+        jda.addEventListener(new ListarFuncDoTime());
 
     }
 }
