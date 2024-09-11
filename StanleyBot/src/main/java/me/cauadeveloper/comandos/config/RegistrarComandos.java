@@ -54,6 +54,9 @@ public class RegistrarComandos extends ListenerAdapter {
             //Time
             commandData.add(Commands.slash("escolher_time_da_semana", "Decide qual time da semana vai ficar responsável pelo café."));
             commandData.add(Commands.slash("listar_times", "Lista dos times cadastrados"));
+            commandData.add(Commands.slash("adicionar_time", "Adiciona um novo time").addOptions(opNomeTime));
+            commandData.add(Commands.slash("atualizar_time", "Atualiza o nome de um time existente"));
+            commandData.add(Commands.slash("remover_time", "Remove um time"));
 
 
             //Tarefa

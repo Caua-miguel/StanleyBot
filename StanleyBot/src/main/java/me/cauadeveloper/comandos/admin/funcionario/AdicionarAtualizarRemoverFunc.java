@@ -24,7 +24,7 @@ public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {
 
     private static class ConversationstateAtualizaFuncAtualizaFunc{
         int stepAtualizaFunc = 0;
-        String idFuncSessaoAtualizaFunc, nomeFuncSessaoAtualizaFunc, novoIdFuncSessaoAtualizaFunc, novoNomeFuncSessaoAtualizaFunc;
+        String idFuncSessaoAtualizaFunc, novoIdFuncSessaoAtualizaFunc, novoNomeFuncSessaoAtualizaFunc;
     }
 
     private static class ConversationstateAtualizaFuncDeletaFunc{
@@ -119,8 +119,6 @@ public class AdicionarAtualizarRemoverFunc extends ListenerAdapter {
         ConversationstateAtualizaFuncAtualizaFunc stateAtualizaFunc = conversationAtualizaFunc.get(user);
 
         if (stateAtualizaFunc != null) {
-
-
 
             switch (stateAtualizaFunc.stepAtualizaFunc) {
 

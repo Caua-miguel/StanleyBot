@@ -5,6 +5,7 @@ import me.cauadeveloper.comandos.admin.funcionario.AdicionarAtualizarRemoverFunc
 import me.cauadeveloper.comandos.admin.funcionario.relacao_func_time.AdicionarFuncAoTime;
 import me.cauadeveloper.comandos.admin.geral.Iniciar;
 import me.cauadeveloper.comandos.admin.geral.InserirDadosIniciais;
+import me.cauadeveloper.comandos.admin.time.AdicionarAtualizarRemoverTime;
 import me.cauadeveloper.comandos.admin.time.EscolherTimeSemana;
 import me.cauadeveloper.comandos.config.RegistrarComandos;
 import me.cauadeveloper.comandos.geral.*;
@@ -43,6 +44,7 @@ public class StanleyBot {
         jda.addEventListener(new ListarTimes());
         jda.addEventListener(new ListarFuncionarios());
         jda.addEventListener(new ListarFuncDoTime());
+        jda.addEventListener(new AdicionarAtualizarRemoverTime());
 
     }
 }
