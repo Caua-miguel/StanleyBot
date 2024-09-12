@@ -28,7 +28,7 @@ public class ListarFuncionarios extends ListenerAdapter {
                         stringBuilder.append("\n");
                     }
                 }
-                event.reply("**Lista dos funcionários cadastrados:**\n" +  stringBuilder.toString()).setEphemeral(true).queue();
+                event.reply("**Lista dos funcionários cadastrados:**\n" +  stringBuilder).setEphemeral(true).queue();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

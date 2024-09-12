@@ -28,7 +28,7 @@ public class ListarTimes extends ListenerAdapter {
                         stringBuilder.append("\n");
                     }
                 }
-                event.reply("**Lista dos times cadastrados:**\n" +  stringBuilder.toString()).setEphemeral(true).queue();
+                event.reply("**Lista dos times cadastrados:**\n" +  stringBuilder).setEphemeral(true).queue();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

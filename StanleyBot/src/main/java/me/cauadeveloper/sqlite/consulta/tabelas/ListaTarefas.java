@@ -12,7 +12,13 @@ public class ListaTarefas {
     public static ArrayList<String> selectListaTarefas() throws SQLException {
 
         String sql = """
-                SELECT descricao from tarefa
+                SELECT
+                    CASE
+                        WHEN instr(descricao, ' ') > 0 THEN substr(descricao, 1, instr(descricao, ' ') - 1) || '...'
+                        ELSE descricao
+                    END AS primeira_palavra
+                FROM
+                    tarefa;
                 """;
         ArrayList<String> list = new ArrayList<>();
 
@@ -21,13 +27,41 @@ public class ListaTarefas {
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()){
-                list.add(resultSet.getString("descricao"));
+                list.add(resultSet.getString("primeira_palavra"));
             }
 
         }catch (SQLException e){
             e.printStackTrace();
         }
         return list;
+    }
+
+    public static String selectUmaDescTarefas(int idTarefa) throws SQLException {
+
+        String sql = """
+                SELECT
+                    CASE
+                        WHEN instr(descricao, ' ') > 0 THEN substr(descricao, 1, instr(descricao, ' ') - 1) || '...'
+                        ELSE descricao
+                    END AS primeira_palavra
+                FROM
+                    tarefa
+                WHERE id = ?;
+                """;
+
+        try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
+
+            stmt.setInt(1, idTarefa);
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()){
+                return resultSet.getString("primeira_palavra");
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        throw new RuntimeException();
     }
 
 }

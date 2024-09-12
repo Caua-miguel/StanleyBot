@@ -26,4 +26,20 @@ public class ContadorLinhasTabela {
         return 0;
     }
 
+    public static int maxLinesTableTarefa() throws SQLException {
+
+        String sql = """
+                SELECT COUNT(*) as contador FROM tarefa
+                """;
+        try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
+
+            ResultSet resultSet =  stmt.executeQuery();
+            return resultSet.getInt("contador");
+
+        }catch (SQLException e){
+            System.out.println("Erro no check_if_tableFunc_is_null\n" + e.getMessage());
+        }
+        return 0;
+    }
+
 }

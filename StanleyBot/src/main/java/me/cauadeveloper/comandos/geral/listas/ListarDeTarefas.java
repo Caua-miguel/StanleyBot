@@ -28,7 +28,7 @@ public class ListarDeTarefas extends ListenerAdapter {
                         stringBuilder.append("\n");
                     }
                 }
-                event.reply("**Lista das tarefas:**\n" +  stringBuilder.toString()).setEphemeral(true).queue();
+                event.reply("**Lista das tarefas:**\n" +  stringBuilder).setEphemeral(true).queue();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

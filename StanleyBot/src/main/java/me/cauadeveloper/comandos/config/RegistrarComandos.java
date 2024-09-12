@@ -22,6 +22,7 @@ public class RegistrarComandos extends ListenerAdapter {
             OptionData opNomeFunc = new OptionData(OptionType.STRING, "nome_func", "Nome do funcionário", true);
             OptionData opIdDisc = new OptionData(OptionType.STRING, "id_disc", "Id do discord", true);
             OptionData opNomeTime = new OptionData(OptionType.STRING, "nome_time", "Nome do time", true);
+            OptionData opNomeTarefa = new OptionData(OptionType.STRING, "desc_tarefa", "Descrição da tarefa", true);
 
             OptionData opNomeCargo = new OptionData(OptionType.STRING, "nome_cargo", "Nome do cargo", true);
             OptionData opNomeCargoCopia = new OptionData(OptionType.STRING, "nome_cargo_copia", "Nome do cargo copiado", true);
@@ -62,6 +63,9 @@ public class RegistrarComandos extends ListenerAdapter {
             //Tarefa
 
             commandData.add(Commands.slash("listar_tarefas", "Exibe um lista de tarefas."));
+            commandData.add(Commands.slash("adicionar_tarefa", "Adiciona uma nova tarefa").addOptions(opNomeTarefa));
+            commandData.add(Commands.slash("atualizar_tarefa", "Atualiza o nome de uma tarefa existente"));
+            commandData.add(Commands.slash("remover_tarefa", "Remove um tarefa"));
 
             // Geral
             commandData.add(Commands.slash("cronometro", "Vai gerar um aviso quando o tempo acabar.").addOptions(opCronometro));

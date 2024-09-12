@@ -31,7 +31,7 @@ public class ListarFuncDoTime extends ListenerAdapter {
                         stringBuilder.append("\n");
                     }
                 }
-                event.reply("**Lista dos funcionários que fazem parte do time `" + nomeTime +"`:**\n" +  stringBuilder.toString()).setEphemeral(true).queue();
+                event.reply("**Lista dos funcionários que fazem parte do time `" + nomeTime +"`:**\n" +  stringBuilder).setEphemeral(true).queue();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

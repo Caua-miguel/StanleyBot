@@ -1,4 +1,4 @@
-package me.cauadeveloper.comandos.admin.time;
+package me.cauadeveloper.comandos.admin.tarefa;
 
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
@@ -7,28 +7,31 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static me.cauadeveloper.sqlite.atualizar.AtualizarTime.updateTime;
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTimes.*;
-import static me.cauadeveloper.sqlite.inserir.NovoTime.insertNovoTime;
-import static me.cauadeveloper.sqlite.remover.RemoverTime.removerTime;
+import static me.cauadeveloper.sqlite.atualizar.AtualizaTarefa.updateTarefa;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTarefas.selectListaTarefas;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTarefas.selectUmaDescTarefas;
+import static me.cauadeveloper.sqlite.inserir.NovaTarefa.insertNovaTarefa;
+import static me.cauadeveloper.sqlite.remover.RemoverTarefa.removerTarefa;
 
-public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
+public class AdicionarAtualizarRemoverTarefa extends ListenerAdapter {
 
-    private final Map<User, ConversationstateAtualizaTime> conversationAtualizaTime = new HashMap<>();
-    private final Map<User, ConversationstateDeletaTime> conversationDeletaTime = new HashMap<>();
 
-    private static class ConversationstateAtualizaTime{
+    private final Map<User, ConversationstateAtualizaTarefa> conversationAtualizaTarefa = new HashMap<>();
+    private final Map<User, ConversationDeletaTarefa> conversationDeletaTarefa = new HashMap<>();
+
+    private static class ConversationstateAtualizaTarefa{
         int stepAtualizaTime = 0;
         String nomeTimeSessaoAtualizaTime;
         String novoNomeTimeSessaoAtualizaTime;
     }
 
-    private static class ConversationstateDeletaTime{
+    private static class ConversationDeletaTarefa{
         int stepDeletaTime = 0;
         String nomeTimeSessaoDeletaTime;
     }
@@ -37,7 +40,7 @@ public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event){
 
         String command = event.getName();
-        OptionMapping nomeTimeOption = event.getOption("nome_time");
+        OptionMapping nomeTarefaOption = event.getOption("desc_tarefa");
         Member member = event.getMember();
 
         if (member == null) {
@@ -51,52 +54,52 @@ public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
         }
 
         switch (command) {
-            case "adicionar_time":
-                String nomeTime = nomeTimeOption.getAsString();
+            case "adicionar_tarefa":
+                String descTarefa = nomeTarefaOption.getAsString();
                 try {
 
-                    insertNovoTime(nomeTime);
-                    event.reply("Você adicionou o time **" + nomeTime + "**\n").setEphemeral(true).queue();
+                    insertNovaTarefa(descTarefa);
+                    event.reply("Você adicionou uma nova tarefa!\n").setEphemeral(true).queue();
 
                 } catch (SQLException e) {
-                    System.out.println("Erro no insertNovoTime - adicionar_time.\nErro: " + e);
+                    System.out.println("Erro no insertNovaTarefa.\nErro: " + e);
                 }
                 break;
-            case "atualizar_time":
+            case "atualizar_tarefa":
 
                 try {
-                    ArrayList<String> listaNomeTimes = selectAllNomeTime();
+                    ArrayList<String> listaDescTarefas = selectListaTarefas();
                     StringBuilder stringBuilder = new StringBuilder();
 
-                    for (int i = 0; i < listaNomeTimes.size(); i++){
-                        stringBuilder.append((i + 1) + " - " + listaNomeTimes.get(i));
-                        if (i < listaNomeTimes.size()-1){
+                    for (int i = 0; i < listaDescTarefas.size(); i++){
+                        stringBuilder.append((i + 1) + " - " + listaDescTarefas.get(i));
+                        if (i < listaDescTarefas.size()-1){
                             stringBuilder.append("\n");
                         }
                     }
 
-                    event.reply("Escolha um time da lista para atualizar (use os identificadores numericos):\n" + stringBuilder.toString()).setEphemeral(true).queue();
+                    event.reply("Escolha uma tarefa da lista para atualizar (use os identificadores numéricos):\n" + stringBuilder).setEphemeral(true).queue();
 
-                    conversationAtualizaTime.put(event.getUser(), new ConversationstateAtualizaTime());
+                    conversationAtualizaTarefa.put(event.getUser(), new ConversationstateAtualizaTarefa());
 
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
                 break;
-            case "remover_time":
+            case "remover_tarefa":
                 try {
-                    ArrayList<String> listaNomeTimes = selectAllNomeTime();
+                    ArrayList<String> listaDescTarefas = selectListaTarefas();
                     StringBuilder stringBuilder = new StringBuilder();
 
-                    for (int i = 0; i < listaNomeTimes.size(); i++){
-                        stringBuilder.append((i + 1) + " - " + listaNomeTimes.get(i));
-                        if (i < listaNomeTimes.size()-1){
+                    for (int i = 0; i < listaDescTarefas.size(); i++){
+                        stringBuilder.append((i + 1) + " - " + listaDescTarefas.get(i));
+                        if (i < listaDescTarefas.size()-1){
                             stringBuilder.append("\n");
                         }
                     }
-                    event.reply("Escolha um time da lista para deletar:\n" + stringBuilder.toString()).setEphemeral(true).queue();
+                    event.reply("Escolha uma tarefa da lista para deletar:\n" + stringBuilder).setEphemeral(true).queue();
 
-                    conversationDeletaTime.put(event.getUser(), new ConversationstateDeletaTime());
+                    conversationDeletaTarefa.put(event.getUser(), new ConversationDeletaTarefa());
 
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
@@ -113,19 +116,19 @@ public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
         }
 
         User user = event.getAuthor();
-        ConversationstateAtualizaTime stateAtualizaFunc = conversationAtualizaTime.get(user);
+        ConversationstateAtualizaTarefa stateAtualizaTarefa = conversationAtualizaTarefa.get(user);
 
-        if (stateAtualizaFunc != null) {
+        if (stateAtualizaTarefa != null) {
 
-            switch (stateAtualizaFunc.stepAtualizaTime) {
+            switch (stateAtualizaTarefa.stepAtualizaTime) {
 
                 case 0:
                     try {
-                        stateAtualizaFunc.nomeTimeSessaoAtualizaTime = event.getMessage().getContentRaw();
-                        String nomeTime = selectNomeTime(Integer.valueOf(stateAtualizaFunc.nomeTimeSessaoAtualizaTime));
+                        stateAtualizaTarefa.nomeTimeSessaoAtualizaTime = event.getMessage().getContentRaw();
+                        String nomeTarefa = selectUmaDescTarefas(Integer.parseInt(stateAtualizaTarefa.nomeTimeSessaoAtualizaTime));
 
-                        stateAtualizaFunc.stepAtualizaTime = 1;
-                        event.getChannel().sendMessage("Por favor, escreva um novo nome para o time **" + nomeTime + "**, para que ele seja atualizado!").queue();
+                        stateAtualizaTarefa.stepAtualizaTime = 1;
+                        event.getChannel().sendMessage("Por favor, escreva uma nova descrição!\nDescrição atual: " + nomeTarefa).queue();
 
                     } catch (SQLException e) {
                         throw new RuntimeException();
@@ -139,10 +142,10 @@ public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
                 case 1:
 
                     try {
-                        stateAtualizaFunc.novoNomeTimeSessaoAtualizaTime = event.getMessage().getContentRaw();
+                        stateAtualizaTarefa.novoNomeTimeSessaoAtualizaTime = event.getMessage().getContentRaw();
 
-                        updateTime(Integer.valueOf(stateAtualizaFunc.nomeTimeSessaoAtualizaTime), stateAtualizaFunc.novoNomeTimeSessaoAtualizaTime);
-                        event.getChannel().sendMessage("Time atualziado com sucesso!").queue();
+                        updateTarefa(Integer.parseInt(stateAtualizaTarefa.nomeTimeSessaoAtualizaTime), stateAtualizaTarefa.novoNomeTimeSessaoAtualizaTime);
+                        event.getChannel().sendMessage("Tarefa atualziada com sucesso!").queue();
 
                     } catch (NumberFormatException e) {
                         event.getChannel().sendMessage("Por favor, use os identificadores numéricos para selecionar um usuário!").queue();
@@ -154,17 +157,17 @@ public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
             return;
         }
 
-        ConversationstateDeletaTime stateDeletaFunc = conversationDeletaTime.get(user);
+        ConversationDeletaTarefa stateDeletaFunc = conversationDeletaTarefa.get(user);
 
         if (stateDeletaFunc != null) {
 
             if (stateDeletaFunc.stepDeletaTime == 0) {
                 stateDeletaFunc.nomeTimeSessaoDeletaTime = event.getMessage().getContentRaw();
-                String time = stateDeletaFunc.nomeTimeSessaoDeletaTime;
+                String tarefa = stateDeletaFunc.nomeTimeSessaoDeletaTime;
                 try {
-                    removerTime(time);
-                    event.getChannel().sendMessage("O time **" + time + "** foi removido com sucesso!").queue();
-                    conversationDeletaTime.remove(user);
+                    removerTarefa(tarefa);
+                    event.getChannel().sendMessage("A tarefa foi removida com sucesso!").queue();
+                    conversationDeletaTarefa.remove(user);
                 } catch (SQLException e) {
                     event.getChannel().sendMessage("Por favor, use os identificadores numéricos para selecionar um time!.").queue();
                 } catch (RuntimeException e){
@@ -175,4 +178,6 @@ public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
         }
 
     }
+
+
 }
