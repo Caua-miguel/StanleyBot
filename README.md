@@ -93,7 +93,14 @@ volta para o primeiro time cadastrado.
 
 **Execução:** Retorna o time seleciona na semana.
 
-  
+## Exemplos
+
+**Alguns comandos:**
+
+
+<img src="https://github.com/user-attachments/assets/c65e3a51-4648-4bf6-b2ee-f19e8004f385" width="700" height="400" alt="image">
+
+
 
 
 
