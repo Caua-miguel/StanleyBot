@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static me.cauadeveloper.sqlite.consulta.geral.ContadorLinhasTabela.maxLinesTableTime;
+
 public class verificarTabelaVaziaTest {
 
     @DisplayName("Checando se todos os valores da tabela funcionario estão vazios")
@@ -18,19 +20,23 @@ public class verificarTabelaVaziaTest {
         String sql = """
                 SELECT COUNT(*) as contador FROM time;
                 """;
-        try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
+        try (PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)) {
 
-            ResultSet resultSet =  stmt.executeQuery();
+            ResultSet resultSet = stmt.executeQuery();
             int saida = resultSet.getInt("contador");
             System.out.println(saida);
             int esperado = 0;
             Assertions.assertEquals(esperado, saida);
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("Erro no check_if_tableFunc_is_null\n" + e.getMessage());
         }
-
-
-
     }
+        @DisplayName("Contador da tabela time")
+        @Test
+        public void simples_contador_tabela_time() throws SQLException {
+
+            System.out.println(maxLinesTableTime());
+
+        }
 }

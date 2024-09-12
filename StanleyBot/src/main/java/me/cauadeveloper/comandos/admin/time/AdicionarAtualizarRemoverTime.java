@@ -1,7 +1,6 @@
 package me.cauadeveloper.comandos.admin.time;
 
 import me.cauadeveloper.sqlite.atualizar.AtualizarTime;
-import me.cauadeveloper.sqlite.tabelas.TabelaTime;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.User;
@@ -16,7 +15,6 @@ import java.util.Map;
 
 import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTimes.selectAllNomeTime;
 import static me.cauadeveloper.sqlite.inserir.NovoTime.insertNovoTime;
-import static me.cauadeveloper.sqlite.remover.RemoverFunc.removerFunc;
 import static me.cauadeveloper.sqlite.consulta.tabelas.ListaFunc.*;
 import static me.cauadeveloper.sqlite.remover.RemoverTime.removerTime;
 
