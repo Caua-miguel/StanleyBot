@@ -1,4 +1,4 @@
-Bot de Discord para gerenciamento de equipes.
+# Bot de Discord para gerenciamento de equipes.
 
 O StanleyBot foi criado para ajudar empresas a se organizarem na hora do preparo do café. Inicialmente, o problema que me foi apresentado é o seguinte: A empresa divide as tarefas de preparo do café algumas vezes ao dia.
 entre os empregados dos setores, dividindo o pessoal em equipes para se organizarem. Mas esse controle e gestão dos funcionários estava complicado por precisar gerar um PDF toda semana e alinhar com o pessoal como seria feito.
