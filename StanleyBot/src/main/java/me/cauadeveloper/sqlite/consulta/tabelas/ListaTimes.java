@@ -30,7 +30,7 @@ public class ListaTimes {
         return list;
     }
 
-    public static int selectNomeTime(String nomeTime) throws SQLException {
+    public static int selectIdTime(String nomeTime) throws SQLException {
 
         String sql = """
                 SELECT id FROM time WHERE nome = ?
@@ -49,6 +49,27 @@ public class ListaTimes {
             e.printStackTrace();
         }
         return -1;
+    }
+
+    public static String selectNomeTime(int idTime) throws SQLException {
+
+        String sql = """
+                SELECT nome FROM time WHERE id = ?
+                """;
+
+        try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
+
+            stmt.setInt(1, idTime);
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()){
+                return resultSet.getString("nome");
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        throw new RuntimeException();
     }
 
 }

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTimes.selectAllNomeTime;
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTimes.selectNomeTime;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTimes.selectIdTime;
 
 
 public class allNameTeamTest {
@@ -25,7 +25,7 @@ public class allNameTeamTest {
     @DisplayName("Saida do idTime de acordo com o nome do time")
     public void printIdTime() throws SQLException {
 
-        System.out.println(selectNomeTime("coaLegal"));
+        System.out.println(selectIdTime("coaLegal"));
 
     }
 

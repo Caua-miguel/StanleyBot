@@ -5,7 +5,7 @@ import me.cauadeveloper.sqlite.config_banco.ConexaoBanco;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTimes.selectNomeTime;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTimes.selectIdTime;
 
 public class NovoFunc {
 
@@ -16,7 +16,7 @@ public class NovoFunc {
 
         try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
 
-            int  idTime = selectNomeTime(nomeTime);
+            int  idTime = selectIdTime(nomeTime);
 
             if (idTime != -1){
                 stmt.setString(1, idDisc);

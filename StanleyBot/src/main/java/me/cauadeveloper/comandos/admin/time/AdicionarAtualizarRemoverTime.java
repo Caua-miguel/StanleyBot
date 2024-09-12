@@ -13,23 +13,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTimes.selectAllNomeTime;
+import static me.cauadeveloper.sqlite.atualizar.AtualizarTime.updateTime;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTimes.*;
 import static me.cauadeveloper.sqlite.inserir.NovoTime.insertNovoTime;
 import static me.cauadeveloper.sqlite.consulta.tabelas.ListaFunc.*;
 import static me.cauadeveloper.sqlite.remover.RemoverTime.removerTime;
 
 public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
 
-    private final Map<User, ConversationstateAtualizaFuncAtualizaTime> conversationAtualizaTime = new HashMap<>();
-    private final Map<User, ConversationstateAtualizaFuncDeletaTime> conversationDeletaTime = new HashMap<>();
+    private final Map<User, ConversationstateAtualizaTime> conversationAtualizaTime = new HashMap<>();
+    private final Map<User, ConversationstateDeletaTime> conversationDeletaTime = new HashMap<>();
 
-    private static class ConversationstateAtualizaFuncAtualizaTime{
+    private static class ConversationstateAtualizaTime{
         int stepAtualizaTime = 0;
         String nomeTimeSessaoAtualizaTime;
         String novoNomeTimeSessaoAtualizaTime;
     }
 
-    private static class ConversationstateAtualizaFuncDeletaTime{
+    private static class ConversationstateDeletaTime{
         int stepDeletaTime = 0;
         String nomeTimeSessaoDeletaTime;
     }
@@ -70,15 +71,15 @@ public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
                     StringBuilder stringBuilder = new StringBuilder();
 
                     for (int i = 0; i < listaNomeTimes.size(); i++){
-                        stringBuilder.append(listaNomeTimes.get(i));
+                        stringBuilder.append((i + 1) + " - " + listaNomeTimes.get(i));
                         if (i < listaNomeTimes.size()-1){
                             stringBuilder.append("\n");
                         }
                     }
 
-                    event.reply("Escolha um time da lista para atualizar:\n" + stringBuilder.toString()).setEphemeral(true).queue();
+                    event.reply("Escolha um time da lista para atualizar (use os identificadores numericos):\n" + stringBuilder.toString()).setEphemeral(true).queue();
 
-                    conversationAtualizaTime.put(event.getUser(), new ConversationstateAtualizaFuncAtualizaTime());
+                    conversationAtualizaTime.put(event.getUser(), new ConversationstateAtualizaTime());
 
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
@@ -97,7 +98,7 @@ public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
                     }
                     event.reply("Escolha um time da lista para deletar:\n" + stringBuilder.toString()).setEphemeral(true).queue();
 
-                    conversationDeletaTime.put(event.getUser(), new ConversationstateAtualizaFuncDeletaTime());
+                    conversationDeletaTime.put(event.getUser(), new ConversationstateDeletaTime());
 
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
@@ -114,7 +115,7 @@ public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
         }
 
         User user = event.getAuthor();
-        ConversationstateAtualizaFuncAtualizaTime stateAtualizaFunc = conversationAtualizaTime.get(user);
+        ConversationstateAtualizaTime stateAtualizaFunc = conversationAtualizaTime.get(user);
 
         if (stateAtualizaFunc != null) {
 
@@ -123,15 +124,17 @@ public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
                 case 0:
                     try {
                         stateAtualizaFunc.nomeTimeSessaoAtualizaTime = event.getMessage().getContentRaw();
-                        String relacao_nomeFunc_idFunc = selectUmNomeFunc(stateAtualizaFunc.nomeTimeSessaoAtualizaTime);
+                        String nomeTime = selectNomeTime(Integer.valueOf(stateAtualizaFunc.nomeTimeSessaoAtualizaTime));
 
                         stateAtualizaFunc.stepAtualizaTime = 1;
-                        event.getChannel().sendMessage("Por favor, escreva um novo id do Discord para o funcionário **"+ stateAtualizaFunc.nomeTimeSessaoAtualizaTime+ " - " + relacao_nomeFunc_idFunc + "**, para que ele seja atualizado!").queue();
+                        event.getChannel().sendMessage("Por favor, escreva um novo nome para o time **" + nomeTime + "**, para que ele seja atualizado!").queue();
 
                     } catch (SQLException e) {
-                        throw new RuntimeException(e);
+                        throw new RuntimeException();
                     } catch (NumberFormatException e) {
                         event.getChannel().sendMessage("Por favor, use os identificadores numéricos para selecionar um usuário!").queue();
+                    } catch (RuntimeException e){
+                        event.getChannel().sendMessage("Não tem um time com esse identificador!!!").queue();
                     }
                     break;
 
@@ -140,32 +143,20 @@ public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
                     try {
                         stateAtualizaFunc.novoNomeTimeSessaoAtualizaTime = event.getMessage().getContentRaw();
 
-                        stateAtualizaFunc.stepAtualizaTime = 2;
-                        event.getChannel().sendMessage("Por favor, escreva um novo nome para o funcionário **"+ stateAtualizaFunc.novoNomeTimeSessaoAtualizaTime + " **, para que ele seja atualizado!").queue();
+                        updateTime(Integer.valueOf(stateAtualizaFunc.nomeTimeSessaoAtualizaTime), stateAtualizaFunc.novoNomeTimeSessaoAtualizaTime);
+                        event.getChannel().sendMessage("Time atualziado com sucesso!").queue();
 
                     } catch (NumberFormatException e) {
                         event.getChannel().sendMessage("Por favor, use os identificadores numéricos para selecionar um usuário!").queue();
-                    }
-                    break;
-
-                case 2:
-
-                    stateAtualizaFunc.novoNomeTimeSessaoAtualizaTime = event.getMessage().getContentRaw();
-
-
-                    try {
-                        AtualizarTime.updateTime(Integer.valueOf(stateAtualizaFunc.novoNomeTimeSessaoAtualizaTime), stateAtualizaFunc.novoNomeTimeSessaoAtualizaTime);
-                        event.getChannel().sendMessage("Funcionário atualizado com sucesso!").queue();
-                        conversationAtualizaTime.remove(user);
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
+                    } catch (SQLException e){
+                        System.out.println("Erro no update do nome time\n Erro: " + e.getMessage());
                     }
                     break;
             }
             return;
         }
 
-        ConversationstateAtualizaFuncDeletaTime stateDeletaFunc = conversationDeletaTime.get(user);
+        ConversationstateDeletaTime stateDeletaFunc = conversationDeletaTime.get(user);
 
         if (stateDeletaFunc != null) {
 

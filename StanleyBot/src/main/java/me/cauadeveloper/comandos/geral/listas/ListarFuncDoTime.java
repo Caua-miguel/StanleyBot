@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import static me.cauadeveloper.sqlite.consulta.tabelas.ListaFunc.selectRelacaoFuncTime;
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTimes.selectNomeTime;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTimes.selectIdTime;
 
 public class ListarFuncDoTime extends ListenerAdapter {
 
@@ -22,7 +22,7 @@ public class ListarFuncDoTime extends ListenerAdapter {
 
                 String nomeTime = nomeTimeOption.getAsString();
                 StringBuilder stringBuilder = new StringBuilder();
-                int idTime = selectNomeTime(nomeTime);
+                int idTime = selectIdTime(nomeTime);
                 ArrayList<String> list = selectRelacaoFuncTime(idTime);
 
                 for (int i = 0; i < list.size(); i++){
