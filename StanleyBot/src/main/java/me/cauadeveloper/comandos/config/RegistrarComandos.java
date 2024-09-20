@@ -6,7 +6,6 @@ import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
 public class RegistrarComandos extends ListenerAdapter {
 
         @Override
-        public void onGuildReady(@NotNull GuildReadyEvent event){
+        public void onGuildReady(GuildReadyEvent event){
 
             List<CommandData> commandData = new ArrayList<>();
 
@@ -72,7 +71,7 @@ public class RegistrarComandos extends ListenerAdapter {
             commandData.add(Commands.slash("ping", "Exibe o ping do bot."));
             commandData.add(Commands.slash("time_da_semana", "Mostra qual time é responsável pelo café essa semana."));
             commandData.add(Commands.slash("reportar_falta", "Avisa quando faltar algum item.").addOptions(opReportarFalta));
-            commandData.add(Commands.slash("help", "Mostra como funcionam os comandos do bot."));
+            commandData.add(Commands.slash("help", "Mostra como funcionam os comandos do bot.").addOptions(opHelp));
 
 
 
