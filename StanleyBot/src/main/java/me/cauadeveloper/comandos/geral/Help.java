@@ -76,7 +76,7 @@ public class Help extends ListenerAdapter {
                         break;
 
                         default:
-                            event.reply("Não reconheço esse argumento! Tenha certeza de ter passado `adm` ou `usuario`, dessa forma:\n `/help <adm>` ou `/help <usuario>`").setEphemeral(true).queue();
+                            event.reply("Não reconheço esse argumento!!! Tenha certeza de ter passado `adm` ou `usuario`, dessa forma:\n `/help <adm>` ou `/help <usuario>`").setEphemeral(true).queue();
                         break;
                     }
 
