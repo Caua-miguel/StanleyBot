@@ -14,8 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static me.cauadeveloper.sqlite.atualizar.AtualizaTarefa.updateTarefa;
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTarefas.selectListaTarefas;
-import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTarefas.selectUmaDescTarefas;
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTarefas.*;
 import static me.cauadeveloper.sqlite.inserir.NovaTarefa.insertNovaTarefa;
 import static me.cauadeveloper.sqlite.remover.RemoverTarefa.removerTarefa;
 
@@ -68,11 +67,12 @@ public class AdicionarAtualizarRemoverTarefa extends ListenerAdapter {
             case "atualizar_tarefa":
 
                 try {
+                    ArrayList<String> listaIdTarefas = selectIdTarefa();
                     ArrayList<String> listaDescTarefas = selectListaTarefas();
                     StringBuilder stringBuilder = new StringBuilder();
 
                     for (int i = 0; i < listaDescTarefas.size(); i++){
-                        stringBuilder.append((i + 1) + " - " + listaDescTarefas.get(i));
+                        stringBuilder.append((listaIdTarefas.get(i)) + " - " + listaDescTarefas.get(i));
                         if (i < listaDescTarefas.size()-1){
                             stringBuilder.append("\n");
                         }
@@ -88,11 +88,12 @@ public class AdicionarAtualizarRemoverTarefa extends ListenerAdapter {
                 break;
             case "remover_tarefa":
                 try {
+                    ArrayList<String> listaIdTarefas = selectIdTarefa();
                     ArrayList<String> listaDescTarefas = selectListaTarefas();
                     StringBuilder stringBuilder = new StringBuilder();
 
                     for (int i = 0; i < listaDescTarefas.size(); i++){
-                        stringBuilder.append((i + 1) + " - " + listaDescTarefas.get(i));
+                        stringBuilder.append((listaIdTarefas.get(i)) + " - " + listaDescTarefas.get(i));
                         if (i < listaDescTarefas.size()-1){
                             stringBuilder.append("\n");
                         }

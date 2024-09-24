@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 
+import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTarefas.selectIdTarefa;
 import static me.cauadeveloper.sqlite.consulta.tabelas.ListaTarefas.selectListaTarefas;
 
 public class ListaTarefasTest {
@@ -13,7 +14,8 @@ public class ListaTarefasTest {
     @DisplayName("Saída da lista de tarefas")
     public void saidaListaTarefas() throws SQLException {
 
-        System.out.println(selectListaTarefas());
+//        System.out.println(selectListaTarefas());
+        System.out.println(selectIdTarefa());
 
     }
 

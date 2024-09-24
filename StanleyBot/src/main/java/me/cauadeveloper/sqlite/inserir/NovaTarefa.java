@@ -12,15 +12,12 @@ public class NovaTarefa {
 
     public static void insertNovaTarefa(String descTarefa) throws SQLException {
         String sql = """
-                INSERT INTO tarefa (id, descricao) values (?, ?)
+                INSERT INTO tarefa (descricao) values (?)
                 """;
-
-        int contadorLinhasTarefa = maxLinesTableTarefa();
 
         try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
 
-            stmt.setInt(1, contadorLinhasTarefa + 1);
-            stmt.setString(2, descTarefa);
+            stmt.setString(1, descTarefa);
 
             stmt.execute();
 

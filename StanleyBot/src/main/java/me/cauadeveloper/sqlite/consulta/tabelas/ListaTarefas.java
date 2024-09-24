@@ -64,4 +64,30 @@ public class ListaTarefas {
         throw new RuntimeException();
     }
 
+    public static ArrayList<String> selectIdTarefa() throws SQLException {
+
+        String sql = """
+                SELECT id FROM tarefa;
+                """;
+
+        ArrayList<String> listaIdTarefa = new ArrayList<>();
+
+        try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
+
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()){
+                listaIdTarefa.add(resultSet.getString("id"));
+            }
+
+            return listaIdTarefa;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return listaIdTarefa;
+    }
+
+
 }
