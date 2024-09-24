@@ -11,16 +11,13 @@ public class NovoTime {
 
     public static void insertNovoTime(String nomeTime) throws SQLException {
         String sql = """
-                INSERT INTO time (id, nome, status) values (?, ?, ?)
+                INSERT INTO time (nome, status) values (?, ?)
                 """;
-
-        int contadorLinhasTime = maxLinesTableTime();
 
         try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
 
-            stmt.setInt(1, contadorLinhasTime + 1);
-            stmt.setString(2, nomeTime);
-            stmt.setString(3, "true");
+            stmt.setString(1, nomeTime);
+            stmt.setString(2, "true");
 
             stmt.execute();
 

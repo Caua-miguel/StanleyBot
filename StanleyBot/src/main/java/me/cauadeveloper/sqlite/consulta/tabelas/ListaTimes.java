@@ -9,6 +9,27 @@ import java.util.ArrayList;
 
 public class ListaTimes {
 
+    public static ArrayList<String> selectIdTime() throws SQLException {
+
+        String sql = """
+                SELECT id from time
+                """;
+        ArrayList<String> listaIdTime = new ArrayList<>();
+
+        try(PreparedStatement stmt = ConexaoBanco.getConn().prepareStatement(sql)){
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()){
+                listaIdTime.add(resultSet.getString("id"));
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return listaIdTime;
+    }
+
     public static ArrayList<String> selectAllNomeTime() throws SQLException {
 
         String sql = """

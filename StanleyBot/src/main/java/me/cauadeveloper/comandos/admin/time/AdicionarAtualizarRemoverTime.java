@@ -65,11 +65,12 @@ public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
             case "atualizar_time":
 
                 try {
+                    ArrayList<String> listaIdTimes = selectIdTime();
                     ArrayList<String> listaNomeTimes = selectAllNomeTime();
                     StringBuilder stringBuilder = new StringBuilder();
 
                     for (int i = 0; i < listaNomeTimes.size(); i++){
-                        stringBuilder.append((i + 1) + " - " + listaNomeTimes.get(i));
+                        stringBuilder.append((listaIdTimes.get(i)) + " - " + listaNomeTimes.get(i));
                         if (i < listaNomeTimes.size()-1){
                             stringBuilder.append("\n");
                         }
@@ -85,11 +86,12 @@ public class AdicionarAtualizarRemoverTime extends ListenerAdapter {
                 break;
             case "remover_time":
                 try {
+                    ArrayList<String> listaIdTimes = selectIdTime();
                     ArrayList<String> listaNomeTimes = selectAllNomeTime();
                     StringBuilder stringBuilder = new StringBuilder();
 
                     for (int i = 0; i < listaNomeTimes.size(); i++){
-                        stringBuilder.append((i + 1) + " - " + listaNomeTimes.get(i));
+                        stringBuilder.append((listaIdTimes.get(i)) + " - " + listaNomeTimes.get(i));
                         if (i < listaNomeTimes.size()-1){
                             stringBuilder.append("\n");
                         }
