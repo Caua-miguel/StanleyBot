@@ -18,11 +18,11 @@ Quanto ao SQLite, ele foi escolhido porque o bot foi feito para ser usado em um 
 
 ## Compilação.
 
-Ainda estou trabalhando nos ajustes do ambiente para que ele rode em qualquer máquina. **
+Ainda estou trabalhando nos ajustes do ambiente para que ele rode em qualquer máquina.
 
 ## Execução
 
-Ainda estou trabalhando nos ajustes do ambiente para que ele rode em qualquer máquina. **
+Ainda estou trabalhando nos ajustes do ambiente para que ele rode em qualquer máquina.
 
 ## Comandos.
 
