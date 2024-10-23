@@ -34,7 +34,7 @@ public class Help extends ListenerAdapter {
                         "1 - /iniciar \n\n 2 - /inserir dados iniciais \n\n 3 - /criar cargo \n\n 4 - /adicionar* \n\n 5 - /atualizar* \n\n 6 - /remover* \n\n 7 - /escolher time da semana\n\n" +
                         "**Iniciar**\n\n O comando iniciar vai dar instruções básicas de como cadastrar funcionários, times e tarefas. Ele vai gerar um .xls para o administrador do servidor preencher.\n\n **Cuidado para preencher os dados corretamente!**\n\n" +
                         "**Inserir dados iniciais**\n\n O comando inserir dados iniciais vai solicitar o arquivo que o administrador do servidor editou usando o comando `/iniciar`. Assim que você passar esse arquivo, os dados serão cadastrados.\n\n" +
-                        "**Criar Cargo**\n\n O comando criar cargos vai criar um cargo tem três opções, criar o cargo sem nenhuma permissão (vazio), com as permissões de @everyone (padrão) ou pode copiar as permissões de outro cargo (copia).\n\n" +
+                        "**Criar Cargo**\n\n O comando criar cargos tem três opções, criar o cargo sem nenhuma permissão (vazio), com as permissões de @everyone (padrão) ou pode copiar as permissões de outro cargo (copia).\n\n" +
                         "Você pode digitar `criar_cargo` para verificar as três opções.\n\n" +
                         "**Adicionar / atualizar / remover**\n\n Os comandos adicionar, atualizar e remover servem para ajustar o cadastro de um funcionário, um time ou tarefa no banco de dados.\n\n" +
                         "**Escolher time da semana**\n\n O comando escolher time da semana vai ser usado apenas uma vez e sem argumentos. Esse comando vai selecionar um time para ficar responsável pelo café durante a semana.\n\n" +
